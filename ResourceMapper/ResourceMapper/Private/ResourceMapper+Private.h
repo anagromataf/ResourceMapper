@@ -11,6 +11,7 @@
 #import "RMUpdateSession.h"
 
 // Foundation Additions
+#import "NSObject+Private.h"
 #import "NSSortDescriptor+Private.h"
 
 // Core Data Additions

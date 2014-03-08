@@ -23,4 +23,9 @@
 - (void)updateManagedObject:(NSManagedObject *)managedObject withObject:(id)newObject;
 - (void)deleteManagedObject:(NSManagedObject *)managedObject;
 
+#pragma mark Internal Methods
+- (void)updatePropertiesOfManagedObject:(NSManagedObject *)managedObject usingObject:(id)newObject;
+- (void)updateAttributesOfManagedObject:(NSManagedObject *)managedObject usingObject:(id)newObject;
+- (void)updateRelationshipsOfManagedObject:(NSManagedObject *)managedObject usingObject:(id)newObject;
+
 @end
