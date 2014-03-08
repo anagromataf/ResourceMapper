@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Tobias Kräntzer. All rights reserved.
 //
 
+#import "NSSortDescriptor+Private.h"
+
 #import "NSEntityDescription+Private.h"
 
 NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey = @"RM_PK";
@@ -67,6 +69,24 @@ NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey = @"RM_PK";
             return [primaryKeyProperties count] == 0 ? nil : primaryKeyProperties;
         }
     }
+}
+
+#pragma mark Sort Descriptor & Comparator
+
+- (NSArray *)rm_primaryKeySortDescriptors
+{
+    NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
+    [[self rm_primaryKeyProperties] enumerateObjectsUsingBlock:
+        ^(NSPropertyDescription *propertyDescription, NSUInteger idx, BOOL *stop) {
+        [sortDescriptors addObject:[NSSortDescriptor sortDescriptorWithKey:propertyDescription.name
+                                                                 ascending:YES]];
+    }];
+    return sortDescriptors;
+}
+
+- (NSComparator)rm_primaryKeyComparator
+{
+    return [NSSortDescriptor rm_comperatorUsingSortDescriptors:[self rm_primaryKeySortDescriptors]];
 }
 
 @end
