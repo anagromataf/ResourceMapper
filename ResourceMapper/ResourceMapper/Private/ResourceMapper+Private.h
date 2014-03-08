@@ -8,6 +8,7 @@
 
 // Resource Mapper
 #import "RMObjectProxy.h"
+#import "RMUpdateSession.h"
 
 // Foundation Additions
 #import "NSSortDescriptor+Private.h"
