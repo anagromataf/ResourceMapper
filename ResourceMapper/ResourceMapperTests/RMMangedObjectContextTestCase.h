@@ -9,17 +9,12 @@
 #import <XCTest/XCTest.h>
 #import <CoreData/CoreData.h>
 
-#import "ResourceMapper.h"
+#import "RMManagedObjectModelTestCase.h"
 
-@interface RMMangedObjectContextTestCase : XCTestCase
+@interface RMMangedObjectContextTestCase : RMManagedObjectModelTestCase
 
 #pragma mark Core Data Stack
-@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-
-#pragma mark Helpers
-- (NSEntityDescription *)entityWithName:(NSString *)name;
-- (NSPropertyDescription *)propertyWithName:(NSString *)propertyName ofEntity:(id)entity;
 
 @end

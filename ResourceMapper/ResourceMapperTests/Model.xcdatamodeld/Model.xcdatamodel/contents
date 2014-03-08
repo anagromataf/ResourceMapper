@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Entity" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Item" syncable="YES">
         <attribute name="x" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="y" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="z" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="SpecialEntity" parentEntity="SubEntity" syncable="YES"/>
+    <entity name="SubEntity" parentEntity="Entity" syncable="YES">
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Item" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Item" positionX="3418" positionY="-1818" width="128" height="43"/>
+        <element name="Entity" positionX="3195" positionY="-1836" width="128" height="88"/>
+        <element name="SubEntity" positionX="3195" positionY="-1755" width="128" height="58"/>
+        <element name="SpecialEntity" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

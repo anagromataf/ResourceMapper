@@ -17,12 +17,9 @@
 
 - (void)setUp
 {
+    [super setUp];
+    
     NSError *error = nil;
-    
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    
-    // Model
-    self.managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:@[bundle]];
     
     // Store Coordinator
     self.persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
@@ -59,21 +56,6 @@
     NSAssert(success, [error localizedDescription]);
     
     [super tearDown];
-}
-
-#pragma mark Helpers
-
-- (NSEntityDescription *)entityWithName:(NSString *)name
-{
-    return [[self.managedObjectModel entitiesByName] valueForKey:name];
-}
-
-- (NSPropertyDescription *)propertyWithName:(NSString *)propertyName ofEntity:(id)entity
-{
-    if ([entity isKindOfClass:[NSString class]]) {
-        entity = [self entityWithName:entity];
-    }
-    return [[(NSEntityDescription *)entity propertiesByName] valueForKey:propertyName];
 }
 
 @end
