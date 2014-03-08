@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Tobias Kräntzer. All rights reserved.
 //
 
+// Resource Mapper
+#import "RMObjectProxy.h"
+
 // Foundation Additions
 #import "NSSortDescriptor+Private.h"
 
