@@ -52,6 +52,8 @@
 		F63A767F18CBBF2A00A309F2 /* RMUpdateSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767C18CBBF2A00A309F2 /* RMUpdateSession.m */; };
 		F63A768218CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768118CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m */; };
 		F63A768318CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768118CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m */; };
+		F63A768518CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m */; };
+		F63A768618CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +124,7 @@
 		F63A767B18CBBF2A00A309F2 /* RMUpdateSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUpdateSession.h; sourceTree = "<group>"; };
 		F63A767C18CBBF2A00A309F2 /* RMUpdateSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUpdateSession.m; sourceTree = "<group>"; };
 		F63A768118CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUpdateSession_InsertObjectTests.m; sourceTree = "<group>"; };
+		F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUpdateSession_DeleteObjectTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				F63A768118CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m */,
+				F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m */,
 			);
 			name = "Update Session";
 			sourceTree = "<group>";
@@ -540,6 +544,7 @@
 				F63A764C18CB957700A309F2 /* Model.xcdatamodeld in Sources */,
 				F63A766E18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m in Sources */,
 				F63A768218CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m in Sources */,
+				F63A768518CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m in Sources */,
 				F63A766B18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,6 +573,7 @@
 				F63A764D18CB957700A309F2 /* Model.xcdatamodeld in Sources */,
 				F63A766F18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m in Sources */,
 				F63A768318CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m in Sources */,
+				F63A768618CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m in Sources */,
 				F63A766C18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
