@@ -18,6 +18,19 @@
 		F63A762418CB8A4E00A309F2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F63A75F618CB89BC00A309F2 /* XCTest.framework */; };
 		F63A762518CB8A4E00A309F2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F63A761318CB8A4E00A309F2 /* Cocoa.framework */; };
 		F63A762818CB8A4E00A309F2 /* libResourceMapperOSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F63A761218CB8A4D00A309F2 /* libResourceMapperOSX.a */; };
+		F63A763B18CB939100A309F2 /* NSManagedObjectContext+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A763918CB939100A309F2 /* NSManagedObjectContext+Private.h */; };
+		F63A763C18CB939100A309F2 /* NSManagedObjectContext+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A763A18CB939100A309F2 /* NSManagedObjectContext+Private.m */; };
+		F63A763D18CB939100A309F2 /* NSManagedObjectContext+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A763A18CB939100A309F2 /* NSManagedObjectContext+Private.m */; };
+		F63A764018CB93E500A309F2 /* NSSortDescriptor+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A763E18CB93E500A309F2 /* NSSortDescriptor+Private.h */; };
+		F63A764118CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A763F18CB93E500A309F2 /* NSSortDescriptor+Private.m */; };
+		F63A764218CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A763F18CB93E500A309F2 /* NSSortDescriptor+Private.m */; };
+		F63A764418CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764318CB944100A309F2 /* RMMangedObjectContextTestCase.m */; };
+		F63A764518CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764318CB944100A309F2 /* RMMangedObjectContextTestCase.m */; };
+		F63A764818CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m */; };
+		F63A764918CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m */; };
+		F63A764C18CB957700A309F2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F63A764A18CB957700A309F2 /* Model.xcdatamodeld */; };
+		F63A764D18CB957700A309F2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F63A764A18CB957700A309F2 /* Model.xcdatamodeld */; };
+		F63A765318CB96D000A309F2 /* ResourceMapper+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A765118CB96D000A309F2 /* ResourceMapper+Private.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +79,15 @@
 		F63A761718CB8A4E00A309F2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F63A761818CB8A4E00A309F2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		F63A762318CB8A4E00A309F2 /* ResourceMapperOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResourceMapperOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F63A763918CB939100A309F2 /* NSManagedObjectContext+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Private.h"; sourceTree = "<group>"; };
+		F63A763A18CB939100A309F2 /* NSManagedObjectContext+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Private.m"; sourceTree = "<group>"; };
+		F63A763E18CB93E500A309F2 /* NSSortDescriptor+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSortDescriptor+Private.h"; sourceTree = "<group>"; };
+		F63A763F18CB93E500A309F2 /* NSSortDescriptor+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSortDescriptor+Private.m"; sourceTree = "<group>"; };
+		F63A764318CB944100A309F2 /* RMMangedObjectContextTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMangedObjectContextTestCase.m; sourceTree = "<group>"; };
+		F63A764618CB948C00A309F2 /* RMMangedObjectContextTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMMangedObjectContextTestCase.h; sourceTree = "<group>"; };
+		F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSManagedObjectContext_CombineObjectsTests.m; sourceTree = "<group>"; };
+		F63A764B18CB957700A309F2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F63A765118CB96D000A309F2 /* ResourceMapper+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ResourceMapper+Private.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +186,8 @@
 		F63A75FE18CB89BC00A309F2 /* Resource Mapper Tests */ = {
 			isa = PBXGroup;
 			children = (
+				F63A764E18CB966200A309F2 /* Model */,
+				F63A764F18CB966800A309F2 /* Core Data Additions Tests */,
 				F63A75FF18CB89BC00A309F2 /* Supporting Files */,
 			);
 			name = "Resource Mapper Tests";
@@ -200,8 +224,55 @@
 		F63A763818CB8D0700A309F2 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				F63A765118CB96D000A309F2 /* ResourceMapper+Private.h */,
+				F63A765718CB978E00A309F2 /* Foundation Additions */,
+				F63A765618CB978200A309F2 /* Core Data Additions */,
 			);
 			path = Private;
+			sourceTree = "<group>";
+		};
+		F63A764E18CB966200A309F2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F63A764A18CB957700A309F2 /* Model.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F63A764F18CB966800A309F2 /* Core Data Additions Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F63A764618CB948C00A309F2 /* RMMangedObjectContextTestCase.h */,
+				F63A764318CB944100A309F2 /* RMMangedObjectContextTestCase.m */,
+				F63A765018CB967B00A309F2 /* Combine Objects */,
+			);
+			name = "Core Data Additions Tests";
+			sourceTree = "<group>";
+		};
+		F63A765018CB967B00A309F2 /* Combine Objects */ = {
+			isa = PBXGroup;
+			children = (
+				F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m */,
+			);
+			name = "Combine Objects";
+			sourceTree = "<group>";
+		};
+		F63A765618CB978200A309F2 /* Core Data Additions */ = {
+			isa = PBXGroup;
+			children = (
+				F63A763918CB939100A309F2 /* NSManagedObjectContext+Private.h */,
+				F63A763A18CB939100A309F2 /* NSManagedObjectContext+Private.m */,
+			);
+			name = "Core Data Additions";
+			sourceTree = "<group>";
+		};
+		F63A765718CB978E00A309F2 /* Foundation Additions */ = {
+			isa = PBXGroup;
+			children = (
+				F63A763E18CB93E500A309F2 /* NSSortDescriptor+Private.h */,
+				F63A763F18CB93E500A309F2 /* NSSortDescriptor+Private.m */,
+			);
+			name = "Foundation Additions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +282,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F63A764018CB93E500A309F2 /* NSSortDescriptor+Private.h in Headers */,
+				F63A763B18CB939100A309F2 /* NSManagedObjectContext+Private.h in Headers */,
+				F63A765318CB96D000A309F2 /* ResourceMapper+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +414,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F63A763C18CB939100A309F2 /* NSManagedObjectContext+Private.m in Sources */,
+				F63A764118CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +423,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F63A764818CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m in Sources */,
+				F63A764418CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */,
+				F63A764C18CB957700A309F2 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +433,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F63A763D18CB939100A309F2 /* NSManagedObjectContext+Private.m in Sources */,
+				F63A764218CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +442,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F63A764918CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m in Sources */,
+				F63A764518CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */,
+				F63A764D18CB957700A309F2 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +588,12 @@
 				);
 				INFOPLIST_FILE = "ResourceMapperTests/ResourceMapperTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -522,6 +612,12 @@
 				GCC_PREFIX_HEADER = "ResourceMapper/ResourceMapper-Prefix.pch";
 				INFOPLIST_FILE = "ResourceMapperTests/ResourceMapperTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -581,6 +677,12 @@
 				);
 				INFOPLIST_FILE = "ResourceMapperTests/ResourceMapperTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = xctest;
@@ -601,6 +703,12 @@
 				GCC_PREFIX_HEADER = "ResourceMapper/ResourceMapper-Prefix.pch";
 				INFOPLIST_FILE = "ResourceMapperTests/ResourceMapperTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = xctest;
@@ -652,6 +760,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F63A764A18CB957700A309F2 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F63A764B18CB957700A309F2 /* Model.xcdatamodel */,
+			);
+			currentVersion = F63A764B18CB957700A309F2 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F63A75DD18CB89BC00A309F2 /* Project object */;
 }
