@@ -8,8 +8,15 @@
 
 #import <CoreData/CoreData.h>
 
+extern NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey;
+
 @interface NSEntityDescription (Private)
 
+#pragma mark Entity Hierarchy
 - (NSEntityDescription *)rm_rootEntity;
+
+#pragma mark Primary Key
+- (NSArray *)rm_primaryKeyPropertyNames;
+- (NSArray *)rm_primaryKeyProperties;
 
 @end

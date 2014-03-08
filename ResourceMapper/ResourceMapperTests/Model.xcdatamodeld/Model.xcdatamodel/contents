@@ -4,6 +4,11 @@
         <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entity" inverseName="subentities" inverseEntity="Entity" syncable="YES"/>
+        <relationship name="subentities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entity" inverseName="parent" inverseEntity="Entity" syncable="YES"/>
+        <userInfo>
+            <entry key="RM_PK" value="identifier ,parent "/>
+        </userInfo>
     </entity>
     <entity name="Item" syncable="YES">
         <attribute name="x" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>

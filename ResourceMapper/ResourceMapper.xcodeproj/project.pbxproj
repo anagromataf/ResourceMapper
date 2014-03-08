@@ -38,6 +38,8 @@
 		F63A765F18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A765D18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m */; };
 		F63A766418CBA30900A309F2 /* RMManagedObjectModelTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A766318CBA30900A309F2 /* RMManagedObjectModelTestCase.m */; };
 		F63A766518CBA30900A309F2 /* RMManagedObjectModelTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A766318CBA30900A309F2 /* RMManagedObjectModelTestCase.m */; };
+		F63A766B18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A766A18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m */; };
+		F63A766C18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A766A18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,7 @@
 		F63A765D18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSEntityDescription_RootEntityTests.m; sourceTree = "<group>"; };
 		F63A766218CBA30900A309F2 /* RMManagedObjectModelTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMManagedObjectModelTestCase.h; sourceTree = "<group>"; };
 		F63A766318CBA30900A309F2 /* RMManagedObjectModelTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMManagedObjectModelTestCase.m; sourceTree = "<group>"; };
+		F63A766A18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSEntityDescription_PrimaryKeyTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				F63A765D18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m */,
+				F63A766A18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m */,
 			);
 			name = "Entity Description";
 			sourceTree = "<group>";
@@ -471,6 +475,7 @@
 				F63A766418CBA30900A309F2 /* RMManagedObjectModelTestCase.m in Sources */,
 				F63A764418CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */,
 				F63A764C18CB957700A309F2 /* Model.xcdatamodeld in Sources */,
+				F63A766B18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +498,7 @@
 				F63A766518CBA30900A309F2 /* RMManagedObjectModelTestCase.m in Sources */,
 				F63A764518CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */,
 				F63A764D18CB957700A309F2 /* Model.xcdatamodeld in Sources */,
+				F63A766C18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
