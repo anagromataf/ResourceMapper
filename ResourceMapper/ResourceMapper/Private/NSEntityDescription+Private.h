@@ -15,10 +15,13 @@ extern NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey;
 #pragma mark Entity Hierarchy
 - (NSEntityDescription *)rm_rootEntity;
 
-#pragma mark Primary Key
+#pragma mark Primary Key Properties
 - (BOOL)rm_hasPrimaryKeyProperties;
 - (NSArray *)rm_primaryKeyPropertyNames;
 - (NSArray *)rm_primaryKeyProperties;
+
+#pragma mark Primary Key of Object
+- (NSDictionary *)rm_primaryKeyOfObject:(id)object;
 
 #pragma mark Sort Descriptor & Comparator
 - (NSArray *)rm_primaryKeySortDescriptors;
