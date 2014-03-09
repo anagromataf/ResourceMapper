@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Tobias Kräntzer. All rights reserved.
 //
 
+#import "RMCombiningProxy.h"
 #import "NSEntityDescription+Private.h"
 
 #import "RMMappingContext.h"
@@ -60,7 +61,12 @@
         }
         
         NSDictionary *pk = [rootEntity rm_primaryKeyOfObject:resource];
-        [resourcesByPrimaryKey setObject:resource forKey:pk];
+        RMCombiningProxy *proxy = [resourcesByPrimaryKey objectForKey:pk];
+        if (proxy == nil) {
+            proxy = [[RMCombiningProxy alloc] init];
+            [resourcesByPrimaryKey setObject:proxy forKey:pk];
+        }
+        [proxy addObject:resource];
     }
     
     NSEntityDescription *subentity = [resource valueForKey:@"entity"];

@@ -18,6 +18,7 @@
     <entity name="Object" syncable="YES">
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="objectOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Predicate" inverseName="object" inverseEntity="Predicate" syncable="YES"/>
         <relationship name="subjectOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Predicate" inverseName="subject" inverseEntity="Predicate" syncable="YES"/>
         <userInfo>
@@ -36,7 +37,7 @@
     <elements>
         <element name="Entity" positionX="2529" positionY="-1645" width="128" height="118"/>
         <element name="Item" positionX="2356" positionY="-1647" width="128" height="88"/>
-        <element name="Object" positionX="2754" positionY="-1656" width="128" height="103"/>
+        <element name="Object" positionX="2754" positionY="-1656" width="128" height="118"/>
         <element name="Predicate" positionX="2943" positionY="-1638" width="128" height="88"/>
         <element name="SpecialEntity" positionX="2554" positionY="-1368" width="128" height="43"/>
         <element name="SubEntity" positionX="2545" positionY="-1467" width="128" height="58"/>

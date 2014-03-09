@@ -76,4 +76,30 @@
     XCTAssertEqual([objectsByPrimaryKey count], (NSUInteger)6);
 }
 
+- (void)testAddDuplicateResource
+{
+    NSDictionary *resourcesByPrimaryKey;
+    NSDictionary *object;
+    NSArray *keys = @[@"identifier", @"name", @"summary"];
+
+    RMMappingContext *mappingContext = [[RMMappingContext alloc] init];
+    
+    object = @{@"identifier":@"1", @"name":@"A", @"summary": @"Foo Bar Baz"};
+    [mappingContext addResource:object
+                    usingEntity:[self entityWithName:@"Object"]];
+    
+    resourcesByPrimaryKey = [mappingContext resourcesByPrimaryKeyOfEntity:[self entityWithName:@"Object"]];
+    XCTAssertEqualObjects([resourcesByPrimaryKey allKeys], @[@{@"identifier":@"1"}]);
+    XCTAssertEqualObjects([[[resourcesByPrimaryKey allValues] firstObject] dictionaryWithValuesForKeys:keys], object);
+    
+    [mappingContext addResource:@{@"identifier":@"1", @"name":@"B"}
+                    usingEntity:[self entityWithName:@"Object"]];
+    
+    object = @{@"identifier":@"1", @"name":@"B", @"summary": @"Foo Bar Baz"};
+    
+    resourcesByPrimaryKey = [mappingContext resourcesByPrimaryKeyOfEntity:[self entityWithName:@"Object"]];
+    XCTAssertEqualObjects([resourcesByPrimaryKey allKeys], @[@{@"identifier":@"1"}]);
+    XCTAssertEqualObjects([[[resourcesByPrimaryKey allValues] firstObject] dictionaryWithValuesForKeys:keys], object);
+}
+
 @end
