@@ -27,6 +27,15 @@ NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey = @"RM_PK";
 
 #pragma mark Primary Key
 
+- (BOOL)rm_hasPrimaryKeyProperties
+{
+    if (self.superentity) {
+        return [self.superentity rm_hasPrimaryKeyProperties];
+    } else {
+        return [[self rm_primaryKeyPropertyNames] count] > 0;
+    }
+}
+
 - (NSArray *)rm_primaryKeyPropertyNames
 {
     if (self.superentity) {

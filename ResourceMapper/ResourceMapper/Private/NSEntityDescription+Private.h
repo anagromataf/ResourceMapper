@@ -16,6 +16,7 @@ extern NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey;
 - (NSEntityDescription *)rm_rootEntity;
 
 #pragma mark Primary Key
+- (BOOL)rm_hasPrimaryKeyProperties;
 - (NSArray *)rm_primaryKeyPropertyNames;
 - (NSArray *)rm_primaryKeyProperties;
 
