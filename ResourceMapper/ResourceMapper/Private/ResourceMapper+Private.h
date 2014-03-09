@@ -8,6 +8,7 @@
 
 // Resource Mapper
 #import "RMObjectProxy.h"
+#import "RMMappingContext.h"
 #import "RMUpdateSession.h"
 
 // Foundation Additions

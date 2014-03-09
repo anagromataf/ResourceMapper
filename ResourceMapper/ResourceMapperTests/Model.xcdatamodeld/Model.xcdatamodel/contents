@@ -15,14 +15,30 @@
         <attribute name="y" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="z" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="Object" syncable="YES">
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="objectOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Predicate" inverseName="object" inverseEntity="Predicate" syncable="YES"/>
+        <relationship name="subjectOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Predicate" inverseName="subject" inverseEntity="Predicate" syncable="YES"/>
+        <userInfo>
+            <entry key="RM_PK" value="identifier"/>
+        </userInfo>
+    </entity>
+    <entity name="Predicate" syncable="YES">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="object" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Object" inverseName="objectOf" inverseEntity="Object" syncable="YES"/>
+        <relationship name="subject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Object" inverseName="subjectOf" inverseEntity="Object" syncable="YES"/>
+    </entity>
     <entity name="SpecialEntity" parentEntity="SubEntity" syncable="YES"/>
     <entity name="SubEntity" parentEntity="Entity" syncable="YES">
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Item" positionX="3418" positionY="-1818" width="128" height="43"/>
-        <element name="Entity" positionX="3195" positionY="-1836" width="128" height="88"/>
-        <element name="SubEntity" positionX="3195" positionY="-1755" width="128" height="58"/>
-        <element name="SpecialEntity" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Entity" positionX="2529" positionY="-1645" width="128" height="118"/>
+        <element name="Item" positionX="2356" positionY="-1647" width="128" height="88"/>
+        <element name="Object" positionX="2754" positionY="-1656" width="128" height="103"/>
+        <element name="Predicate" positionX="2943" positionY="-1638" width="128" height="88"/>
+        <element name="SpecialEntity" positionX="2554" positionY="-1368" width="128" height="43"/>
+        <element name="SubEntity" positionX="2545" positionY="-1467" width="128" height="58"/>
     </elements>
 </model>
