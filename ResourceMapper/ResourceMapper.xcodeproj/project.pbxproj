@@ -64,6 +64,9 @@
 		F63A769518CD18C400A309F2 /* RMMappingContext.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A769318CD18C400A309F2 /* RMMappingContext.h */; };
 		F63A769618CD18C400A309F2 /* RMMappingContext.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A769418CD18C400A309F2 /* RMMappingContext.m */; };
 		F63A769718CD18C400A309F2 /* RMMappingContext.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A769418CD18C400A309F2 /* RMMappingContext.m */; };
+		F63CF1A818CD2DDC00B29969 /* RMCombiningProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = F63CF1A618CD2DDC00B29969 /* RMCombiningProxy.h */; };
+		F63CF1A918CD2DDC00B29969 /* RMCombiningProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = F63CF1A718CD2DDC00B29969 /* RMCombiningProxy.m */; };
+		F63CF1AA18CD2DDC00B29969 /* RMCombiningProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = F63CF1A718CD2DDC00B29969 /* RMCombiningProxy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +144,8 @@
 		F63A769018CD16C000A309F2 /* RMMappingContext_AddResourcesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMappingContext_AddResourcesTests.m; sourceTree = "<group>"; };
 		F63A769318CD18C400A309F2 /* RMMappingContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMappingContext.h; sourceTree = "<group>"; };
 		F63A769418CD18C400A309F2 /* RMMappingContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMappingContext.m; sourceTree = "<group>"; };
+		F63CF1A618CD2DDC00B29969 /* RMCombiningProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCombiningProxy.h; sourceTree = "<group>"; };
+		F63CF1A718CD2DDC00B29969 /* RMCombiningProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCombiningProxy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,6 +385,8 @@
 			children = (
 				F63A767018CBBC4A00A309F2 /* RMObjectProxy.h */,
 				F63A767118CBBC4A00A309F2 /* RMObjectProxy.m */,
+				F63CF1A618CD2DDC00B29969 /* RMCombiningProxy.h */,
+				F63CF1A718CD2DDC00B29969 /* RMCombiningProxy.m */,
 			);
 			name = "Proxy Object";
 			sourceTree = "<group>";
@@ -432,6 +439,7 @@
 				F63A765318CB96D000A309F2 /* ResourceMapper+Private.h in Headers */,
 				F63A768C18CBD42E00A309F2 /* NSObject+Private.h in Headers */,
 				F63A767D18CBBF2A00A309F2 /* RMUpdateSession.h in Headers */,
+				F63CF1A818CD2DDC00B29969 /* RMCombiningProxy.h in Headers */,
 				F63A767218CBBC4A00A309F2 /* RMObjectProxy.h in Headers */,
 				F63A769518CD18C400A309F2 /* RMMappingContext.h in Headers */,
 				F63A765A18CBA22B00A309F2 /* NSEntityDescription+Private.h in Headers */,
@@ -568,6 +576,7 @@
 				F63A763C18CB939100A309F2 /* NSManagedObjectContext+Private.m in Sources */,
 				F63A767318CBBC4A00A309F2 /* RMObjectProxy.m in Sources */,
 				F63A764118CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */,
+				F63CF1A918CD2DDC00B29969 /* RMCombiningProxy.m in Sources */,
 				F63A767E18CBBF2A00A309F2 /* RMUpdateSession.m in Sources */,
 				F63A768D18CBD42E00A309F2 /* NSObject+Private.m in Sources */,
 				F63A769618CD18C400A309F2 /* RMMappingContext.m in Sources */,
@@ -601,6 +610,7 @@
 				F63A763D18CB939100A309F2 /* NSManagedObjectContext+Private.m in Sources */,
 				F63A767418CBBC4A00A309F2 /* RMObjectProxy.m in Sources */,
 				F63A764218CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */,
+				F63CF1AA18CD2DDC00B29969 /* RMCombiningProxy.m in Sources */,
 				F63A767F18CBBF2A00A309F2 /* RMUpdateSession.m in Sources */,
 				F63A768E18CBD42E00A309F2 /* NSObject+Private.m in Sources */,
 				F63A769718CD18C400A309F2 /* RMMappingContext.m in Sources */,
