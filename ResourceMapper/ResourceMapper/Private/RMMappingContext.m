@@ -19,10 +19,11 @@
 
 #pragma mark Life-cycle
 
-- (id)init
+- (id)initWithOperationType:(RMMappingContextOperationType)operationType;
 {
     self = [super init];
     if (self) {
+        _operationType = operationType;
         _resourcesByEntity = [NSMapTable strongToStrongObjectsMapTable];
     }
     return self;
@@ -69,22 +70,26 @@
         [proxy addObject:resource];
     }
     
-    NSEntityDescription *subentity = [resource valueForKey:@"entity"];
-    subentity = subentity ?: entity;
+    // Traverse the tree only if the operation is "update or insert"
     
-    [[subentity relationshipsByName] enumerateKeysAndObjectsUsingBlock:
-     ^(NSString *name, NSRelationshipDescription *relationship, BOOL *stop) {
-         id relatedResource = [resource valueForKey:name];
-         if (relatedResource) {
-             if (relationship.isToMany) {
-                 for (id resource in relatedResource) {
-                     [self addResource:resource usingEntity:relationship.destinationEntity];
+    if (self.operationType == RMMappingContextOperationTypeUpdateOrInsert) {
+        NSEntityDescription *subentity = [resource valueForKey:@"entity"];
+        subentity = subentity ?: entity;
+        
+        [[subentity relationshipsByName] enumerateKeysAndObjectsUsingBlock:
+         ^(NSString *name, NSRelationshipDescription *relationship, BOOL *stop) {
+             id relatedResource = [resource valueForKey:name];
+             if (relatedResource) {
+                 if (relationship.isToMany) {
+                     for (id resource in relatedResource) {
+                         [self addResource:resource usingEntity:relationship.destinationEntity];
+                     }
+                 } else {
+                     [self addResource:relatedResource usingEntity:relationship.destinationEntity];
                  }
-             } else {
-                 [self addResource:relatedResource usingEntity:relationship.destinationEntity];
              }
-         }
-    }];
+         }];
+    }
 }
 
 @end

@@ -9,7 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+typedef enum {
+    RMMappingContextOperationTypeFetch = 0,
+    RMMappingContextOperationTypeUpdateOrInsert,
+    RMMappingContextOperationTypeDelete
+} RMMappingContextOperationType;
+
 @interface RMMappingContext : NSObject
+
+#pragma mark Life-cycle
+- (id)initWithOperationType:(RMMappingContextOperationType)operationType;
+
+#pragma mark Operation Type
+@property (nonatomic, readonly) RMMappingContextOperationType operationType;
 
 #pragma mark Access Resources
 @property (nonatomic, readonly) NSArray *entities;
