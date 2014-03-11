@@ -19,13 +19,13 @@
 @property (nonatomic, readonly) NSManagedObjectContext *context;
 
 #pragma mark Manipulate Context
-- (NSManagedObject *)insertObject:(id)newObject;
-- (void)updateManagedObject:(NSManagedObject *)managedObject withObject:(id)newObject;
+- (NSManagedObject *)insertResource:(id)resource;
+- (void)updateManagedObject:(NSManagedObject *)managedObject withResource:(id)resource;
 - (void)deleteManagedObject:(NSManagedObject *)managedObject;
 
 #pragma mark Internal Methods
-- (void)updatePropertiesOfManagedObject:(NSManagedObject *)managedObject usingObject:(id)newObject;
-- (void)updateAttributesOfManagedObject:(NSManagedObject *)managedObject usingObject:(id)newObject;
-- (void)updateRelationshipsOfManagedObject:(NSManagedObject *)managedObject usingObject:(id)newObject;
+- (void)updatePropertiesOfManagedObject:(NSManagedObject *)managedObject usingResource:(id)resource;
+- (void)updateAttributesOfManagedObject:(NSManagedObject *)managedObject usingResource:(id)resource;
+- (void)updateRelationshipsOfManagedObject:(NSManagedObject *)managedObject usingResource:(id)resource;
 
 @end

@@ -12,16 +12,15 @@
 
 @implementation NSManagedObjectContext (Private)
 
-
-- (BOOL)rm_combineManagedObjectsOfEntity:(NSEntityDescription *)entity
-                    usingSortDescriptors:(NSArray *)sortDescriptors
-                            sortInMemory:(BOOL)sortInMemory
-                               predicate:(NSPredicate *)predicate
-                             withObjects:(NSArray *)objects
-                        newObjectHandler:(void(^)(id newObject))newObjectHandler
-                   matchingObjectHandler:(void(^)(NSManagedObject *currentObject, id newObject))matchingObjectHandler
-                  remainingObjectHandler:(void(^)(NSManagedObject *remainingObject))remainingObjectHandler
-                                   error:(NSError **)error
+- (BOOL)rm_combineResources:(NSArray *)resources
+        withObjectsOfEntity:(NSEntityDescription *)entity
+          matchingPredicate:(NSPredicate *)predicate
+       usingSortDescriptors:(NSArray *)sortDescriptors
+               sortInMemory:(BOOL)sortInMemory
+           newObjectHandler:(void(^)(id resource))newObjectHandler
+      matchingObjectHandler:(void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandler
+     remainingObjectHandler:(void(^)(NSManagedObject *managedObject))remainingObjectHandler
+                      error:(NSError **)error
 {
     BOOL success = YES;
     
@@ -36,11 +35,11 @@
     request.predicate = predicate;
     request.sortDescriptors = sortInMemory ? nil : sortDescriptors;
     
-    // Fetch existing Objects
-    // ----------------------
+    // Fetch managed Objects
+    // ---------------------
     
-    NSArray *existingObjects = [self executeFetchRequest:request error:error];
-    if (!existingObjects) {
+    NSArray *managedObjects = [self executeFetchRequest:request error:error];
+    if (!managedObjects) {
         return NO;
     }
     
@@ -48,89 +47,88 @@
     // into a different ordering, as CoreData uses in SQL the primary key of the record
     // in the table which is more or less random.
     if (sortInMemory) {
-        existingObjects = [existingObjects sortedArrayUsingDescriptors:sortDescriptors];
+        managedObjects = [managedObjects sortedArrayUsingDescriptors:sortDescriptors];
     }
     
-    // Sort new Objects
-    // ----------------
+    // Sort Resources
+    // --------------
     
-    objects = [objects sortedArrayUsingDescriptors:sortDescriptors];
+    resources = [resources sortedArrayUsingDescriptors:sortDescriptors];
     
-    // Setup the comperator
+    // Setup the Comperator
     // --------------------
     
     NSComparator comparator = [NSSortDescriptor rm_comperatorUsingSortDescriptors:sortDescriptors];
     
-    // Prepare Enumerators for the new and existing objects and
-    // combine both lists according the the operation bitmask
-    // --------------------------------------------------------
+    // Prepare Enumerators for managed objects and the resources
+    // ----------------------------------------------------------
     
-    NSEnumerator *existingObjectEnumerator = [existingObjects objectEnumerator];
-    NSEnumerator *newObjectEnumerator = [objects objectEnumerator];
+    NSEnumerator *managedObjectEnumerator = [managedObjects objectEnumerator];
+    NSEnumerator *resourceEnumerator = [resources objectEnumerator];
     
-    __block id existingObject = nil;
-    void(^nextExistingObject)() = ^{
-        id _previous = existingObject;
+    __block id managedObject = nil;
+    void(^nextManagedObject)() = ^{
+        id _previous = managedObject;
         do {
-            existingObject = [existingObjectEnumerator nextObject];
+            managedObject = [managedObjectEnumerator nextObject];
         } while (_previous != nil &&
-                 existingObject != nil &&
-                 comparator(_previous, existingObject) == NSOrderedSame);
+                 managedObject != nil &&
+                 comparator(_previous, managedObject) == NSOrderedSame);
     };
     
-    __block id newObject = nil;
-    void(^nextNewObject)() = ^{
-        id _previous = newObject;
+    __block id resource = nil;
+    void(^nextResource)() = ^{
+        id _previous = resource;
         do {
-            newObject = [newObjectEnumerator nextObject];
+            resource = [resourceEnumerator nextObject];
         } while (_previous != nil &&
-                 newObject != nil &&
-                 comparator(_previous, newObject) == NSOrderedSame);
+                 resource != nil &&
+                 comparator(_previous, resource) == NSOrderedSame);
     };
     
-    // Merge the existing with the new Objects
-    // ---------------------------------------
+    // Combine managed Objects with Resources
+    // --------------------------------------
     
-    nextExistingObject();
-    nextNewObject();
+    nextManagedObject();
+    nextResource();
     
-    while (existingObject != nil || newObject != nil) {
+    while (managedObject != nil || resource != nil) {
         
-        if (existingObject != nil && newObject != nil) {
-            switch (comparator(existingObject, newObject)) {
+        if (managedObject != nil && resource != nil) {
+            switch (comparator(managedObject, resource)) {
                 case NSOrderedAscending:
                     if (remainingObjectHandler) {
-                        remainingObjectHandler(existingObject);
+                        remainingObjectHandler(managedObject);
                     }
-                    nextExistingObject();
+                    nextManagedObject();
                     break;
                     
                 case NSOrderedDescending:
                     if (newObjectHandler) {
-                        newObjectHandler(newObject);
+                        newObjectHandler(resource);
                     }
-                    nextNewObject();
+                    nextResource();
                     break;
                     
                 default:
                     if (matchingObjectHandler) {
-                        matchingObjectHandler(existingObject, newObject);
+                        matchingObjectHandler(managedObject, resource);
                     };
-                    nextExistingObject();
-                    nextNewObject();
+                    nextManagedObject();
+                    nextResource();
                     break;
             }
-        } else if (existingObject != nil) {
+        } else if (managedObject != nil) {
             if (remainingObjectHandler) {
-                remainingObjectHandler(existingObject);
-                nextExistingObject();
+                remainingObjectHandler(managedObject);
+                nextManagedObject();
             } else {
                 break;
             }
-        } else if (newObject != nil) {
+        } else if (resource != nil) {
             if (newObjectHandler) {
-                newObjectHandler(newObject);
-                nextNewObject();
+                newObjectHandler(resource);
+                nextResource();
             } else {
                 break;
             }

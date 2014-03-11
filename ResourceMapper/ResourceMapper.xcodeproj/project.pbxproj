@@ -26,8 +26,8 @@
 		F63A764218CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A763F18CB93E500A309F2 /* NSSortDescriptor+Private.m */; };
 		F63A764418CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764318CB944100A309F2 /* RMMangedObjectContextTestCase.m */; };
 		F63A764518CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764318CB944100A309F2 /* RMMangedObjectContextTestCase.m */; };
-		F63A764818CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m */; };
-		F63A764918CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m */; };
+		F63A764818CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m */; };
+		F63A764918CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m */; };
 		F63A764C18CB957700A309F2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F63A764A18CB957700A309F2 /* Model.xcdatamodeld */; };
 		F63A764D18CB957700A309F2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F63A764A18CB957700A309F2 /* Model.xcdatamodeld */; };
 		F63A765318CB96D000A309F2 /* ResourceMapper+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A765118CB96D000A309F2 /* ResourceMapper+Private.h */; };
@@ -50,10 +50,10 @@
 		F63A767D18CBBF2A00A309F2 /* RMUpdateSession.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A767B18CBBF2A00A309F2 /* RMUpdateSession.h */; };
 		F63A767E18CBBF2A00A309F2 /* RMUpdateSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767C18CBBF2A00A309F2 /* RMUpdateSession.m */; };
 		F63A767F18CBBF2A00A309F2 /* RMUpdateSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767C18CBBF2A00A309F2 /* RMUpdateSession.m */; };
-		F63A768218CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768118CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m */; };
-		F63A768318CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768118CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m */; };
-		F63A768518CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m */; };
-		F63A768618CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m */; };
+		F63A768218CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768118CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m */; };
+		F63A768318CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768118CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m */; };
+		F63A768518CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m */; };
+		F63A768618CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m */; };
 		F63A768818CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768718CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m */; };
 		F63A768918CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768718CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m */; };
 		F63A768C18CBD42E00A309F2 /* NSObject+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A768A18CBD42E00A309F2 /* NSObject+Private.h */; };
@@ -121,7 +121,7 @@
 		F63A763F18CB93E500A309F2 /* NSSortDescriptor+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSortDescriptor+Private.m"; sourceTree = "<group>"; };
 		F63A764318CB944100A309F2 /* RMMangedObjectContextTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMangedObjectContextTestCase.m; sourceTree = "<group>"; };
 		F63A764618CB948C00A309F2 /* RMMangedObjectContextTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMMangedObjectContextTestCase.h; sourceTree = "<group>"; };
-		F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSManagedObjectContext_CombineObjectsTests.m; sourceTree = "<group>"; };
+		F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSManagedObjectContext_CombineResourcesTests.m; sourceTree = "<group>"; };
 		F63A764B18CB957700A309F2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F63A765118CB96D000A309F2 /* ResourceMapper+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ResourceMapper+Private.h"; sourceTree = "<group>"; };
 		F63A765818CBA22B00A309F2 /* NSEntityDescription+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSEntityDescription+Private.h"; sourceTree = "<group>"; };
@@ -136,8 +136,8 @@
 		F63A767618CBBCEC00A309F2 /* RMObjectProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMObjectProxyTests.m; sourceTree = "<group>"; };
 		F63A767B18CBBF2A00A309F2 /* RMUpdateSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUpdateSession.h; sourceTree = "<group>"; };
 		F63A767C18CBBF2A00A309F2 /* RMUpdateSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUpdateSession.m; sourceTree = "<group>"; };
-		F63A768118CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUpdateSession_InsertObjectTests.m; sourceTree = "<group>"; };
-		F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUpdateSession_DeleteObjectTests.m; sourceTree = "<group>"; };
+		F63A768118CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUpdateSession_InsertResourceTests.m; sourceTree = "<group>"; };
+		F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUpdateSession_DeleteResourceTests.m; sourceTree = "<group>"; };
 		F63A768718CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUpdateSession_UpdatePropertiesTests.m; sourceTree = "<group>"; };
 		F63A768A18CBD42E00A309F2 /* NSObject+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Private.h"; sourceTree = "<group>"; };
 		F63A768B18CBD42E00A309F2 /* NSObject+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Private.m"; sourceTree = "<group>"; };
@@ -311,12 +311,12 @@
 			name = "Core Data Additions Tests";
 			sourceTree = "<group>";
 		};
-		F63A765018CB967B00A309F2 /* Combine Objects */ = {
+		F63A765018CB967B00A309F2 /* Combine Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m */,
+				F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m */,
 			);
-			name = "Combine Objects";
+			name = "Combine Resources";
 			sourceTree = "<group>";
 		};
 		F63A765618CB978200A309F2 /* Core Data Additions */ = {
@@ -344,7 +344,7 @@
 		F63A766018CBA2CD00A309F2 /* Managed Object Context */ = {
 			isa = PBXGroup;
 			children = (
-				F63A765018CB967B00A309F2 /* Combine Objects */,
+				F63A765018CB967B00A309F2 /* Combine Resources */,
 				F63A769918CD1B4200A309F2 /* Mapping Context */,
 				F63A768018CBC02C00A309F2 /* Update Session */,
 			);
@@ -403,8 +403,8 @@
 		F63A768018CBC02C00A309F2 /* Update Session */ = {
 			isa = PBXGroup;
 			children = (
-				F63A768118CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m */,
-				F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m */,
+				F63A768118CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m */,
+				F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m */,
 				F63A768718CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m */,
 			);
 			name = "Update Session";
@@ -587,7 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F63A764818CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m in Sources */,
+				F63A764818CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */,
 				F63A765E18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m in Sources */,
 				F63A768818CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m in Sources */,
 				F63A767718CBBCEC00A309F2 /* RMObjectProxyTests.m in Sources */,
@@ -595,8 +595,8 @@
 				F63A764418CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */,
 				F63A764C18CB957700A309F2 /* Model.xcdatamodeld in Sources */,
 				F63A766E18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m in Sources */,
-				F63A768218CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m in Sources */,
-				F63A768518CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m in Sources */,
+				F63A768218CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m in Sources */,
+				F63A768518CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m in Sources */,
 				F63A769118CD16C000A309F2 /* RMMappingContext_AddResourcesTests.m in Sources */,
 				F63A766B18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
 			);
@@ -621,7 +621,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F63A764918CB94F100A309F2 /* NSManagedObjectContext_CombineObjectsTests.m in Sources */,
+				F63A764918CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */,
 				F63A765F18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m in Sources */,
 				F63A768918CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m in Sources */,
 				F63A767818CBBCEC00A309F2 /* RMObjectProxyTests.m in Sources */,
@@ -629,8 +629,8 @@
 				F63A764518CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */,
 				F63A764D18CB957700A309F2 /* Model.xcdatamodeld in Sources */,
 				F63A766F18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m in Sources */,
-				F63A768318CBC04000A309F2 /* RMUpdateSession_InsertObjectTests.m in Sources */,
-				F63A768618CBD0A500A309F2 /* RMUpdateSession_DeleteObjectTests.m in Sources */,
+				F63A768318CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m in Sources */,
+				F63A768618CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m in Sources */,
 				F63A769218CD16C000A309F2 /* RMMappingContext_AddResourcesTests.m in Sources */,
 				F63A766C18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
 			);

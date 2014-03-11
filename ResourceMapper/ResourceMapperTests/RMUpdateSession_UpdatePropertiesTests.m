@@ -24,17 +24,17 @@
     RMUpdateSession *session = [[RMUpdateSession alloc] initWithEntity:entity
                                                                context:self.managedObjectContext];
     
-    NSDictionary *object = @{@"x": @(1), @"y":@(2), @"z":@(3)};
+    NSDictionary *resource = @{@"x": @(1), @"y":@(2), @"z":@(3)};
     
-    [session updatePropertiesOfManagedObject:managedObject usingObject:object];
+    [session updatePropertiesOfManagedObject:managedObject usingResource:resource];
     
     XCTAssertEqualObjects([managedObject valueForKey:@"x"], @(1));
     XCTAssertEqualObjects([managedObject valueForKey:@"y"], @(2));
     XCTAssertEqualObjects([managedObject valueForKey:@"z"], @(3));
     
-    object = @{@"x": @(5), @"y":[NSNull null]};
+    resource = @{@"x": @(5), @"y":[NSNull null]};
 
-    [session updatePropertiesOfManagedObject:managedObject usingObject:object];
+    [session updatePropertiesOfManagedObject:managedObject usingResource:resource];
     
     XCTAssertEqualObjects([managedObject valueForKey:@"x"], @(5));
     XCTAssertNil([managedObject valueForKey:@"y"]);

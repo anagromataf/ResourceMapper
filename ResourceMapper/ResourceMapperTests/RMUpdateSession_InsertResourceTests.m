@@ -1,5 +1,5 @@
 //
-//  RMUpdateSession_InsertObjectTests.m
+//  RMUpdateSession_InsertResourceTests.m
 //  ResourceMapper
 //
 //  Created by Tobias Kräntzer on 08.03.14.
@@ -8,11 +8,11 @@
 
 #import "RMMangedObjectContextTestCase.h"
 
-@interface RMUpdateSession_InsertObjectTests : RMMangedObjectContextTestCase
+@interface RMUpdateSession_InsertResourceTests : RMMangedObjectContextTestCase
 
 @end
 
-@implementation RMUpdateSession_InsertObjectTests
+@implementation RMUpdateSession_InsertResourceTests
 
 - (void)testCreateSession
 {
@@ -20,20 +20,20 @@
     
     RMUpdateSession *session = [[RMUpdateSession alloc] initWithEntity:entity
                                                                context:self.managedObjectContext];
-
+    
     XCTAssertEqualObjects(session.entity, entity);
     XCTAssertEqualObjects(session.context, self.managedObjectContext);
 }
 
-- (void)testInsertObject
+- (void)testInsertResource
 {
     NSEntityDescription *entity = [self entityWithName:@"Entity"];
     RMUpdateSession *session = [[RMUpdateSession alloc] initWithEntity:entity
                                                                context:self.managedObjectContext];
     
-    NSDictionary *object = @{@"identifier": @"123", @"name":@"Foo"};
+    NSDictionary *resource = @{@"identifier": @"123", @"name":@"Foo"};
     
-    NSManagedObject *managedObject = [session insertObject:object];
+    NSManagedObject *managedObject = [session insertResource:resource];
     XCTAssertNotNil(managedObject);
     XCTAssertEqualObjects(managedObject.entity, entity);
     
@@ -41,28 +41,28 @@
     XCTAssertEqualObjects([[self.managedObjectContext insertedObjects] anyObject], managedObject);
 }
 
-- (void)testInsertObjectWithSubEntity
+- (void)testInsertResourceWithSubEntity
 {
     NSEntityDescription *entity = [self entityWithName:@"Entity"];
     RMUpdateSession *session = [[RMUpdateSession alloc] initWithEntity:entity
                                                                context:self.managedObjectContext];
     
-    NSDictionary *object = @{@"entity":[self entityWithName:@"SubEntity"]};
+    NSDictionary *resource = @{@"entity":[self entityWithName:@"SubEntity"]};
     
-    NSManagedObject *managedObject = [session insertObject:object];
+    NSManagedObject *managedObject = [session insertResource:resource];
     XCTAssertNotNil(managedObject);
     XCTAssertEqualObjects(managedObject.entity, [self entityWithName:@"SubEntity"]);
 }
 
-- (void)testInsertObjectWithWrongSubEntity
+- (void)testInsertResourceWithWrongSubEntity
 {
     NSEntityDescription *entity = [self entityWithName:@"Entity"];
     RMUpdateSession *session = [[RMUpdateSession alloc] initWithEntity:entity
                                                                context:self.managedObjectContext];
     
-    NSDictionary *object = @{@"entity":[self entityWithName:@"Item"]};
+    NSDictionary *resource = @{@"entity":[self entityWithName:@"Item"]};
     
-    XCTAssertThrowsSpecificNamed([session insertObject:object],
+    XCTAssertThrowsSpecificNamed([session insertResource:resource],
                                  NSException,
                                  NSInternalInconsistencyException);
 }

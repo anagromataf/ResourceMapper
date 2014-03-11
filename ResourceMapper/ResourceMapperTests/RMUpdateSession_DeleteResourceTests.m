@@ -1,5 +1,5 @@
 //
-//  RMUpdateSession_DeleteObjectTests.m
+//  RMUpdateSession_DeleteResourceTests.m
 //  ResourceMapper
 //
 //  Created by Tobias Kräntzer on 08.03.14.
@@ -8,27 +8,27 @@
 
 #import "RMMangedObjectContextTestCase.h"
 
-@interface RMUpdateSession_DeleteObjectTests : RMMangedObjectContextTestCase
+@interface RMUpdateSession_DeleteResourceTests : RMMangedObjectContextTestCase
 
 @end
 
-@implementation RMUpdateSession_DeleteObjectTests
+@implementation RMUpdateSession_DeleteResourceTests
 
-- (void)testDeleteObject
+- (void)testDeleteResource
 {
     NSEntityDescription *entity = [self entityWithName:@"Entity"];
     
-    NSManagedObject *object = [[NSManagedObject alloc] initWithEntity:entity
+    NSManagedObject *resource = [[NSManagedObject alloc] initWithEntity:entity
                                        insertIntoManagedObjectContext:self.managedObjectContext];
     
     RMUpdateSession *session = [[RMUpdateSession alloc] initWithEntity:entity
                                                                context:self.managedObjectContext];
 
-    [session deleteManagedObject:object];
+    [session deleteManagedObject:resource];
     
-    XCTAssertTrue([object isDeleted]);
+    XCTAssertTrue([resource isDeleted]);
     XCTAssertEqual([[self.managedObjectContext deletedObjects] count], (NSUInteger)1);
-    XCTAssertEqualObjects([[self.managedObjectContext deletedObjects] anyObject], object);
+    XCTAssertEqualObjects([[self.managedObjectContext deletedObjects] anyObject], resource);
 }
 
 @end

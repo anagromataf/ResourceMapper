@@ -83,10 +83,10 @@ NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey = @"RM_PK";
 
 #pragma mark Primary Key of Object
 
-- (NSDictionary *)rm_primaryKeyOfObject:(id)object
+- (NSDictionary *)rm_primaryKeyOfResource:(id)resource
 {
     NSArray *propertyNames = [self rm_primaryKeyPropertyNames];
-    return [object dictionaryWithValuesForKeys:propertyNames];
+    return [resource dictionaryWithValuesForKeys:propertyNames];
 }
 
 #pragma mark Sort Descriptor & Comparator

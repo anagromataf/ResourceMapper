@@ -20,8 +20,8 @@ extern NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey;
 - (NSArray *)rm_primaryKeyPropertyNames;
 - (NSArray *)rm_primaryKeyProperties;
 
-#pragma mark Primary Key of Object
-- (NSDictionary *)rm_primaryKeyOfObject:(id)object;
+#pragma mark Primary Key of Resource
+- (NSDictionary *)rm_primaryKeyOfResource:(id)resource;
 
 #pragma mark Sort Descriptor & Comparator
 - (NSArray *)rm_primaryKeySortDescriptors;

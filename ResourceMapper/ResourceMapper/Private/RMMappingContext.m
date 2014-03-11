@@ -60,7 +60,7 @@
             [self.resourcesByEntity setObject:resourcesByPrimaryKey forKey:rootEntity];
         }
         
-        NSDictionary *pk = [rootEntity rm_primaryKeyOfObject:resource];
+        NSDictionary *pk = [rootEntity rm_primaryKeyOfResource:resource];
         RMCombiningProxy *proxy = [resourcesByPrimaryKey objectForKey:pk];
         if (proxy == nil) {
             proxy = [[RMCombiningProxy alloc] init];

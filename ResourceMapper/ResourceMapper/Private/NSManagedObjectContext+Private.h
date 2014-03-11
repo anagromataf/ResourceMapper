@@ -10,14 +10,14 @@
 
 @interface NSManagedObjectContext (Private)
 
-- (BOOL)rm_combineManagedObjectsOfEntity:(NSEntityDescription *)entity
-                    usingSortDescriptors:(NSArray *)sortDescriptors
-                            sortInMemory:(BOOL)sortInMemory
-                               predicate:(NSPredicate *)predicate
-                             withObjects:(NSArray *)objects
-                        newObjectHandler:(void(^)(id newObject))newObjectHandler
-                   matchingObjectHandler:(void(^)(NSManagedObject *currentObject, id newObject))matchingObjectHandler
-                  remainingObjectHandler:(void(^)(NSManagedObject *remainingObject))remainingObjectHandler
-                                   error:(NSError **)error;
+- (BOOL)rm_combineResources:(NSArray *)resources
+        withObjectsOfEntity:(NSEntityDescription *)entity
+          matchingPredicate:(NSPredicate *)predicate
+       usingSortDescriptors:(NSArray *)sortDescriptors
+               sortInMemory:(BOOL)sortInMemory
+           newObjectHandler:(void(^)(id resource))newObjectHandler
+      matchingObjectHandler:(void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandler
+     remainingObjectHandler:(void(^)(NSManagedObject *managedObject))remainingObjectHandler
+                      error:(NSError **)error;
 
 @end

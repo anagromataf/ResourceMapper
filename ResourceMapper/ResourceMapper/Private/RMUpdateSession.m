@@ -28,9 +28,9 @@
 
 #pragma mark Manipulate Context
 
-- (NSManagedObject *)insertObject:(id)newObject
+- (NSManagedObject *)insertResource:(id)resource
 {
-    NSEntityDescription *entity = [newObject valueForKey:@"entity"];
+    NSEntityDescription *entity = [resource valueForKey:@"entity"];
     entity = entity ?: self.entity;
     NSAssert([entity isKindOfEntity:self.entity], @"Entity (%@) specified by the object to insert is not a subentity of (%@)", entity.name, self.entity.name);
     
@@ -39,9 +39,9 @@
     return managedObject;
 }
 
-- (void)updateManagedObject:(NSManagedObject *)managedObject withObject:(id)newObject
+- (void)updateManagedObject:(NSManagedObject *)managedObject withResource:(id)resource
 {
-
+    
 }
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject
@@ -52,36 +52,36 @@
 #pragma mark Internal Methods
 
 - (void)updatePropertiesOfManagedObject:(NSManagedObject *)managedObject
-                            usingObject:(id)newObject
+                          usingResource:(id)resource
 {
     // Update Properties
     // -----------------
     
     [self updateAttributesOfManagedObject:managedObject
-                              usingObject:newObject];
+                            usingResource:resource];
     
     // Update Relatonships
     // -------------------
     
     [self updateRelationshipsOfManagedObject:managedObject
-                                 usingObject:newObject];
+                               usingResource:resource];
 }
 
 - (void)updateAttributesOfManagedObject:(NSManagedObject *)managedObject
-                            usingObject:(id)newObject
+                          usingResource:(id)resource
 {
-    NSDictionary *values = [newObject rm_dictionaryWithValuesForKeys:[[self.entity attributesByName] allKeys]
-                                                   omittingNilValues:YES];
+    NSDictionary *values = [resource rm_dictionaryWithValuesForKeys:[[self.entity attributesByName] allKeys]
+                                                  omittingNilValues:YES];
     [managedObject setValuesForKeysWithDictionary:values];
 }
 
 - (void)updateRelationshipsOfManagedObject:(NSManagedObject *)managedObject
-                               usingObject:(id)newObject
+                             usingResource:(id)resource
 {
     NSDictionary *relationships = managedObject.entity.relationshipsByName;
     [relationships enumerateKeysAndObjectsUsingBlock:
      ^(NSString *name, NSRelationshipDescription *relationship, BOOL *stop) {
-         id destinationObject = [newObject valueForKey:name];
+         id destinationObject = [resource valueForKey:name];
          if (destinationObject) {
              
          }

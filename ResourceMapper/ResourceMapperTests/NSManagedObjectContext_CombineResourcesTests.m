@@ -1,5 +1,5 @@
 //
-//  NSManagedObjectContext_CombineObjectsTests.m
+//  NSManagedObjectContext_CombineResourcesTests.m
 //  ResourceMapper
 //
 //  Created by Tobias Kräntzer on 03.03.14.
@@ -11,11 +11,11 @@
 
 #import "RMMangedObjectContextTestCase.h"
 
-@interface NSManagedObjectContext_CombineObjectsTests : RMMangedObjectContextTestCase
+@interface NSManagedObjectContext_CombineResourcesTests : RMMangedObjectContextTestCase
 
 @end
 
-@implementation NSManagedObjectContext_CombineObjectsTests
+@implementation NSManagedObjectContext_CombineResourcesTests
 
 - (void)setUp
 {
@@ -46,12 +46,12 @@
                                  [NSSortDescriptor sortDescriptorWithKey:@"y" ascending:YES],
                                  [NSSortDescriptor sortDescriptorWithKey:@"z" ascending:YES]];
     
-    NSArray *objects = @[@{@"x":@(10), @"y":@(5), @"z":@(0)},
-                         @{@"x":@(8), @"y":@(5), @"z":@(2)},
-                         @{@"x":@(4), @"y":@(3), @"z":@(2)},
-                         @{@"x":@(6), @"y":@(7), @"z":@(1)},
-                         @{@"x":@(3), @"y":@(2), @"z":@(10)},
-                         @{@"x":@(1), @"y":@(10), @"z":@(10)}];
+    NSArray *resources = @[@{@"x":@(10), @"y":@(5), @"z":@(0)},
+                           @{@"x":@(8), @"y":@(5), @"z":@(2)},
+                           @{@"x":@(4), @"y":@(3), @"z":@(2)},
+                           @{@"x":@(6), @"y":@(7), @"z":@(1)},
+                           @{@"x":@(3), @"y":@(2), @"z":@(10)},
+                           @{@"x":@(1), @"y":@(10), @"z":@(10)}];
     
     __block NSMutableSet *newObjects = [[NSMutableSet alloc] init];
     __block NSMutableSet *matchingObjects = [[NSMutableSet alloc] init];
@@ -61,24 +61,26 @@
         [newObjects addObject:newObject];
     };
     
-    void(^_matchingObjectHandler)(NSManagedObject *currentObject, id newObject) = ^(NSManagedObject *currentObject, id newObject) {
-        [matchingObjects addObject:newObject];
+    void(^_matchingObjectHandler)(NSManagedObject *managedObject, id resource) = ^(NSManagedObject *managedObjects, id resource) {
+        [matchingObjects addObject:resource];
     };
     
-    void(^_remainingObjectHandler)(NSManagedObject *remainingObject) = ^(NSManagedObject *remainingObject) {
-        [remainingObjects addObject:[remainingObject dictionaryWithValuesForKeys:@[@"x", @"y", @"z"]]];
+    void(^_remainingObjectHandler)(NSManagedObject *managedObject) = ^(NSManagedObject *managedObject) {
+        [remainingObjects addObject:[managedObject dictionaryWithValuesForKeys:@[@"x", @"y", @"z"]]];
     };
     
     NSError *error = nil;
-    BOOL success = [self.managedObjectContext rm_combineManagedObjectsOfEntity:entity
-                                                          usingSortDescriptors:sortDescriptors
-                                                                  sortInMemory:YES
-                                                                     predicate:nil
-                                                                   withObjects:objects
-                                                              newObjectHandler:_newObjectHandler
-                                                         matchingObjectHandler:_matchingObjectHandler
-                                                        remainingObjectHandler:_remainingObjectHandler
-                                                                         error:&error];
+    
+    BOOL success = [self.managedObjectContext rm_combineResources:resources
+                                              withObjectsOfEntity:entity
+                                                matchingPredicate:nil
+                                             usingSortDescriptors:sortDescriptors
+                                                     sortInMemory:YES
+                                                 newObjectHandler:_newObjectHandler
+                                            matchingObjectHandler:_matchingObjectHandler
+                                           remainingObjectHandler:_remainingObjectHandler
+                                                            error:&error];
+    
     XCTAssertTrue(success, @"Failed to merge obejcts: %@", [error localizedDescription]);
     
     XCTAssertEqual([newObjects count], (NSUInteger)3);

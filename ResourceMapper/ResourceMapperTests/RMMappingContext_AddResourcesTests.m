@@ -16,41 +16,41 @@
 
 - (void)testAddResources
 {
-    NSMutableArray *objects = [[NSMutableArray alloc] init];
+    NSMutableArray *resources = [[NSMutableArray alloc] init];
     
-    [objects addObject:@{@"identifier":@"1", @"name":@"A"}];
-    [objects addObject:@{@"identifier":@"2", @"name":@"B"}];
-    [objects addObject:@{@"identifier":@"3", @"name":@"C"}];
-    [objects addObject:@{@"identifier":@"4", @"name":@"D"}];
-    [objects addObject:@{@"identifier":@"5", @"name":@"E"}];
-    [objects addObject:@{@"identifier":@"6", @"name":@"F"}];
+    [resources addObject:@{@"identifier":@"1", @"name":@"A"}];
+    [resources addObject:@{@"identifier":@"2", @"name":@"B"}];
+    [resources addObject:@{@"identifier":@"3", @"name":@"C"}];
+    [resources addObject:@{@"identifier":@"4", @"name":@"D"}];
+    [resources addObject:@{@"identifier":@"5", @"name":@"E"}];
+    [resources addObject:@{@"identifier":@"6", @"name":@"F"}];
 
     RMMappingContext *mappingContext = [[RMMappingContext alloc] init];
     
-    [mappingContext addResources:objects usingEntity:[self entityWithName:@"Object"]];
+    [mappingContext addResources:resources usingEntity:[self entityWithName:@"Object"]];
     
     NSArray *entities = mappingContext.entities;
     XCTAssertEqualObjects(entities, @[[self entityWithName:@"Object"]]);
     
-    NSDictionary *objectsByPrimaryKey = [mappingContext resourcesByPrimaryKeyOfEntity:[self entityWithName:@"Object"]];
-    XCTAssertNotNil(objectsByPrimaryKey);
+    NSDictionary *resourcesByPrimaryKey = [mappingContext resourcesByPrimaryKeyOfEntity:[self entityWithName:@"Object"]];
+    XCTAssertNotNil(resourcesByPrimaryKey);
     
-    XCTAssertEqual([objectsByPrimaryKey count], (NSUInteger)6);
+    XCTAssertEqual([resourcesByPrimaryKey count], (NSUInteger)6);
 }
 
 - (void)testAddResourceTree
 {
-    NSMutableArray *objects = [[NSMutableArray alloc] init];
+    NSMutableArray *resources = [[NSMutableArray alloc] init];
     
-    [objects addObject:@{@"identifier":@"1",
+    [resources addObject:@{@"identifier":@"1",
                          @"name":@"A",
                          @"subjectOf": @[
                                  @{@"object": @{@"identifier":@"3"}, @"type":@(3)},
                                  @{@"object": @{@"identifier":@"10"}, @"type":@(10)}
                                  ]}];
-    [objects addObject:@{@"identifier":@"2",
+    [resources addObject:@{@"identifier":@"2",
                          @"name":@"B"}];
-    [objects addObject:@{@"identifier":@"3",
+    [resources addObject:@{@"identifier":@"3",
                          @"name":@"C",
                          @"subjectOf" : @[
                                 @{@"object": @{
@@ -65,41 +65,41 @@
     
     RMMappingContext *mappingContext = [[RMMappingContext alloc] init];
     
-    [mappingContext addResources:objects usingEntity:[self entityWithName:@"Object"]];
+    [mappingContext addResources:resources usingEntity:[self entityWithName:@"Object"]];
     
     NSArray *entities = mappingContext.entities;
     XCTAssertEqualObjects(entities, @[[self entityWithName:@"Object"]]);
     
-    NSDictionary *objectsByPrimaryKey = [mappingContext resourcesByPrimaryKeyOfEntity:[self entityWithName:@"Object"]];
-    XCTAssertNotNil(objectsByPrimaryKey);
+    NSDictionary *resourcesByPrimaryKey = [mappingContext resourcesByPrimaryKeyOfEntity:[self entityWithName:@"Object"]];
+    XCTAssertNotNil(resourcesByPrimaryKey);
     
-    XCTAssertEqual([objectsByPrimaryKey count], (NSUInteger)6);
+    XCTAssertEqual([resourcesByPrimaryKey count], (NSUInteger)6);
 }
 
 - (void)testAddDuplicateResource
 {
     NSDictionary *resourcesByPrimaryKey;
-    NSDictionary *object;
+    NSDictionary *resource;
     NSArray *keys = @[@"identifier", @"name", @"summary"];
 
     RMMappingContext *mappingContext = [[RMMappingContext alloc] init];
     
-    object = @{@"identifier":@"1", @"name":@"A", @"summary": @"Foo Bar Baz"};
-    [mappingContext addResource:object
+    resource = @{@"identifier":@"1", @"name":@"A", @"summary": @"Foo Bar Baz"};
+    [mappingContext addResource:resource
                     usingEntity:[self entityWithName:@"Object"]];
     
     resourcesByPrimaryKey = [mappingContext resourcesByPrimaryKeyOfEntity:[self entityWithName:@"Object"]];
     XCTAssertEqualObjects([resourcesByPrimaryKey allKeys], @[@{@"identifier":@"1"}]);
-    XCTAssertEqualObjects([[[resourcesByPrimaryKey allValues] firstObject] dictionaryWithValuesForKeys:keys], object);
+    XCTAssertEqualObjects([[[resourcesByPrimaryKey allValues] firstObject] dictionaryWithValuesForKeys:keys], resource);
     
     [mappingContext addResource:@{@"identifier":@"1", @"name":@"B"}
                     usingEntity:[self entityWithName:@"Object"]];
     
-    object = @{@"identifier":@"1", @"name":@"B", @"summary": @"Foo Bar Baz"};
+    resource = @{@"identifier":@"1", @"name":@"B", @"summary": @"Foo Bar Baz"};
     
     resourcesByPrimaryKey = [mappingContext resourcesByPrimaryKeyOfEntity:[self entityWithName:@"Object"]];
     XCTAssertEqualObjects([resourcesByPrimaryKey allKeys], @[@{@"identifier":@"1"}]);
-    XCTAssertEqualObjects([[[resourcesByPrimaryKey allValues] firstObject] dictionaryWithValuesForKeys:keys], object);
+    XCTAssertEqualObjects([[[resourcesByPrimaryKey allValues] firstObject] dictionaryWithValuesForKeys:keys], resource);
 }
 
 @end
