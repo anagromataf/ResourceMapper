@@ -113,6 +113,17 @@ NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey = @"RM_PK";
               usingDependencyCallback:(void(^)(NSMutableSet *paths))dependencyCallback
                       mappingCallback:(void(^)(NSEntityDescription *entity, NSDictionary *pk, id resource))mappingCallback
 {
+    // Call mapping callback for the given resource
+    // --------------------------------------------
+    
+    if ([self rm_hasPrimaryKeyProperties] && mappingCallback) {
+        NSEntityDescription *entity = [resource valueForKey:@"entity"];
+        entity = entity ?: self;
+        NSDictionary *primaryKey = [entity rm_primaryKeyOfResource:resource];
+        mappingCallback(entity, primaryKey, resource);
+    }
+    
+    
     return nil;
 }
 
