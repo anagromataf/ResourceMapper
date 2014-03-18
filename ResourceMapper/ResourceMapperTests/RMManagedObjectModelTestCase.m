@@ -20,7 +20,8 @@
     self.managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     
     if (self.managedObjectModel == nil) {
-        self.managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:@[bundle]];
+        NSURL *modelURL = [bundle URLForResource:@"Model" withExtension:@"momd"];
+        self.managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     }
     
     NSAssert(self.managedObjectModel, @"Failed to load the test model.");
