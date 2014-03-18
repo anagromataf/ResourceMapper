@@ -15,7 +15,14 @@
     [super setUp];
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    self.managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:@[bundle]];
+    
+    NSURL *modelURL = [bundle URLForResource:NSStringFromClass([self class]) withExtension:@"momd"];
+    self.managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    
+    if (self.managedObjectModel == nil) {
+        self.managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:@[bundle]];
+    }
+    
     NSAssert(self.managedObjectModel, @"Failed to load the test model.");
 }
 

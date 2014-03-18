@@ -14,6 +14,7 @@
 
 // Foundation Additions
 #import "NSObject+Private.h"
+#import "NSMutableArray+Private.h"
 #import "NSSortDescriptor+Private.h"
 
 // Core Data Additions
