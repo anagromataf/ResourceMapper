@@ -107,4 +107,13 @@ NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey = @"RM_PK";
     return [NSSortDescriptor rm_comperatorUsingSortDescriptors:[self rm_primaryKeySortDescriptors]];
 }
 
+#pragma mark Resource Traversal
+
+- (NSMutableSet *)rm_traverseResource:(id)resource
+              usingDependencyCallback:(void(^)(NSMutableSet *paths))dependencyCallback
+                      mappingCallback:(void(^)(NSEntityDescription *entity, NSDictionary *pk, id resource))mappingCallback
+{
+    return nil;
+}
+
 @end

@@ -27,4 +27,9 @@ extern NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey;
 - (NSArray *)rm_primaryKeySortDescriptors;
 - (NSComparator)rm_primaryKeyComparator;
 
+#pragma mark Resource Traversal
+- (NSMutableSet *)rm_traverseResource:(id)resource
+              usingDependencyCallback:(void(^)(NSMutableSet *paths))dependencyCallback
+                      mappingCallback:(void(^)(NSEntityDescription *entity, NSDictionary *pk, id resource))mappingCallback;
+
 @end
