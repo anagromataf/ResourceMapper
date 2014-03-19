@@ -113,6 +113,7 @@ NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey = @"RM_PK";
 #pragma mark Resource Traversal
 
 - (RMDependency *)rm_traverseResource:(id)resource
+                            recursive:(BOOL)recursive
               usingDependencyCallback:(void(^)(RMDependency *dependency))dependencyCallback
                       mappingCallback:(void(^)(NSEntityDescription *entity, NSDictionary *pk, id resource))mappingCallback
 {
@@ -138,37 +139,40 @@ NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey = @"RM_PK";
     
     RMDependency *dependency = [[RMDependency alloc] init];
     
-    [[entity relationshipsByName] enumerateKeysAndObjectsUsingBlock:
-     ^(NSString *name, NSRelationshipDescription *relationship, BOOL *stop) {
-         
-         id relatedResource = [resource valueForKey:name];
-         if (relatedResource) {
+    if (recursive) {
+        [[entity relationshipsByName] enumerateKeysAndObjectsUsingBlock:
+         ^(NSString *name, NSRelationshipDescription *relationship, BOOL *stop) {
              
-             if (relationship.isToMany == NO) {
-                 relatedResource = @[relatedResource];
-             }
-             
-             RMDependency *subDependency = [[RMDependency alloc] init];
-             
-             for (id resource in relatedResource) {
-                 RMDependency *dep = [relationship.destinationEntity rm_traverseResource:resource
-                                                                 usingDependencyCallback:dependencyCallback
-                                                                         mappingCallback:mappingCallback];
+             id relatedResource = [resource valueForKey:name];
+             if (relatedResource) {
                  
-                 [subDependency union:dep];
-             }
-             
-             [subDependency pushRelationship:relationship];
-             
-             if (hasPrimaryKeyProperties) {
-                 if (dependencyCallback) {
-                     dependencyCallback(subDependency);
+                 if (relationship.isToMany == NO) {
+                     relatedResource = @[relatedResource];
                  }
-             } else {
-                 [dependency union:subDependency];
+                 
+                 RMDependency *subDependency = [[RMDependency alloc] init];
+                 
+                 for (id resource in relatedResource) {
+                     RMDependency *dep = [relationship.destinationEntity rm_traverseResource:resource
+                                                                                   recursive:recursive
+                                                                     usingDependencyCallback:dependencyCallback
+                                                                             mappingCallback:mappingCallback];
+                     
+                     [subDependency union:dep];
+                 }
+                 
+                 [subDependency pushRelationship:relationship];
+                 
+                 if (hasPrimaryKeyProperties) {
+                     if (dependencyCallback) {
+                         dependencyCallback(subDependency);
+                     }
+                 } else {
+                     [dependency union:subDependency];
+                 }
              }
-         }
-     }];
+         }];
+    }
     
     // Set dependencies
     // ----------------

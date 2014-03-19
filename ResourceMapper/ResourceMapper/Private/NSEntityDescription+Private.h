@@ -31,6 +31,7 @@ extern NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey;
 
 #pragma mark Resource Traversal
 - (RMDependency *)rm_traverseResource:(id)resource
+                            recursive:(BOOL)recursive
               usingDependencyCallback:(void(^)(RMDependency *dependency))dependencyCallback
                       mappingCallback:(void(^)(NSEntityDescription *entity, NSDictionary *pk, id resource))mappingCallback;
 

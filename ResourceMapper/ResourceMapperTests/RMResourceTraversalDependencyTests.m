@@ -20,6 +20,7 @@
     NSDictionary *resource = @{@"foo":@"bar"};
 
     RMDependency *dependency = [entity rm_traverseResource:resource
+                                                 recursive:YES
                                    usingDependencyCallback:nil
                                            mappingCallback:nil];
     XCTAssertNil(dependency);
@@ -31,6 +32,7 @@
     NSDictionary *resource = @{@"identifier":@"1"};
     
     RMDependency *dependency = [entity rm_traverseResource:resource
+                                                 recursive:YES
                                    usingDependencyCallback:nil
                                            mappingCallback:nil];
     XCTAssertNotNil(dependency);
@@ -44,6 +46,7 @@
                                @"from":@{@"identifier":@"1"}};
     
     RMDependency *dependency = [entity rm_traverseResource:resource
+                                                 recursive:YES
                                    usingDependencyCallback:nil
                                            mappingCallback:nil];
     XCTAssertNotNil(dependency);
@@ -65,6 +68,7 @@
     RMDependency *collectedDependency = [[RMDependency alloc] init];
     
     RMDependency *dependency = [entity rm_traverseResource:resource
+                                                 recursive:YES
                                    usingDependencyCallback:^(RMDependency *dependency) {
                                        [collectedDependency union:dependency];
                                    }

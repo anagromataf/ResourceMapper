@@ -33,6 +33,7 @@
     };
     
     [entity rm_traverseResource:resource
+                      recursive:YES
         usingDependencyCallback:nil
                 mappingCallback:mapping];
 
@@ -55,6 +56,7 @@
     };
     
     [entity rm_traverseResource:resource
+                      recursive:YES
         usingDependencyCallback:nil
                 mappingCallback:mapping];
     
@@ -83,6 +85,7 @@
     };
     
     [entity rm_traverseResource:resource
+                      recursive:YES
         usingDependencyCallback:nil
                 mappingCallback:mapping];
     
