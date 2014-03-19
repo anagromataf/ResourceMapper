@@ -144,25 +144,18 @@ NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey = @"RM_PK";
          id relatedResource = [resource valueForKey:name];
          if (relatedResource) {
              
+             if (relationship.isToMany == NO) {
+                 relatedResource = @[relatedResource];
+             }
+             
              RMDependency *subDependency = [[RMDependency alloc] init];
              
-             if (relationship.isToMany) {
-                 for (id resource in relatedResource) {
-                     RMDependency *dep = [relationship.destinationEntity rm_traverseResource:resource
-                                                                     usingDependencyCallback:dependencyCallback
-                                                                             mappingCallback:mappingCallback];
-                     
-                     if (dep) {
-                         [subDependency union:dep];
-                     }
-                 }
-             } else {
-                 RMDependency *dep = [relationship.destinationEntity rm_traverseResource:relatedResource
+             for (id resource in relatedResource) {
+                 RMDependency *dep = [relationship.destinationEntity rm_traverseResource:resource
                                                                  usingDependencyCallback:dependencyCallback
                                                                          mappingCallback:mappingCallback];
-                 if (dep) {
-                     [subDependency union:dep];
-                 }
+                 
+                 [subDependency union:dep];
              }
              
              [subDependency pushRelationship:relationship];

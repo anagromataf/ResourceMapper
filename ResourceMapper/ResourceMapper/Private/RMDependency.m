@@ -31,6 +31,9 @@
 
 - (void)union:(RMDependency *)dependency
 {
+    if (dependency == nil)
+        return;
+    
     if (self.paths && dependency.allPaths) {
         self.paths = [self.paths setByAddingObjectsFromSet:dependency.allPaths];
     } else if (dependency.allPaths != nil) {
