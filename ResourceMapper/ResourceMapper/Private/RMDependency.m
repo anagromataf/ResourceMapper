@@ -61,4 +61,21 @@
     }
 }
 
+#pragma mark NSObject
+
+- (NSUInteger)hash
+{
+    return [self.paths hash];
+}
+
+- (BOOL)isEqual:(id)object
+{
+    if ([object isKindOfClass:[RMDependency class]]) {
+        RMDependency *other = object;
+        return [self.paths isEqual:other.paths];
+    } else {
+        return NO;
+    }
+}
+
 @end

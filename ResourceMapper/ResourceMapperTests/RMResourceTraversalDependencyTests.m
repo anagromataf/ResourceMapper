@@ -19,7 +19,7 @@
     NSEntityDescription *entity = [self entityWithName:@"Entity"];
     NSDictionary *resource = @{@"foo":@"bar"};
 
-    NSMutableSet *dependency = [entity rm_traverseResource:resource
+    RMDependency *dependency = [entity rm_traverseResource:resource
                                    usingDependencyCallback:nil
                                            mappingCallback:nil];
     XCTAssertNil(dependency);
@@ -30,11 +30,11 @@
     NSEntityDescription *entity = [self entityWithName:@"PKEntity"];
     NSDictionary *resource = @{@"identifier":@"1"};
     
-    NSMutableSet *dependency = [entity rm_traverseResource:resource
+    RMDependency *dependency = [entity rm_traverseResource:resource
                                    usingDependencyCallback:nil
                                            mappingCallback:nil];
     XCTAssertNotNil(dependency);
-    XCTAssertEqualObjects(dependency, [NSSet set]);
+    XCTAssertEqual([dependency.allPaths count], 0);
 }
 
 - (void)testReturnValueOfNodeWithLeaf
@@ -43,13 +43,13 @@
     NSDictionary *resource = @{@"foo":@"bar",
                                @"from":@{@"identifier":@"1"}};
     
-    NSMutableSet *dependency = [entity rm_traverseResource:resource
+    RMDependency *dependency = [entity rm_traverseResource:resource
                                    usingDependencyCallback:nil
                                            mappingCallback:nil];
     XCTAssertNotNil(dependency);
     
-    NSSet *expectedDependency = [NSSet setWithObject:
-         @[[self propertyWithName:@"from" ofEntity:@"Entity"]]];
+    RMDependency *expectedDependency = [[RMDependency alloc] init];
+    [expectedDependency pushRelationship:(NSRelationshipDescription *)[self propertyWithName:@"from" ofEntity:@"Entity"]];
     
     XCTAssertEqualObjects(dependency, expectedDependency);
 }
@@ -62,21 +62,26 @@
                                        @{@"foo":@"bar",
                                          @"from":@{@"identifier":@"2"}}]};
     
-    NSMutableSet *dependencies = [[NSMutableSet alloc] init];
+    RMDependency *collectedDependency = [[RMDependency alloc] init];
     
-    NSMutableSet *dependency = [entity rm_traverseResource:resource
-                                   usingDependencyCallback:^(NSSet *paths) {
-                                       [dependencies unionSet:paths];
+    RMDependency *dependency = [entity rm_traverseResource:resource
+                                   usingDependencyCallback:^(RMDependency *dependency) {
+                                       [collectedDependency union:dependency];
                                    }
                                            mappingCallback:nil];
     XCTAssertNotNil(dependency);
-    XCTAssertEqualObjects(dependency, [NSSet set]);
-
-    XCTAssertEqual([dependencies count], 1);
+    XCTAssertEqual([dependency.allPaths count], 0);
     
-    NSArray *expectedPath = @[@"to", @"from"];
-    XCTAssertEqualObjects([dependencies valueForKeyPath:@"name"], [NSSet setWithObject:expectedPath]);
+    XCTAssertEqual([collectedDependency.allPaths count], 1);
     
+    RMDependency *expectedCollectedDependency = [[RMDependency alloc] init];
+    [expectedCollectedDependency pushRelationship:
+     (NSRelationshipDescription *)[self propertyWithName:@"from" ofEntity:@"Entity"]];
+    
+    [expectedCollectedDependency pushRelationship:
+     (NSRelationshipDescription *)[self propertyWithName:@"to" ofEntity:@"PKEntity"]];
+    
+    XCTAssertEqualObjects(collectedDependency, expectedCollectedDependency);
 }
 
 @end
