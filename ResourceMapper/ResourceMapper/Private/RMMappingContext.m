@@ -8,10 +8,12 @@
 
 #import "RMCombiningProxy.h"
 #import "NSEntityDescription+Private.h"
+#import "RMDependency.h"
 
 #import "RMMappingContext.h"
 
 @interface RMMappingContext ()
+@property (nonatomic, readonly) RMDependency *dependency;
 @property (nonatomic, readonly) NSMapTable *resourcesByEntity;
 @end
 
@@ -24,6 +26,7 @@
     self = [super init];
     if (self) {
         _operationType = operationType;
+        _dependency = [[RMDependency alloc] init];
         _resourcesByEntity = [NSMapTable strongToStrongObjectsMapTable];
     }
     return self;
@@ -57,7 +60,7 @@
     [entity rm_traverseResource:resource
                       recursive:recursive
         usingDependencyCallback:^(RMDependency *dependency) {
-            
+            [self.dependency union:dependency];
         } mappingCallback:^(NSEntityDescription *entity, NSDictionary *pk, id resource) {
             [self setResource:resource ofEntity:entity forPrimaryKey:pk];
         }];
@@ -81,6 +84,15 @@
         [resourcesByPrimaryKey setObject:proxy forKey:primaryKey];
     }
     [proxy addObject:resource];
+}
+
+#pragma mark Dependencies
+
+- (NSSet *)dependencyPathsOfEntity:(NSEntityDescription *)entity
+{
+    NSEntityDescription *rootEntity = [entity rm_rootEntity];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"headEntity == %@", rootEntity];
+    return [self.dependency.allPaths filteredSetUsingPredicate:predicate];
 }
 
 @end
