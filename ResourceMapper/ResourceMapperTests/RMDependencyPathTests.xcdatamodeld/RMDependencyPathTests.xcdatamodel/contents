@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="A" syncable="YES">
+        <relationship name="toB" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="B" inverseName="toA" inverseEntity="B" syncable="YES"/>
+    </entity>
+    <entity name="B" syncable="YES">
+        <relationship name="toA" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="A" inverseName="toB" inverseEntity="A" syncable="YES"/>
+        <relationship name="toX" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="X" inverseName="toB" inverseEntity="X" syncable="YES"/>
+        <relationship name="toY" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Y" inverseName="toB" inverseEntity="Y" syncable="YES"/>
+    </entity>
+    <entity name="X" syncable="YES">
+        <relationship name="toB" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="B" inverseName="toX" inverseEntity="B" syncable="YES"/>
+    </entity>
+    <entity name="Y" syncable="YES">
+        <relationship name="toB" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="B" inverseName="toY" inverseEntity="B" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="A" positionX="-1152" positionY="-927" width="128" height="58"/>
+        <element name="X" positionX="-828" positionY="-961" width="128" height="58"/>
+        <element name="Y" positionX="-828" positionY="-877" width="128" height="58"/>
+        <element name="B" positionX="-981" positionY="-927" width="128" height="88"/>
+    </elements>
+</model>

@@ -8,10 +8,12 @@
 
 #import "RMCombiningProxy.h"
 #import "NSEntityDescription+Private.h"
+#import "RMDependency.h"
 
 #import "RMMappingContext.h"
 
 @interface RMMappingContext ()
+@property (nonatomic, readonly) RMDependency *dependency;
 @property (nonatomic, readonly) NSMapTable *resourcesByEntity;
 @end
 
@@ -24,6 +26,7 @@
     self = [super init];
     if (self) {
         _operationType = operationType;
+        _dependency = [[RMDependency alloc] init];
         _resourcesByEntity = [NSMapTable strongToStrongObjectsMapTable];
     }
     return self;
@@ -53,43 +56,43 @@
 
 - (void)addResource:(id)resource usingEntity:(NSEntityDescription *)entity
 {
+    BOOL recursive = self.operationType == RMMappingContextOperationTypeUpdateOrInsert;
+    [entity rm_traverseResource:resource
+                      recursive:recursive
+        usingDependencyCallback:^(RMDependency *dependency) {
+            [self.dependency union:dependency];
+        } mappingCallback:^(NSEntityDescription *entity, NSDictionary *pk, id resource) {
+            [self setResource:resource ofEntity:entity forPrimaryKey:pk];
+        }];
+}
+
+#pragma mark Set Resource
+
+- (void)setResource:(id)resource ofEntity:(NSEntityDescription *)entity forPrimaryKey:(NSDictionary *)primaryKey
+{
     NSEntityDescription *rootEntity = [entity rm_rootEntity];
-    if ([rootEntity rm_hasPrimaryKeyProperties]) {
-        NSMutableDictionary *resourcesByPrimaryKey = [self.resourcesByEntity objectForKey:rootEntity];
-        if (resourcesByPrimaryKey == nil) {
-            resourcesByPrimaryKey = [[NSMutableDictionary alloc] init];
-            [self.resourcesByEntity setObject:resourcesByPrimaryKey forKey:rootEntity];
-        }
-        
-        NSDictionary *pk = [rootEntity rm_primaryKeyOfResource:resource];
-        RMCombiningProxy *proxy = [resourcesByPrimaryKey objectForKey:pk];
-        if (proxy == nil) {
-            proxy = [[RMCombiningProxy alloc] init];
-            [resourcesByPrimaryKey setObject:proxy forKey:pk];
-        }
-        [proxy addObject:resource];
+    
+    NSMutableDictionary *resourcesByPrimaryKey = [self.resourcesByEntity objectForKey:rootEntity];
+    if (resourcesByPrimaryKey == nil) {
+        resourcesByPrimaryKey = [[NSMutableDictionary alloc] init];
+        [self.resourcesByEntity setObject:resourcesByPrimaryKey forKey:rootEntity];
     }
     
-    // Traverse the tree only if the operation is "update or insert"
-    
-    if (self.operationType == RMMappingContextOperationTypeUpdateOrInsert) {
-        NSEntityDescription *subentity = [resource valueForKey:@"entity"];
-        subentity = subentity ?: entity;
-        
-        [[subentity relationshipsByName] enumerateKeysAndObjectsUsingBlock:
-         ^(NSString *name, NSRelationshipDescription *relationship, BOOL *stop) {
-             id relatedResource = [resource valueForKey:name];
-             if (relatedResource) {
-                 if (relationship.isToMany) {
-                     for (id resource in relatedResource) {
-                         [self addResource:resource usingEntity:relationship.destinationEntity];
-                     }
-                 } else {
-                     [self addResource:relatedResource usingEntity:relationship.destinationEntity];
-                 }
-             }
-         }];
+    RMCombiningProxy *proxy = [resourcesByPrimaryKey objectForKey:primaryKey];
+    if (proxy == nil) {
+        proxy = [[RMCombiningProxy alloc] init];
+        [resourcesByPrimaryKey setObject:proxy forKey:primaryKey];
     }
+    [proxy addObject:resource];
+}
+
+#pragma mark Dependencies
+
+- (NSSet *)dependencyPathsOfEntity:(NSEntityDescription *)entity
+{
+    NSEntityDescription *rootEntity = [entity rm_rootEntity];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"headEntity == %@", rootEntity];
+    return [self.dependency.allPaths filteredSetUsingPredicate:predicate];
 }
 
 @end

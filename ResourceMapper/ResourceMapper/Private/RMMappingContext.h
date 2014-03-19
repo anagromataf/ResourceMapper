@@ -31,4 +31,7 @@ typedef enum {
 - (void)addResources:(NSArray *)resources usingEntity:(NSEntityDescription *)entity;
 - (void)addResource:(id)resource usingEntity:(NSEntityDescription *)entity;
 
+#pragma mark Dependencies
+- (NSSet *)dependencyPathsOfEntity:(NSEntityDescription *)entity;
+
 @end

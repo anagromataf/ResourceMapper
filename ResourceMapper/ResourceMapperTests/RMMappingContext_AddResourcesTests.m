@@ -74,6 +74,11 @@
     XCTAssertNotNil(resourcesByPrimaryKey);
     
     XCTAssertEqual([resourcesByPrimaryKey count], (NSUInteger)6);
+    
+    NSSet *dependencies = [mappingContext dependencyPathsOfEntity:[self entityWithName:@"Object"]];
+    XCTAssertEqual([dependencies count], 1);
+    XCTAssertEqualObjects([dependencies valueForKeyPath:@"tailEntity"],
+                          [NSSet setWithObject:[self entityWithName:@"Object"]]);
 }
 
 - (void)testAddDuplicateResource

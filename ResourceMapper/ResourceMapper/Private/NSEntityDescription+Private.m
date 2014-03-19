@@ -8,6 +8,9 @@
 
 #import "NSObject+Private.h"
 #import "NSSortDescriptor+Private.h"
+#import "NSMutableArray+Private.h"
+
+#import "RMDependency.h"
 
 #import "NSEntityDescription+Private.h"
 
@@ -95,16 +98,91 @@ NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey = @"RM_PK";
 {
     NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
     [[self rm_primaryKeyProperties] enumerateObjectsUsingBlock:
-        ^(NSPropertyDescription *propertyDescription, NSUInteger idx, BOOL *stop) {
-        [sortDescriptors addObject:[NSSortDescriptor sortDescriptorWithKey:propertyDescription.name
-                                                                 ascending:YES]];
-    }];
+     ^(NSPropertyDescription *propertyDescription, NSUInteger idx, BOOL *stop) {
+         [sortDescriptors addObject:[NSSortDescriptor sortDescriptorWithKey:propertyDescription.name
+                                                                  ascending:YES]];
+     }];
     return sortDescriptors;
 }
 
 - (NSComparator)rm_primaryKeyComparator
 {
     return [NSSortDescriptor rm_comperatorUsingSortDescriptors:[self rm_primaryKeySortDescriptors]];
+}
+
+#pragma mark Resource Traversal
+
+- (RMDependency *)rm_traverseResource:(id)resource
+                            recursive:(BOOL)recursive
+              usingDependencyCallback:(void(^)(RMDependency *dependency))dependencyCallback
+                      mappingCallback:(void(^)(NSEntityDescription *entity, NSDictionary *pk, id resource))mappingCallback
+{
+    BOOL hasPrimaryKeyProperties = [self rm_hasPrimaryKeyProperties];
+    
+    // Get the entity of the resource
+    // ------------------------------
+    
+    NSEntityDescription *entity = [resource valueForKey:@"entity"];
+    entity = entity ?: self;
+    
+    // Call mapping callback for the given resource
+    // --------------------------------------------
+    
+    if (hasPrimaryKeyProperties && mappingCallback) {
+        
+        NSDictionary *primaryKey = [entity rm_primaryKeyOfResource:resource];
+        mappingCallback(entity, primaryKey, resource);
+    }
+    
+    // Traverse the related resource
+    // -----------------------------
+    
+    RMDependency *dependency = [[RMDependency alloc] init];
+    
+    if (recursive) {
+        [[entity relationshipsByName] enumerateKeysAndObjectsUsingBlock:
+         ^(NSString *name, NSRelationshipDescription *relationship, BOOL *stop) {
+             
+             id relatedResource = [resource valueForKey:name];
+             if (relatedResource) {
+                 
+                 if (relationship.isToMany == NO) {
+                     relatedResource = @[relatedResource];
+                 }
+                 
+                 RMDependency *subDependency = [[RMDependency alloc] init];
+                 
+                 for (id resource in relatedResource) {
+                     RMDependency *dep = [relationship.destinationEntity rm_traverseResource:resource
+                                                                                   recursive:recursive
+                                                                     usingDependencyCallback:dependencyCallback
+                                                                             mappingCallback:mappingCallback];
+                     
+                     [subDependency union:dep];
+                 }
+                 
+                 [subDependency pushRelationship:relationship];
+                 
+                 if (hasPrimaryKeyProperties) {
+                     if (dependencyCallback) {
+                         dependencyCallback(subDependency);
+                     }
+                 } else {
+                     [dependency union:subDependency];
+                 }
+             }
+         }];
+    }
+    
+    // Set dependencies
+    // ----------------
+    
+    if (hasPrimaryKeyProperties == NO &&
+        [dependency.allPaths count] == 0) {
+        return nil;
+    } else {
+        return dependency;
+    }
 }
 
 @end

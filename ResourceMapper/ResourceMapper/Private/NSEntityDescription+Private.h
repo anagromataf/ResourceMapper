@@ -8,6 +8,8 @@
 
 #import <CoreData/CoreData.h>
 
+@class RMDependency;
+
 extern NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey;
 
 @interface NSEntityDescription (Private)
@@ -26,5 +28,11 @@ extern NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey;
 #pragma mark Sort Descriptor & Comparator
 - (NSArray *)rm_primaryKeySortDescriptors;
 - (NSComparator)rm_primaryKeyComparator;
+
+#pragma mark Resource Traversal
+- (RMDependency *)rm_traverseResource:(id)resource
+                            recursive:(BOOL)recursive
+              usingDependencyCallback:(void(^)(RMDependency *dependency))dependencyCallback
+                      mappingCallback:(void(^)(NSEntityDescription *entity, NSDictionary *pk, id resource))mappingCallback;
 
 @end
