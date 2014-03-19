@@ -12,6 +12,7 @@
 #import "RMMappingContext.h"
 #import "RMUpdateSession.h"
 #import "RMRelationshipPath.h"
+#import "RMDependency.h"
 
 // Foundation Additions
 #import "NSObject+Private.h"

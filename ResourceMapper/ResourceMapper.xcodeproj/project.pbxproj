@@ -85,6 +85,9 @@
 		F674F9C518DA1D4900521850 /* RMRelationshipPath.h in Headers */ = {isa = PBXBuildFile; fileRef = F674F9C318DA1D4900521850 /* RMRelationshipPath.h */; };
 		F674F9C618DA1D4900521850 /* RMRelationshipPath.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9C418DA1D4900521850 /* RMRelationshipPath.m */; };
 		F674F9C718DA1D4900521850 /* RMRelationshipPath.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9C418DA1D4900521850 /* RMRelationshipPath.m */; };
+		F674F9CF18DA472600521850 /* RMDependency.h in Headers */ = {isa = PBXBuildFile; fileRef = F674F9CD18DA472600521850 /* RMDependency.h */; };
+		F674F9D018DA472600521850 /* RMDependency.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9CE18DA472600521850 /* RMDependency.m */; };
+		F674F9D118DA472600521850 /* RMDependency.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9CE18DA472600521850 /* RMDependency.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +177,8 @@
 		F674F9BF18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMResourceTraversalDependencyTests.xcdatamodel; sourceTree = "<group>"; };
 		F674F9C318DA1D4900521850 /* RMRelationshipPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMRelationshipPath.h; sourceTree = "<group>"; };
 		F674F9C418DA1D4900521850 /* RMRelationshipPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMRelationshipPath.m; sourceTree = "<group>"; };
+		F674F9CD18DA472600521850 /* RMDependency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDependency.h; sourceTree = "<group>"; };
+		F674F9CE18DA472600521850 /* RMDependency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDependency.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -485,6 +490,8 @@
 			children = (
 				F674F9C318DA1D4900521850 /* RMRelationshipPath.h */,
 				F674F9C418DA1D4900521850 /* RMRelationshipPath.m */,
+				F674F9CD18DA472600521850 /* RMDependency.h */,
+				F674F9CE18DA472600521850 /* RMDependency.m */,
 			);
 			name = Dependency;
 			sourceTree = "<group>";
@@ -506,6 +513,7 @@
 				F63CF1A818CD2DDC00B29969 /* RMCombiningProxy.h in Headers */,
 				F63A767218CBBC4A00A309F2 /* RMObjectProxy.h in Headers */,
 				F63A769518CD18C400A309F2 /* RMMappingContext.h in Headers */,
+				F674F9CF18DA472600521850 /* RMDependency.h in Headers */,
 				F63A765A18CBA22B00A309F2 /* NSEntityDescription+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -644,6 +652,7 @@
 				F63A764118CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */,
 				F63CF1A918CD2DDC00B29969 /* RMCombiningProxy.m in Sources */,
 				F63A767E18CBBF2A00A309F2 /* RMUpdateSession.m in Sources */,
+				F674F9D018DA472600521850 /* RMDependency.m in Sources */,
 				F63A768D18CBD42E00A309F2 /* NSObject+Private.m in Sources */,
 				F63A769618CD18C400A309F2 /* RMMappingContext.m in Sources */,
 			);
@@ -686,6 +695,7 @@
 				F63A764218CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */,
 				F63CF1AA18CD2DDC00B29969 /* RMCombiningProxy.m in Sources */,
 				F63A767F18CBBF2A00A309F2 /* RMUpdateSession.m in Sources */,
+				F674F9D118DA472600521850 /* RMDependency.m in Sources */,
 				F63A768E18CBD42E00A309F2 /* NSObject+Private.m in Sources */,
 				F63A769718CD18C400A309F2 /* RMMappingContext.m in Sources */,
 			);

@@ -110,7 +110,6 @@
     NSEntityDescription *B = [self entityWithName:@"B"];
     
     NSRelationshipDescription *fromBtoX = [[B relationshipsByName] valueForKey:@"toX"];
-    NSRelationshipDescription *fromBtoY = [[B relationshipsByName] valueForKey:@"toY"];
     NSRelationshipDescription *fromAtoB = [[A relationshipsByName] valueForKey:@"toB"];
     
     RMRelationshipPath *path1 = [[RMRelationshipPath alloc] init];
@@ -125,6 +124,64 @@
     [pathSet2 unionSet:pathSet1];
     
     XCTAssertTrue([pathSet2 containsObject:path1]);
+}
+
+- (void)testPushToDependency
+{
+    NSEntityDescription *A = [self entityWithName:@"A"];
+    NSEntityDescription *B = [self entityWithName:@"B"];
+    
+    NSRelationshipDescription *fromBtoX = [[B relationshipsByName] valueForKey:@"toX"];
+    NSRelationshipDescription *fromAtoB = [[A relationshipsByName] valueForKey:@"toB"];
+    
+    RMDependency *dependency = [[RMDependency alloc] init];
+    
+    [dependency pushRelationship:fromBtoX];
+    [dependency pushRelationship:fromAtoB];
+    
+    RMRelationshipPath *path = [[RMRelationshipPath alloc] init];
+    [path push:fromBtoX];
+    [path push:fromAtoB];
+    
+    XCTAssertEqual([dependency.allPaths count], 1);
+    XCTAssertEqualObjects([dependency.allPaths anyObject], path);
+}
+
+- (void)testCombineDependencies
+{
+    NSEntityDescription *A = [self entityWithName:@"A"];
+    NSEntityDescription *B = [self entityWithName:@"B"];
+    
+    NSRelationshipDescription *fromBtoX = [[B relationshipsByName] valueForKey:@"toX"];
+    NSRelationshipDescription *fromBtoY = [[B relationshipsByName] valueForKey:@"toY"];
+    NSRelationshipDescription *fromAtoB = [[A relationshipsByName] valueForKey:@"toB"];
+    
+    RMDependency *dependency1 = [[RMDependency alloc] init];
+    [dependency1 pushRelationship:fromBtoX];
+    
+    RMDependency *dependency2 = [[RMDependency alloc] init];
+    [dependency2 pushRelationship:fromBtoY];
+    
+    RMDependency *dependency3 = [[RMDependency alloc] init];
+    [dependency3 pushRelationship:fromBtoY];
+    
+    [dependency1 union:dependency2];
+    [dependency1 union:dependency3];
+    XCTAssertEqual([dependency1.allPaths count], 2);
+    
+    [dependency1 pushRelationship:fromAtoB];
+    XCTAssertEqual([dependency1.allPaths count], 2);
+    
+    RMRelationshipPath *path1 = [[RMRelationshipPath alloc] init];
+    [path1 push:fromBtoY];
+    [path1 push:fromAtoB];
+    
+    RMRelationshipPath *path2 = [[RMRelationshipPath alloc] init];
+    [path2 push:fromBtoX];
+    [path2 push:fromAtoB];
+    
+    XCTAssertTrue([dependency1.allPaths containsObject:path1]);
+    XCTAssertTrue([dependency1.allPaths containsObject:path2]);
 }
 
 @end
