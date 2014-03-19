@@ -8,6 +8,7 @@
 
 #import "NSObject+Private.h"
 #import "NSSortDescriptor+Private.h"
+#import "NSMutableArray+Private.h"
 
 #import "NSEntityDescription+Private.h"
 
@@ -110,21 +111,72 @@ NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey = @"RM_PK";
 #pragma mark Resource Traversal
 
 - (NSMutableSet *)rm_traverseResource:(id)resource
-              usingDependencyCallback:(void(^)(NSMutableSet *paths))dependencyCallback
+              usingDependencyCallback:(void(^)(NSSet *paths))dependencyCallback
                       mappingCallback:(void(^)(NSEntityDescription *entity, NSDictionary *pk, id resource))mappingCallback
 {
+    // Get the entity of the resource
+    // ------------------------------
+    
+    NSEntityDescription *entity = [resource valueForKey:@"entity"];
+    entity = entity ?: self;
+    
     // Call mapping callback for the given resource
     // --------------------------------------------
     
     if ([self rm_hasPrimaryKeyProperties] && mappingCallback) {
-        NSEntityDescription *entity = [resource valueForKey:@"entity"];
-        entity = entity ?: self;
+        
         NSDictionary *primaryKey = [entity rm_primaryKeyOfResource:resource];
         mappingCallback(entity, primaryKey, resource);
     }
     
+    // Traverse the related resource
+    // -----------------------------
     
-    return nil;
+    NSMutableSet *dependencies = [[NSMutableSet alloc] init];
+    
+    [[entity relationshipsByName] enumerateKeysAndObjectsUsingBlock:
+     ^(NSString *name, NSRelationshipDescription *relationship, BOOL *stop) {
+         id relatedResource = [resource valueForKey:name];
+         if (relatedResource) {
+             NSMutableSet *relationshipDependencies = [[NSMutableSet alloc] init];
+             if (relationship.isToMany) {
+                 for (id resource in relatedResource) {
+                     NSMutableSet *dependency = [relationship.destinationEntity rm_traverseResource:resource
+                                                                            usingDependencyCallback:dependencyCallback
+                                                                                    mappingCallback:mappingCallback];
+                     if (dependency && [dependency count] == 0) {
+                         [relationshipDependencies addObject:[NSMutableArray arrayWithObject:relationship]];
+                     } else if (dependency) {
+                         [dependency makeObjectsPerformSelector:@selector(rm_push:) withObject:relationship];
+                         [relationshipDependencies unionSet:[dependency copy]];
+                     }
+                 }
+             } else {
+                 NSMutableSet *dependency = [relationship.destinationEntity rm_traverseResource:relatedResource
+                                                                        usingDependencyCallback:dependencyCallback
+                                                                                mappingCallback:mappingCallback];
+                 if (dependency && [dependency count] == 0) {
+                     [relationshipDependencies addObject:[NSMutableArray arrayWithObject:relationship]];
+                 } else if (dependency) {
+                     [dependency makeObjectsPerformSelector:@selector(rm_push:) withObject:relationship];
+                     [relationshipDependencies unionSet:[dependency copy]];
+                 }
+             }
+             [dependencies unionSet:[relationshipDependencies copy]];
+         }
+     }];
+    
+    // Set dependencies
+    // ----------------
+    
+    if ([self rm_hasPrimaryKeyProperties]) {
+        if ([dependencies count] && dependencyCallback) {
+            dependencyCallback([dependencies copy]);
+        }
+        return [NSMutableSet set];
+    } else {
+        return [dependencies count] ? dependencies : nil;
+    }
 }
 
 @end

@@ -78,6 +78,10 @@
 		F674F9B318D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9B118D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m */; };
 		F674F9B618D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674F9B418D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodeld */; };
 		F674F9B718D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674F9B418D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodeld */; };
+		F674F9BC18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9BB18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m */; };
+		F674F9BD18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9BB18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m */; };
+		F674F9C018D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674F9BE18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld */; };
+		F674F9C118D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674F9BE18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +167,8 @@
 		F674F9A218D8E1B100521850 /* NSMutableArray+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Private.m"; sourceTree = "<group>"; };
 		F674F9B118D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMResourceTraversalMappingCallbackTests.m; sourceTree = "<group>"; };
 		F674F9B518D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMResourceTraversalMappingCallbackTests.xcdatamodel; sourceTree = "<group>"; };
+		F674F9BB18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMResourceTraversalDependencyTests.m; sourceTree = "<group>"; };
+		F674F9BF18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMResourceTraversalDependencyTests.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,6 +459,8 @@
 			children = (
 				F674F9B118D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m */,
 				F674F9B418D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodeld */,
+				F674F9BB18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m */,
+				F674F9BE18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld */,
 			);
 			name = "Resource Traversal";
 			sourceTree = "<group>";
@@ -628,6 +636,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F674F9C018D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */,
 				F63A764818CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */,
 				F63A765E18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m in Sources */,
 				F63A768818CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m in Sources */,
@@ -641,6 +650,7 @@
 				F63A768518CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m in Sources */,
 				F63A769118CD16C000A309F2 /* RMMappingContext_AddResourcesTests.m in Sources */,
 				F63A766B18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
+				F674F9BC18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m in Sources */,
 				F674F99F18D8DED200521850 /* RMDependencyPathTests.xcdatamodeld in Sources */,
 				F674F99B18D8DE6D00521850 /* RMDependencyPathTests.m in Sources */,
 				F674F9B618D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodeld in Sources */,
@@ -667,6 +677,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F674F9C118D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */,
 				F63A764918CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */,
 				F63A765F18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m in Sources */,
 				F63A768918CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m in Sources */,
@@ -680,6 +691,7 @@
 				F63A768618CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m in Sources */,
 				F63A769218CD16C000A309F2 /* RMMappingContext_AddResourcesTests.m in Sources */,
 				F63A766C18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
+				F674F9BD18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m in Sources */,
 				F674F9A018D8DED200521850 /* RMDependencyPathTests.xcdatamodeld in Sources */,
 				F674F99C18D8DE6D00521850 /* RMDependencyPathTests.m in Sources */,
 				F674F9B718D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodeld in Sources */,
@@ -1031,6 +1043,16 @@
 			);
 			currentVersion = F674F9B518D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodel */;
 			path = RMResourceTraversalMappingCallbackTests.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		F674F9BE18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F674F9BF18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodel */,
+			);
+			currentVersion = F674F9BF18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodel */;
+			path = RMResourceTraversalDependencyTests.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

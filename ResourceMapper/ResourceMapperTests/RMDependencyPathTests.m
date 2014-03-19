@@ -140,4 +140,27 @@
     XCTAssertEqualObjects([path2 objectAtIndex:1], fromBtoY);
 }
 
+- (void)testUnionPathsSets
+{
+    NSEntityDescription *A = [self entityWithName:@"A"];
+    NSEntityDescription *B = [self entityWithName:@"B"];
+    
+    NSRelationshipDescription *fromBtoX = [[B relationshipsByName] valueForKey:@"toX"];
+    NSRelationshipDescription *fromBtoY = [[B relationshipsByName] valueForKey:@"toY"];
+    NSRelationshipDescription *fromAtoB = [[A relationshipsByName] valueForKey:@"toB"];
+    
+    NSMutableArray *path1 = [[NSMutableArray alloc] init];
+    [path1 rm_push:fromBtoX];
+    [path1 rm_push:fromAtoB];
+    
+    NSMutableSet *pathSet1 = [[NSMutableSet alloc] init];
+    NSMutableSet *pathSet2 = [[NSMutableSet alloc] init];
+
+    [pathSet1 addObject:path1];
+    
+    [pathSet2 unionSet:pathSet1];
+    
+    XCTAssertTrue([pathSet2 containsObject:path1]);
+}
+
 @end
