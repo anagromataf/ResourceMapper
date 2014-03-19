@@ -16,25 +16,24 @@
 
 - (void)testPushRelationship
 {
-    
     NSEntityDescription *A = [self entityWithName:@"A"];
     NSEntityDescription *B = [self entityWithName:@"B"];
     
     NSRelationshipDescription *fromBtoX = [[B relationshipsByName] valueForKey:@"toX"];
     NSRelationshipDescription *fromAtoB = [[A relationshipsByName] valueForKey:@"toB"];
+ 
+    RMRelationshipPath *path = [[RMRelationshipPath alloc] init];
     
-    NSMutableArray *path = [[NSMutableArray alloc] init];
+    [path push:fromBtoX];
     
-    [path rm_push:fromBtoX];
+    XCTAssertEqual([path.allRelationships count], 1);
+    XCTAssertEqualObjects([path.allRelationships objectAtIndex:0], fromBtoX);
     
-    XCTAssertEqual([path count], 1);
-    XCTAssertEqualObjects([path objectAtIndex:0], fromBtoX);
+    [path push:fromAtoB];
     
-    [path rm_push:fromAtoB];
-    
-    XCTAssertEqual([path count], 2);
-    XCTAssertEqualObjects([path objectAtIndex:0], fromAtoB);
-    XCTAssertEqualObjects([path objectAtIndex:1], fromBtoX);
+    XCTAssertEqual([path.allRelationships count], 2);
+    XCTAssertEqualObjects([path.allRelationships objectAtIndex:0], fromAtoB);
+    XCTAssertEqualObjects([path.allRelationships objectAtIndex:1], fromBtoX);
 }
 
 - (void)testPathEquality
@@ -45,18 +44,18 @@
     NSRelationshipDescription *fromBtoX = [[B relationshipsByName] valueForKey:@"toX"];
     NSRelationshipDescription *fromAtoB = [[A relationshipsByName] valueForKey:@"toB"];
     
-    NSMutableArray *path1 = [[NSMutableArray alloc] init];
-    [path1 rm_push:fromBtoX];
-    [path1 rm_push:fromAtoB];
+    RMRelationshipPath *path1 = [[RMRelationshipPath alloc] init];
+    [path1 push:fromBtoX];
+    [path1 push:fromAtoB];
     
-    NSMutableArray *path2 = [[NSMutableArray alloc] init];
-    [path2 rm_push:fromBtoX];
-    [path2 rm_push:fromAtoB];
+    RMRelationshipPath *path2 = [[RMRelationshipPath alloc] init];
+    [path2 push:fromBtoX];
+    [path2 push:fromAtoB];
     
     XCTAssertEqualObjects(path1, path2);
 }
 
-- (void)testAddDifferentPath
+- (void)testAddDifferentPathToSet
 {
     NSMutableSet *pathSet = [[NSMutableSet alloc] init];
     
@@ -67,13 +66,13 @@
     NSRelationshipDescription *fromBtoY = [[B relationshipsByName] valueForKey:@"toY"];
     NSRelationshipDescription *fromAtoB = [[A relationshipsByName] valueForKey:@"toB"];
     
-    NSMutableArray *path1 = [[NSMutableArray alloc] init];
-    [path1 rm_push:fromBtoY];
-    [path1 rm_push:fromAtoB];
+    RMRelationshipPath *path1 = [[RMRelationshipPath alloc] init];
+    [path1 push:fromBtoY];
+    [path1 push:fromAtoB];
     
-    NSMutableArray *path2 = [[NSMutableArray alloc] init];
-    [path2 rm_push:fromBtoX];
-    [path2 rm_push:fromAtoB];
+    RMRelationshipPath *path2 = [[RMRelationshipPath alloc] init];
+    [path2 push:fromBtoX];
+    [path2 push:fromAtoB];
     
     [pathSet addObject:path1];
     [pathSet addObject:path2];
@@ -91,53 +90,18 @@
     NSRelationshipDescription *fromBtoX = [[B relationshipsByName] valueForKey:@"toX"];
     NSRelationshipDescription *fromAtoB = [[A relationshipsByName] valueForKey:@"toB"];
     
-    NSMutableArray *path1 = [[NSMutableArray alloc] init];
-    [path1 rm_push:fromBtoX];
-    [path1 rm_push:fromAtoB];
+    RMRelationshipPath *path1 = [[RMRelationshipPath alloc] init];
+    [path1 push:fromBtoX];
+    [path1 push:fromAtoB];
     
-    NSMutableArray *path2 = [[NSMutableArray alloc] init];
-    [path2 rm_push:fromBtoX];
-    [path2 rm_push:fromAtoB];
+    RMRelationshipPath *path2 = [[RMRelationshipPath alloc] init];
+    [path2 push:fromBtoX];
+    [path2 push:fromAtoB];
     
     [pathSet addObject:path1];
     [pathSet addObject:path2];
     
     XCTAssertEqual([pathSet count], 1);
-}
-
-- (void)testPerformSelectorOnPaths
-{
-    NSMutableSet *pathSet = [[NSMutableSet alloc] init];
-    
-    NSEntityDescription *A = [self entityWithName:@"A"];
-    NSEntityDescription *B = [self entityWithName:@"B"];
-    
-    NSRelationshipDescription *fromBtoX = [[B relationshipsByName] valueForKey:@"toX"];
-    NSRelationshipDescription *fromBtoY = [[B relationshipsByName] valueForKey:@"toY"];
-    NSRelationshipDescription *fromAtoB = [[A relationshipsByName] valueForKey:@"toB"];
-    
-    NSMutableArray *path1 = [[NSMutableArray alloc] init];
-    [path1 rm_push:fromBtoX];
-    
-    NSMutableArray *path2 = [[NSMutableArray alloc] init];
-    [path2 rm_push:fromBtoY];
-    
-    [pathSet addObject:path1];
-    [pathSet addObject:path2];
-    
-    XCTAssertEqual([pathSet count], 2);
-    
-    [pathSet makeObjectsPerformSelector:@selector(rm_push:) withObject:fromAtoB];
-
-    XCTAssertEqual([pathSet count], 2);
-    
-    XCTAssertEqual([path1 count], 2);
-    XCTAssertEqualObjects([path1 objectAtIndex:0], fromAtoB);
-    XCTAssertEqualObjects([path1 objectAtIndex:1], fromBtoX);
-    
-    XCTAssertEqual([path2 count], 2);
-    XCTAssertEqualObjects([path2 objectAtIndex:0], fromAtoB);
-    XCTAssertEqualObjects([path2 objectAtIndex:1], fromBtoY);
 }
 
 - (void)testUnionPathsSets
@@ -149,9 +113,9 @@
     NSRelationshipDescription *fromBtoY = [[B relationshipsByName] valueForKey:@"toY"];
     NSRelationshipDescription *fromAtoB = [[A relationshipsByName] valueForKey:@"toB"];
     
-    NSMutableArray *path1 = [[NSMutableArray alloc] init];
-    [path1 rm_push:fromBtoX];
-    [path1 rm_push:fromAtoB];
+    RMRelationshipPath *path1 = [[RMRelationshipPath alloc] init];
+    [path1 push:fromBtoX];
+    [path1 push:fromAtoB];
     
     NSMutableSet *pathSet1 = [[NSMutableSet alloc] init];
     NSMutableSet *pathSet2 = [[NSMutableSet alloc] init];

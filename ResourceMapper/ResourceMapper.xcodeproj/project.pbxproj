@@ -82,6 +82,9 @@
 		F674F9BD18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9BB18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m */; };
 		F674F9C018D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674F9BE18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld */; };
 		F674F9C118D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674F9BE18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld */; };
+		F674F9C518DA1D4900521850 /* RMRelationshipPath.h in Headers */ = {isa = PBXBuildFile; fileRef = F674F9C318DA1D4900521850 /* RMRelationshipPath.h */; };
+		F674F9C618DA1D4900521850 /* RMRelationshipPath.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9C418DA1D4900521850 /* RMRelationshipPath.m */; };
+		F674F9C718DA1D4900521850 /* RMRelationshipPath.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9C418DA1D4900521850 /* RMRelationshipPath.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +172,8 @@
 		F674F9B518D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMResourceTraversalMappingCallbackTests.xcdatamodel; sourceTree = "<group>"; };
 		F674F9BB18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMResourceTraversalDependencyTests.m; sourceTree = "<group>"; };
 		F674F9BF18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMResourceTraversalDependencyTests.xcdatamodel; sourceTree = "<group>"; };
+		F674F9C318DA1D4900521850 /* RMRelationshipPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMRelationshipPath.h; sourceTree = "<group>"; };
+		F674F9C418DA1D4900521850 /* RMRelationshipPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMRelationshipPath.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				F63A765118CB96D000A309F2 /* ResourceMapper+Private.h */,
+				F674F9C218DA1D2A00521850 /* Dependency */,
 				F63A769818CD18D000A309F2 /* Update Context */,
 				F63A767A18CBBF1600A309F2 /* Update Session */,
 				F63A767918CBBDFC00A309F2 /* Proxy Object */,
@@ -474,6 +480,15 @@
 			name = "Dependency Paths";
 			sourceTree = "<group>";
 		};
+		F674F9C218DA1D2A00521850 /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				F674F9C318DA1D4900521850 /* RMRelationshipPath.h */,
+				F674F9C418DA1D4900521850 /* RMRelationshipPath.m */,
+			);
+			name = Dependency;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -481,6 +496,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F674F9C518DA1D4900521850 /* RMRelationshipPath.h in Headers */,
 				F63A764018CB93E500A309F2 /* NSSortDescriptor+Private.h in Headers */,
 				F63A763B18CB939100A309F2 /* NSManagedObjectContext+Private.h in Headers */,
 				F63A765318CB96D000A309F2 /* ResourceMapper+Private.h in Headers */,
@@ -622,6 +638,7 @@
 			files = (
 				F674F9A418D8E1B100521850 /* NSMutableArray+Private.m in Sources */,
 				F63A765B18CBA22B00A309F2 /* NSEntityDescription+Private.m in Sources */,
+				F674F9C618DA1D4900521850 /* RMRelationshipPath.m in Sources */,
 				F63A763C18CB939100A309F2 /* NSManagedObjectContext+Private.m in Sources */,
 				F63A767318CBBC4A00A309F2 /* RMObjectProxy.m in Sources */,
 				F63A764118CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */,
@@ -663,6 +680,7 @@
 			files = (
 				F674F9A518D8E1B100521850 /* NSMutableArray+Private.m in Sources */,
 				F63A765C18CBA22B00A309F2 /* NSEntityDescription+Private.m in Sources */,
+				F674F9C718DA1D4900521850 /* RMRelationshipPath.m in Sources */,
 				F63A763D18CB939100A309F2 /* NSManagedObjectContext+Private.m in Sources */,
 				F63A767418CBBC4A00A309F2 /* RMObjectProxy.m in Sources */,
 				F63A764218CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */,
