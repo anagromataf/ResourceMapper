@@ -75,9 +75,9 @@
     
     XCTAssertEqual([resourcesByPrimaryKey count], (NSUInteger)6);
     
-    NSSet *dependencies = [mappingContext dependencyPathsOfEntity:[self entityWithName:@"Object"]];
-    XCTAssertEqual([dependencies count], 1);
-    XCTAssertEqualObjects([dependencies valueForKeyPath:@"tailEntity"],
+    RMDependency *dependency = [mappingContext dependencyOfEntity:[self entityWithName:@"Object"]];
+    XCTAssertEqual([dependency.allPaths count], 1);
+    XCTAssertEqualObjects([dependency.allPaths valueForKeyPath:@"tailEntity"],
                           [NSSet setWithObject:[self entityWithName:@"Object"]]);
 }
 

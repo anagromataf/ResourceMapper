@@ -88,11 +88,9 @@
 
 #pragma mark Dependencies
 
-- (NSSet *)dependencyPathsOfEntity:(NSEntityDescription *)entity
+- (RMDependency *)dependencyOfEntity:(NSEntityDescription *)entity
 {
-    NSEntityDescription *rootEntity = [entity rm_rootEntity];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"headEntity == %@", rootEntity];
-    return [self.dependency.allPaths filteredSetUsingPredicate:predicate];
+    return [self.dependency dependencyOfEntity:entity];
 }
 
 @end

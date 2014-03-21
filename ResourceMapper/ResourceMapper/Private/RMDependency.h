@@ -18,4 +18,7 @@
 @property (nonatomic, readonly) NSSet *allPaths;
 - (void)pushRelationship:(NSRelationshipDescription *)relationship;
 
+#pragma mark Entity Dependency
+- (RMDependency *)dependencyOfEntity:(NSEntityDescription *)entity;
+
 @end

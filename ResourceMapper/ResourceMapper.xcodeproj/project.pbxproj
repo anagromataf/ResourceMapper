@@ -278,7 +278,10 @@
 			isa = PBXGroup;
 			children = (
 				F63A764E18CB966200A309F2 /* Model */,
+				F63A766618CBA47100A309F2 /* CoreData TestCases */,
 				F63A767518CBBCD300A309F2 /* Object Proxy */,
+				F674F9A918D8E68700521850 /* Dependency Paths */,
+				F674F99918D8DDCB00521850 /* Resource Traversal */,
 				F63A764F18CB966800A309F2 /* Core Data Additions Tests */,
 				F63A75FF18CB89BC00A309F2 /* Supporting Files */,
 			);
@@ -338,9 +341,6 @@
 		F63A764F18CB966800A309F2 /* Core Data Additions Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F63A766618CBA47100A309F2 /* CoreData TestCases */,
-				F674F9A918D8E68700521850 /* Dependency Paths */,
-				F674F99918D8DDCB00521850 /* Resource Traversal */,
 				F63A766118CBA2D800A309F2 /* Entity Description */,
 				F63A766018CBA2CD00A309F2 /* Managed Object Context */,
 			);

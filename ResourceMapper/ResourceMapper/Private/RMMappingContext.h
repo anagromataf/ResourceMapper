@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class RMDependency;
+
 typedef enum {
     RMMappingContextOperationTypeFetch = 0,
     RMMappingContextOperationTypeUpdateOrInsert,
@@ -32,6 +34,6 @@ typedef enum {
 - (void)addResource:(id)resource usingEntity:(NSEntityDescription *)entity;
 
 #pragma mark Dependencies
-- (NSSet *)dependencyPathsOfEntity:(NSEntityDescription *)entity;
+- (RMDependency *)dependencyOfEntity:(NSEntityDescription *)entity;
 
 @end

@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Tobias Kräntzer. All rights reserved.
 //
 
+#import "NSEntityDescription+Private.h"
+
 #import "RMRelationshipPath.h"
 
 #import "RMDependency.h"
@@ -20,9 +22,14 @@
 
 - (id)init
 {
+    return [self initWithPaths:nil];
+}
+
+- (id)initWithPaths:(NSSet *)paths
+{
     self = [super init];
     if (self) {
-        
+        self.paths = paths;
     }
     return self;
 }
@@ -62,6 +69,16 @@
         [path push:relationship];
         self.paths = [NSSet setWithObject:path];
     }
+}
+
+#pragma mark Entity Dependency
+
+- (RMDependency *)dependencyOfEntity:(NSEntityDescription *)entity
+{
+    NSEntityDescription *rootEntity = [entity rm_rootEntity];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"headEntity == %@", rootEntity];
+    NSSet *paths = [self.paths filteredSetUsingPredicate:predicate];
+    return [[RMDependency alloc] initWithPaths:paths];
 }
 
 #pragma mark NSObject
