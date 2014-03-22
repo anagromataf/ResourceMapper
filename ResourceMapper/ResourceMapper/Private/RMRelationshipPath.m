@@ -43,7 +43,7 @@
 
 - (NSEntityDescription *)tailEntity
 {
-    return [[self.relationships firstObject] entity];
+    return [[self.relationships lastObject] destinationEntity];
 }
 
 - (NSArray *)allRelationships
@@ -65,6 +65,24 @@
         return [self.relationships isEqual:other.relationships];
     } else {
         return NO;
+    }
+}
+
+- (NSString *)description
+{
+    if ([self.relationships count]) {
+        NSMutableArray *relNames= [[NSMutableArray alloc] init];
+        for (NSRelationshipDescription *rel in self.relationships) {
+            [relNames addObject:rel.name];
+        }
+        
+        return [NSString stringWithFormat:@"<RMRelationshipPath: %p %@ depends on %@ via relationship (%@)>",
+                self,
+                self.headEntity.name,
+                self.tailEntity.name,
+                [relNames componentsJoinedByString:@", "]];
+    } else {
+        return [super description];
     }
 }
 

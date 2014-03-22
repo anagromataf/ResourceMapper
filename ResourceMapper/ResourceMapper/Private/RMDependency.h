@@ -9,14 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class RMRelationshipPath;
+
 @interface RMDependency : NSObject
+
++ (instancetype)dependencyWithRelationship:(NSRelationshipDescription *)relationship;
 
 #pragma mark Combine Dependencies
 - (void)union:(RMDependency *)dependency;
 
 #pragma mark Relationship Paths
 @property (nonatomic, readonly) NSSet *allPaths;
-- (void)pushRelationship:(NSRelationshipDescription *)relationship;
+- (instancetype)pushRelationship:(NSRelationshipDescription *)relationship;
 
 #pragma mark Entity Dependency
 - (RMDependency *)dependencyOfEntity:(NSEntityDescription *)entity;

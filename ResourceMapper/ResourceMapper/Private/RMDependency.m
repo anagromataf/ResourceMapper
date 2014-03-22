@@ -18,6 +18,13 @@
 
 @implementation RMDependency
 
++ (instancetype)dependencyWithRelationship:(NSRelationshipDescription *)relationship;
+{
+    RMDependency *dependency = [[self alloc] init];
+    [dependency pushRelationship:relationship];
+    return dependency;
+}
+
 #pragma mark Life-cylce
 
 - (id)init
@@ -55,7 +62,7 @@
     return self.paths;
 }
 
-- (void)pushRelationship:(NSRelationshipDescription *)relationship
+- (instancetype)pushRelationship:(NSRelationshipDescription *)relationship
 {
     if ([self.paths count] > 0) {
         NSMutableSet *paths = [[NSMutableSet alloc] init];
@@ -69,6 +76,8 @@
         [path push:relationship];
         self.paths = [NSSet setWithObject:path];
     }
+    
+    return self;
 }
 
 #pragma mark Entity Dependency
@@ -96,6 +105,11 @@
     } else {
         return NO;
     }
+}
+
+- (NSString *)description
+{
+    return [self.allPaths description];
 }
 
 @end

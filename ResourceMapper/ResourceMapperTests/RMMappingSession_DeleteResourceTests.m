@@ -1,5 +1,5 @@
 //
-//  RMUpdateSession_DeleteResourceTests.m
+//  RMMappingSession_DeleteResourceTests.m
 //  ResourceMapper
 //
 //  Created by Tobias Kräntzer on 08.03.14.
@@ -8,11 +8,11 @@
 
 #import "RMMangedObjectContextTestCase.h"
 
-@interface RMUpdateSession_DeleteResourceTests : RMMangedObjectContextTestCase
+@interface RMMappingSession_DeleteResourceTests : RMMangedObjectContextTestCase
 
 @end
 
-@implementation RMUpdateSession_DeleteResourceTests
+@implementation RMMappingSession_DeleteResourceTests
 
 - (void)testDeleteResource
 {
@@ -21,7 +21,7 @@
     NSManagedObject *resource = [[NSManagedObject alloc] initWithEntity:entity
                                        insertIntoManagedObjectContext:self.managedObjectContext];
     
-    RMUpdateSession *session = [[RMUpdateSession alloc] initWithEntity:entity
+    RMMappingSession *session = [[RMMappingSession alloc] initWithEntity:entity
                                                                context:self.managedObjectContext];
 
     [session deleteManagedObject:resource];

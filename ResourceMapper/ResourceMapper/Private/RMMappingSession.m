@@ -1,5 +1,5 @@
 //
-//  RMUpdateSession.m
+//  RMMappingSession.m
 //  ResourceMapper
 //
 //  Created by Tobias Kräntzer on 08.03.14.
@@ -9,9 +9,9 @@
 #import "NSObject+Private.h"
 #import "NSEntityDescription+Private.h"
 
-#import "RMUpdateSession.h"
+#import "RMMappingSession.h"
 
-@implementation RMUpdateSession
+@implementation RMMappingSession
 
 #pragma mark Life-cycle
 
