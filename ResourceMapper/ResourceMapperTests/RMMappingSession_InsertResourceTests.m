@@ -1,5 +1,5 @@
 //
-//  RMUpdateSession_InsertResourceTests.m
+//  RMMappingSession_InsertResourceTests.m
 //  ResourceMapper
 //
 //  Created by Tobias Kräntzer on 08.03.14.
@@ -8,17 +8,17 @@
 
 #import "RMMangedObjectContextTestCase.h"
 
-@interface RMUpdateSession_InsertResourceTests : RMMangedObjectContextTestCase
+@interface RMMappingSession_InsertResourceTests : RMMangedObjectContextTestCase
 
 @end
 
-@implementation RMUpdateSession_InsertResourceTests
+@implementation RMMappingSession_InsertResourceTests
 
 - (void)testCreateSession
 {
     NSEntityDescription *entity = [self entityWithName:@"Entity"];
     
-    RMUpdateSession *session = [[RMUpdateSession alloc] initWithEntity:entity
+    RMMappingSession *session = [[RMMappingSession alloc] initWithEntity:entity
                                                                context:self.managedObjectContext];
     
     XCTAssertEqualObjects(session.entity, entity);
@@ -28,7 +28,7 @@
 - (void)testInsertResource
 {
     NSEntityDescription *entity = [self entityWithName:@"Entity"];
-    RMUpdateSession *session = [[RMUpdateSession alloc] initWithEntity:entity
+    RMMappingSession *session = [[RMMappingSession alloc] initWithEntity:entity
                                                                context:self.managedObjectContext];
     
     NSDictionary *resource = @{@"identifier": @"123", @"name":@"Foo"};
@@ -44,7 +44,7 @@
 - (void)testInsertResourceWithSubEntity
 {
     NSEntityDescription *entity = [self entityWithName:@"Entity"];
-    RMUpdateSession *session = [[RMUpdateSession alloc] initWithEntity:entity
+    RMMappingSession *session = [[RMMappingSession alloc] initWithEntity:entity
                                                                context:self.managedObjectContext];
     
     NSDictionary *resource = @{@"entity":[self entityWithName:@"SubEntity"]};
@@ -57,7 +57,7 @@
 - (void)testInsertResourceWithWrongSubEntity
 {
     NSEntityDescription *entity = [self entityWithName:@"Entity"];
-    RMUpdateSession *session = [[RMUpdateSession alloc] initWithEntity:entity
+    RMMappingSession *session = [[RMMappingSession alloc] initWithEntity:entity
                                                                context:self.managedObjectContext];
     
     NSDictionary *resource = @{@"entity":[self entityWithName:@"Item"]};

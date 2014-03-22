@@ -1,5 +1,5 @@
 //
-//  RMUpdateSession.h
+//  RMMappingSession.h
 //  ResourceMapper
 //
 //  Created by Tobias Kräntzer on 08.03.14.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface RMUpdateSession : NSObject
+@interface RMMappingSession : NSObject
 
 #pragma mark Life-cycle
 - (id)initWithEntity:(NSEntityDescription *)entity context:(NSManagedObjectContext *)context;

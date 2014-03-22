@@ -1,5 +1,5 @@
 //
-//  RMUpdateSession_UpdatePropertiesTests.m
+//  RMMappingSession_UpdatePropertiesTests.m
 //  ResourceMapper
 //
 //  Created by Tobias Kräntzer on 08.03.14.
@@ -8,11 +8,11 @@
 
 #import "RMMangedObjectContextTestCase.h"
 
-@interface RMUpdateSession_UpdatePropertiesTests : RMMangedObjectContextTestCase
+@interface RMMappingSession_UpdatePropertiesTests : RMMangedObjectContextTestCase
 
 @end
 
-@implementation RMUpdateSession_UpdatePropertiesTests
+@implementation RMMappingSession_UpdatePropertiesTests
 
 - (void)testUpdateAttributes
 {
@@ -21,7 +21,7 @@
     NSManagedObject *managedObject = [[NSManagedObject alloc] initWithEntity:entity
                                               insertIntoManagedObjectContext:self.managedObjectContext];
     
-    RMUpdateSession *session = [[RMUpdateSession alloc] initWithEntity:entity
+    RMMappingSession *session = [[RMMappingSession alloc] initWithEntity:entity
                                                                context:self.managedObjectContext];
     
     NSDictionary *resource = @{@"x": @(1), @"y":@(2), @"z":@(3)};

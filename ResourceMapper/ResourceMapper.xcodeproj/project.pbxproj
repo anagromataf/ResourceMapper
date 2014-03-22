@@ -47,15 +47,15 @@
 		F63A767418CBBC4A00A309F2 /* RMObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767118CBBC4A00A309F2 /* RMObjectProxy.m */; };
 		F63A767718CBBCEC00A309F2 /* RMObjectProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767618CBBCEC00A309F2 /* RMObjectProxyTests.m */; };
 		F63A767818CBBCEC00A309F2 /* RMObjectProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767618CBBCEC00A309F2 /* RMObjectProxyTests.m */; };
-		F63A767D18CBBF2A00A309F2 /* RMUpdateSession.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A767B18CBBF2A00A309F2 /* RMUpdateSession.h */; };
-		F63A767E18CBBF2A00A309F2 /* RMUpdateSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767C18CBBF2A00A309F2 /* RMUpdateSession.m */; };
-		F63A767F18CBBF2A00A309F2 /* RMUpdateSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767C18CBBF2A00A309F2 /* RMUpdateSession.m */; };
-		F63A768218CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768118CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m */; };
-		F63A768318CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768118CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m */; };
-		F63A768518CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m */; };
-		F63A768618CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m */; };
-		F63A768818CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768718CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m */; };
-		F63A768918CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768718CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m */; };
+		F63A767D18CBBF2A00A309F2 /* RMMappingSession.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A767B18CBBF2A00A309F2 /* RMMappingSession.h */; };
+		F63A767E18CBBF2A00A309F2 /* RMMappingSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767C18CBBF2A00A309F2 /* RMMappingSession.m */; };
+		F63A767F18CBBF2A00A309F2 /* RMMappingSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767C18CBBF2A00A309F2 /* RMMappingSession.m */; };
+		F63A768218CBC04000A309F2 /* RMMappingSession_InsertResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768118CBC04000A309F2 /* RMMappingSession_InsertResourceTests.m */; };
+		F63A768318CBC04000A309F2 /* RMMappingSession_InsertResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768118CBC04000A309F2 /* RMMappingSession_InsertResourceTests.m */; };
+		F63A768518CBD0A500A309F2 /* RMMappingSession_DeleteResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768418CBD0A500A309F2 /* RMMappingSession_DeleteResourceTests.m */; };
+		F63A768618CBD0A500A309F2 /* RMMappingSession_DeleteResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768418CBD0A500A309F2 /* RMMappingSession_DeleteResourceTests.m */; };
+		F63A768818CBD2A300A309F2 /* RMMappingSession_UpdatePropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768718CBD2A300A309F2 /* RMMappingSession_UpdatePropertiesTests.m */; };
+		F63A768918CBD2A300A309F2 /* RMMappingSession_UpdatePropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768718CBD2A300A309F2 /* RMMappingSession_UpdatePropertiesTests.m */; };
 		F63A768C18CBD42E00A309F2 /* NSObject+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A768A18CBD42E00A309F2 /* NSObject+Private.h */; };
 		F63A768D18CBD42E00A309F2 /* NSObject+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768B18CBD42E00A309F2 /* NSObject+Private.m */; };
 		F63A768E18CBD42E00A309F2 /* NSObject+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A768B18CBD42E00A309F2 /* NSObject+Private.m */; };
@@ -162,11 +162,11 @@
 		F63A767018CBBC4A00A309F2 /* RMObjectProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMObjectProxy.h; sourceTree = "<group>"; };
 		F63A767118CBBC4A00A309F2 /* RMObjectProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMObjectProxy.m; sourceTree = "<group>"; };
 		F63A767618CBBCEC00A309F2 /* RMObjectProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMObjectProxyTests.m; sourceTree = "<group>"; };
-		F63A767B18CBBF2A00A309F2 /* RMUpdateSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUpdateSession.h; sourceTree = "<group>"; };
-		F63A767C18CBBF2A00A309F2 /* RMUpdateSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUpdateSession.m; sourceTree = "<group>"; };
-		F63A768118CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUpdateSession_InsertResourceTests.m; sourceTree = "<group>"; };
-		F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUpdateSession_DeleteResourceTests.m; sourceTree = "<group>"; };
-		F63A768718CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUpdateSession_UpdatePropertiesTests.m; sourceTree = "<group>"; };
+		F63A767B18CBBF2A00A309F2 /* RMMappingSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMappingSession.h; sourceTree = "<group>"; };
+		F63A767C18CBBF2A00A309F2 /* RMMappingSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMappingSession.m; sourceTree = "<group>"; };
+		F63A768118CBC04000A309F2 /* RMMappingSession_InsertResourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMappingSession_InsertResourceTests.m; sourceTree = "<group>"; };
+		F63A768418CBD0A500A309F2 /* RMMappingSession_DeleteResourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMappingSession_DeleteResourceTests.m; sourceTree = "<group>"; };
+		F63A768718CBD2A300A309F2 /* RMMappingSession_UpdatePropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMappingSession_UpdatePropertiesTests.m; sourceTree = "<group>"; };
 		F63A768A18CBD42E00A309F2 /* NSObject+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Private.h"; sourceTree = "<group>"; };
 		F63A768B18CBD42E00A309F2 /* NSObject+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Private.m"; sourceTree = "<group>"; };
 		F63A769018CD16C000A309F2 /* RMMappingContext_AddResourcesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMappingContext_AddResourcesTests.m; sourceTree = "<group>"; };
@@ -293,7 +293,9 @@
 				F63A767518CBBCD300A309F2 /* Object Proxy */,
 				F674F9A918D8E68700521850 /* Dependency Paths */,
 				F674F99918D8DDCB00521850 /* Resource Traversal */,
+				F63A769918CD1B4200A309F2 /* Mapping Context */,
 				F674F9DD18DDF2D200521850 /* Mapping Step */,
+				F63A768018CBC02C00A309F2 /* Mapping Session */,
 				F63A764F18CB966800A309F2 /* Core Data Additions Tests */,
 				F63A75FF18CB89BC00A309F2 /* Supporting Files */,
 			);
@@ -334,7 +336,7 @@
 				F63A765118CB96D000A309F2 /* ResourceMapper+Private.h */,
 				F674F9C218DA1D2A00521850 /* Dependency */,
 				F63A769818CD18D000A309F2 /* Update Context */,
-				F63A767A18CBBF1600A309F2 /* Update Session */,
+				F63A767A18CBBF1600A309F2 /* Mapping Session */,
 				F63A767918CBBDFC00A309F2 /* Proxy Object */,
 				F63A765718CB978E00A309F2 /* Foundation Additions */,
 				F63A765618CB978200A309F2 /* Core Data Additions */,
@@ -395,8 +397,6 @@
 			isa = PBXGroup;
 			children = (
 				F63A765018CB967B00A309F2 /* Combine Resources */,
-				F63A769918CD1B4200A309F2 /* Mapping Context */,
-				F63A768018CBC02C00A309F2 /* Update Session */,
 			);
 			name = "Managed Object Context";
 			sourceTree = "<group>";
@@ -441,23 +441,23 @@
 			name = "Proxy Object";
 			sourceTree = "<group>";
 		};
-		F63A767A18CBBF1600A309F2 /* Update Session */ = {
+		F63A767A18CBBF1600A309F2 /* Mapping Session */ = {
 			isa = PBXGroup;
 			children = (
-				F63A767B18CBBF2A00A309F2 /* RMUpdateSession.h */,
-				F63A767C18CBBF2A00A309F2 /* RMUpdateSession.m */,
+				F63A767B18CBBF2A00A309F2 /* RMMappingSession.h */,
+				F63A767C18CBBF2A00A309F2 /* RMMappingSession.m */,
 			);
-			name = "Update Session";
+			name = "Mapping Session";
 			sourceTree = "<group>";
 		};
-		F63A768018CBC02C00A309F2 /* Update Session */ = {
+		F63A768018CBC02C00A309F2 /* Mapping Session */ = {
 			isa = PBXGroup;
 			children = (
-				F63A768118CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m */,
-				F63A768418CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m */,
-				F63A768718CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m */,
+				F63A768118CBC04000A309F2 /* RMMappingSession_InsertResourceTests.m */,
+				F63A768418CBD0A500A309F2 /* RMMappingSession_DeleteResourceTests.m */,
+				F63A768718CBD2A300A309F2 /* RMMappingSession_UpdatePropertiesTests.m */,
 			);
-			name = "Update Session";
+			name = "Mapping Session";
 			sourceTree = "<group>";
 		};
 		F63A769818CD18D000A309F2 /* Update Context */ = {
@@ -532,7 +532,7 @@
 				F63A765318CB96D000A309F2 /* ResourceMapper+Private.h in Headers */,
 				F63A768C18CBD42E00A309F2 /* NSObject+Private.h in Headers */,
 				F674F9A318D8E1B100521850 /* NSMutableArray+Private.h in Headers */,
-				F63A767D18CBBF2A00A309F2 /* RMUpdateSession.h in Headers */,
+				F63A767D18CBBF2A00A309F2 /* RMMappingSession.h in Headers */,
 				F63CF1A818CD2DDC00B29969 /* RMCombiningProxy.h in Headers */,
 				F63A767218CBBC4A00A309F2 /* RMObjectProxy.h in Headers */,
 				F674F9DA18DD9D5700521850 /* RMMappingStep.h in Headers */,
@@ -676,7 +676,7 @@
 				F674F9DB18DD9D5700521850 /* RMMappingStep.m in Sources */,
 				F63A764118CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */,
 				F63CF1A918CD2DDC00B29969 /* RMCombiningProxy.m in Sources */,
-				F63A767E18CBBF2A00A309F2 /* RMUpdateSession.m in Sources */,
+				F63A767E18CBBF2A00A309F2 /* RMMappingSession.m in Sources */,
 				F674F9D018DA472600521850 /* RMDependency.m in Sources */,
 				F63A768D18CBD42E00A309F2 /* NSObject+Private.m in Sources */,
 				F63A769618CD18C400A309F2 /* RMMappingContext.m in Sources */,
@@ -691,15 +691,15 @@
 				F674F9C018D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */,
 				F63A764818CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */,
 				F63A765E18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m in Sources */,
-				F63A768818CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m in Sources */,
+				F63A768818CBD2A300A309F2 /* RMMappingSession_UpdatePropertiesTests.m in Sources */,
 				F63A767718CBBCEC00A309F2 /* RMObjectProxyTests.m in Sources */,
 				F63A766418CBA30900A309F2 /* RMManagedObjectModelTestCase.m in Sources */,
 				F63A764418CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */,
 				F63A764C18CB957700A309F2 /* Model.xcdatamodeld in Sources */,
 				F63A766E18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m in Sources */,
 				F674F9B218D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m in Sources */,
-				F63A768218CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m in Sources */,
-				F63A768518CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m in Sources */,
+				F63A768218CBC04000A309F2 /* RMMappingSession_InsertResourceTests.m in Sources */,
+				F63A768518CBD0A500A309F2 /* RMMappingSession_DeleteResourceTests.m in Sources */,
 				F63A769118CD16C000A309F2 /* RMMappingContext_AddResourcesTests.m in Sources */,
 				F63A766B18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
 				F674F9BC18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m in Sources */,
@@ -722,7 +722,7 @@
 				F674F9DC18DD9D5700521850 /* RMMappingStep.m in Sources */,
 				F63A764218CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */,
 				F63CF1AA18CD2DDC00B29969 /* RMCombiningProxy.m in Sources */,
-				F63A767F18CBBF2A00A309F2 /* RMUpdateSession.m in Sources */,
+				F63A767F18CBBF2A00A309F2 /* RMMappingSession.m in Sources */,
 				F674F9D118DA472600521850 /* RMDependency.m in Sources */,
 				F63A768E18CBD42E00A309F2 /* NSObject+Private.m in Sources */,
 				F63A769718CD18C400A309F2 /* RMMappingContext.m in Sources */,
@@ -737,15 +737,15 @@
 				F674F9C118D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */,
 				F63A764918CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */,
 				F63A765F18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m in Sources */,
-				F63A768918CBD2A300A309F2 /* RMUpdateSession_UpdatePropertiesTests.m in Sources */,
+				F63A768918CBD2A300A309F2 /* RMMappingSession_UpdatePropertiesTests.m in Sources */,
 				F63A767818CBBCEC00A309F2 /* RMObjectProxyTests.m in Sources */,
 				F63A766518CBA30900A309F2 /* RMManagedObjectModelTestCase.m in Sources */,
 				F63A764518CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */,
 				F63A764D18CB957700A309F2 /* Model.xcdatamodeld in Sources */,
 				F63A766F18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m in Sources */,
 				F674F9B318D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m in Sources */,
-				F63A768318CBC04000A309F2 /* RMUpdateSession_InsertResourceTests.m in Sources */,
-				F63A768618CBD0A500A309F2 /* RMUpdateSession_DeleteResourceTests.m in Sources */,
+				F63A768318CBC04000A309F2 /* RMMappingSession_InsertResourceTests.m in Sources */,
+				F63A768618CBD0A500A309F2 /* RMMappingSession_DeleteResourceTests.m in Sources */,
 				F63A769218CD16C000A309F2 /* RMMappingContext_AddResourcesTests.m in Sources */,
 				F63A766C18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
 				F674F9BD18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m in Sources */,

@@ -10,7 +10,7 @@
 #import "RMObjectProxy.h"
 #import "RMCombiningProxy.h"
 #import "RMMappingContext.h"
-#import "RMUpdateSession.h"
+#import "RMMappingSession.h"
 #import "RMRelationshipPath.h"
 #import "RMDependency.h"
 
