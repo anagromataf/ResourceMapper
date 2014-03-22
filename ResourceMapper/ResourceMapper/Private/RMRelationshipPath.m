@@ -43,7 +43,7 @@
 
 - (NSEntityDescription *)tailEntity
 {
-    return [[self.relationships firstObject] entity];
+    return [[self.relationships lastObject] destinationEntity];
 }
 
 - (NSArray *)allRelationships
