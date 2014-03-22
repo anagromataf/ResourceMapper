@@ -68,4 +68,22 @@
     }
 }
 
+- (NSString *)description
+{
+    if ([self.relationships count]) {
+        NSMutableArray *relNames= [[NSMutableArray alloc] init];
+        for (NSRelationshipDescription *rel in self.relationships) {
+            [relNames addObject:rel.name];
+        }
+        
+        return [NSString stringWithFormat:@"<RMRelationshipPath: %p %@ depends on %@ via relationship (%@)>",
+                self,
+                self.headEntity.name,
+                self.tailEntity.name,
+                [relNames componentsJoinedByString:@", "]];
+    } else {
+        return [super description];
+    }
+}
+
 @end
