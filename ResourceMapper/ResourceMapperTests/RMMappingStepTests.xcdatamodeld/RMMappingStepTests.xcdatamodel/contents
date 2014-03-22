@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="A" syncable="YES">
+        <relationship name="children" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="A" inverseName="parnet" inverseEntity="A" syncable="YES"/>
+        <relationship name="parnet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="A" inverseName="children" inverseEntity="A" syncable="YES"/>
+        <relationship name="toB" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="B" inverseName="toA" inverseEntity="B" syncable="YES"/>
+        <relationship name="toC" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="C" inverseName="toA" inverseEntity="C" syncable="YES"/>
+    </entity>
+    <entity name="B" syncable="YES">
+        <relationship name="children" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="B" inverseName="parent" inverseEntity="B" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="B" inverseName="children" inverseEntity="B" syncable="YES"/>
+        <relationship name="toA" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="A" inverseName="toB" inverseEntity="A" syncable="YES"/>
+        <relationship name="toC" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="C" inverseName="toB" inverseEntity="C" syncable="YES"/>
+    </entity>
+    <entity name="C" syncable="YES">
+        <relationship name="toA" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="A" inverseName="toC" inverseEntity="A" syncable="YES"/>
+        <relationship name="toB" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="B" inverseName="toC" inverseEntity="B" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="A" positionX="-45" positionY="0" width="128" height="103"/>
+        <element name="B" positionX="196" positionY="-63" width="128" height="105"/>
+        <element name="C" positionX="234" positionY="80" width="128" height="73"/>
+    </elements>
+</model>

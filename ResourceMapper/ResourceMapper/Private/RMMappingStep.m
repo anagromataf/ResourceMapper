@@ -66,7 +66,7 @@
             
             // The entity does not depend on other entities.
             
-            RMMappingStep *step = [[RMMappingStep alloc] initWithEntity:entity relationshipsToOmit:nil];
+            RMMappingStep *step = [[RMMappingStep alloc] initWithEntity:entity relationshipsToOmit:[NSSet set]];
             [steps addObject:step];
             
         } else {

@@ -91,6 +91,10 @@
 		F674F9DA18DD9D5700521850 /* RMMappingStep.h in Headers */ = {isa = PBXBuildFile; fileRef = F674F9D818DD9D5700521850 /* RMMappingStep.h */; };
 		F674F9DB18DD9D5700521850 /* RMMappingStep.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9D918DD9D5700521850 /* RMMappingStep.m */; };
 		F674F9DC18DD9D5700521850 /* RMMappingStep.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9D918DD9D5700521850 /* RMMappingStep.m */; };
+		F674F9DF18DDF2F000521850 /* RMMappingStepTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9DE18DDF2F000521850 /* RMMappingStepTests.m */; };
+		F674F9E018DDF2F000521850 /* RMMappingStepTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9DE18DDF2F000521850 /* RMMappingStepTests.m */; };
+		F674F9E318DDF30F00521850 /* RMMappingStepTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674F9E118DDF30F00521850 /* RMMappingStepTests.xcdatamodeld */; };
+		F674F9E418DDF30F00521850 /* RMMappingStepTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674F9E118DDF30F00521850 /* RMMappingStepTests.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +188,8 @@
 		F674F9CE18DA472600521850 /* RMDependency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDependency.m; sourceTree = "<group>"; };
 		F674F9D818DD9D5700521850 /* RMMappingStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMappingStep.h; sourceTree = "<group>"; };
 		F674F9D918DD9D5700521850 /* RMMappingStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMappingStep.m; sourceTree = "<group>"; };
+		F674F9DE18DDF2F000521850 /* RMMappingStepTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMappingStepTests.m; sourceTree = "<group>"; };
+		F674F9E218DDF30F00521850 /* RMMappingStepTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMMappingStepTests.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +293,7 @@
 				F63A767518CBBCD300A309F2 /* Object Proxy */,
 				F674F9A918D8E68700521850 /* Dependency Paths */,
 				F674F99918D8DDCB00521850 /* Resource Traversal */,
+				F674F9DD18DDF2D200521850 /* Mapping Step */,
 				F63A764F18CB966800A309F2 /* Core Data Additions Tests */,
 				F63A75FF18CB89BC00A309F2 /* Supporting Files */,
 			);
@@ -503,6 +510,15 @@
 			name = Dependency;
 			sourceTree = "<group>";
 		};
+		F674F9DD18DDF2D200521850 /* Mapping Step */ = {
+			isa = PBXGroup;
+			children = (
+				F674F9DE18DDF2F000521850 /* RMMappingStepTests.m */,
+				F674F9E118DDF30F00521850 /* RMMappingStepTests.xcdatamodeld */,
+			);
+			name = "Mapping Step";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -671,6 +687,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F674F9DF18DDF2F000521850 /* RMMappingStepTests.m in Sources */,
 				F674F9C018D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */,
 				F63A764818CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */,
 				F63A765E18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m in Sources */,
@@ -687,6 +704,7 @@
 				F63A766B18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
 				F674F9BC18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m in Sources */,
 				F674F99F18D8DED200521850 /* RMDependencyPathTests.xcdatamodeld in Sources */,
+				F674F9E318DDF30F00521850 /* RMMappingStepTests.xcdatamodeld in Sources */,
 				F674F99B18D8DE6D00521850 /* RMDependencyPathTests.m in Sources */,
 				F674F9B618D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodeld in Sources */,
 			);
@@ -715,6 +733,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F674F9E018DDF2F000521850 /* RMMappingStepTests.m in Sources */,
 				F674F9C118D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */,
 				F63A764918CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */,
 				F63A765F18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m in Sources */,
@@ -731,6 +750,7 @@
 				F63A766C18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
 				F674F9BD18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m in Sources */,
 				F674F9A018D8DED200521850 /* RMDependencyPathTests.xcdatamodeld in Sources */,
+				F674F9E418DDF30F00521850 /* RMMappingStepTests.xcdatamodeld in Sources */,
 				F674F99C18D8DE6D00521850 /* RMDependencyPathTests.m in Sources */,
 				F674F9B718D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodeld in Sources */,
 			);
@@ -1091,6 +1111,16 @@
 			);
 			currentVersion = F674F9BF18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodel */;
 			path = RMResourceTraversalDependencyTests.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		F674F9E118DDF30F00521850 /* RMMappingStepTests.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F674F9E218DDF30F00521850 /* RMMappingStepTests.xcdatamodel */,
+			);
+			currentVersion = F674F9E218DDF30F00521850 /* RMMappingStepTests.xcdatamodel */;
+			path = RMMappingStepTests.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
