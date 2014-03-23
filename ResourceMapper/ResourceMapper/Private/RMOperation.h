@@ -11,6 +11,7 @@
 
 @class RMMappingContext;
 @class RMMappingSession;
+@class RMMappingStep;
 
 @interface RMOperation : NSObject
 
@@ -25,8 +26,11 @@
                               error:(NSError **)error;
 
 #pragma mark Session Handler (Internal Use Only)
-- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session;
-- (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session;
-- (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(RMMappingSession *)session;
+- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session
+                                                                            step:(RMMappingStep *)step;
+- (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session
+                                                                                    step:(RMMappingStep *)step;
+- (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(RMMappingSession *)session
+                                                                        step:(RMMappingStep *)step;
 
 @end

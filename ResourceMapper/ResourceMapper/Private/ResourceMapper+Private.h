@@ -11,6 +11,7 @@
 #import "RMCombiningProxy.h"
 #import "RMMappingContext.h"
 #import "RMMappingSession.h"
+#import "RMMappingStep.h"
 #import "RMRelationshipPath.h"
 #import "RMDependency.h"
 

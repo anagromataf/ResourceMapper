@@ -34,7 +34,7 @@
     id entity = @"e";
     
     // Test new Object Handler
-    void(^newObjectHandler)(id newObject, NSEntityDescription *entity) = [op newObjectHandlerWithSession:session];
+    void(^newObjectHandler)(id newObject, NSEntityDescription *entity) = [op newObjectHandlerWithSession:session step:nil];
     XCTAssertNotNil(newObjectHandler);
     
     [given([session insertResource:resource usingEntity:entity]) willReturn:managedObject];
@@ -54,12 +54,12 @@
     id managedObject = @"mo";
     
     // Test matching Object Handler
-    void(^matchingObjectHandler)(NSManagedObject *managedObject, id resource) = [op matchingObjectHandlerWithSession:session];
+    void(^matchingObjectHandler)(NSManagedObject *managedObject, id resource) = [op matchingObjectHandlerWithSession:session step:nil];
     XCTAssertNotNil(matchingObjectHandler);
     
     matchingObjectHandler(managedObject, resource);
     
-    [verifyCount(session, times(1)) updateManagedObject:managedObject withResource:resource];
+    [verifyCount(session, times(1)) updateManagedObject:managedObject withResource:resource omit:nil];
     [verifyCount(session, times(1)) setManagedObject:managedObject forResource:resource];
 }
 
@@ -70,7 +70,7 @@
     RMOperation *op = [[RMUpdateOrInsertOperation alloc] initWithMappingContext:nil];
     
     // Test remaining Object Handler
-    void(^remainingObjectHandler)(NSManagedObject *managedObject) = [op remainingObjectHandlerWithSession:session];
+    void(^remainingObjectHandler)(NSManagedObject *managedObject) = [op remainingObjectHandlerWithSession:session step:nil];
     XCTAssertNil(remainingObjectHandler);
 }
 
@@ -83,7 +83,7 @@
     RMOperation *op = [[RMDeleteOperation alloc] initWithMappingContext:nil];
     
     // Test new Object Handler
-    void(^newObjectHandler)(id newObject, NSEntityDescription *entity) = [op newObjectHandlerWithSession:session];
+    void(^newObjectHandler)(id newObject, NSEntityDescription *entity) = [op newObjectHandlerWithSession:session step:nil];
     XCTAssertNil(newObjectHandler);
 }
 
@@ -97,7 +97,7 @@
     id managedObject = @"mo";
     
     // Test matching Object Handler
-    void(^matchingObjectHandler)(NSManagedObject *managedObject, id resource) = [op matchingObjectHandlerWithSession:session];
+    void(^matchingObjectHandler)(NSManagedObject *managedObject, id resource) = [op matchingObjectHandlerWithSession:session step:nil];
     XCTAssertNotNil(matchingObjectHandler);
     
     matchingObjectHandler(managedObject, resource);
@@ -112,7 +112,7 @@
     RMOperation *op = [[RMDeleteOperation alloc] initWithMappingContext:nil];
     
     // Test remaining Object Handler
-    void(^remainingObjectHandler)(NSManagedObject *managedObject) = [op remainingObjectHandlerWithSession:session];
+    void(^remainingObjectHandler)(NSManagedObject *managedObject) = [op remainingObjectHandlerWithSession:session step:nil];
     XCTAssertNil(remainingObjectHandler);
 }
 
@@ -125,7 +125,7 @@
     RMOperation *op = [[RMFetchOperation alloc] initWithMappingContext:nil];
     
     // Test new Object Handler
-    void(^newObjectHandler)(id newObject, NSEntityDescription *entity) = [op newObjectHandlerWithSession:session];
+    void(^newObjectHandler)(id newObject, NSEntityDescription *entity) = [op newObjectHandlerWithSession:session step:nil];
     XCTAssertNil(newObjectHandler);
 }
 
@@ -139,7 +139,7 @@
     id managedObject = @"mo";
     
     // Test matching Object Handler
-    void(^matchingObjectHandler)(NSManagedObject *managedObject, id resource) = [op matchingObjectHandlerWithSession:session];
+    void(^matchingObjectHandler)(NSManagedObject *managedObject, id resource) = [op matchingObjectHandlerWithSession:session step:nil];
     XCTAssertNotNil(matchingObjectHandler);
     
     matchingObjectHandler(managedObject, resource);
@@ -153,7 +153,7 @@
     RMOperation *op = [[RMFetchOperation alloc] initWithMappingContext:nil];
     
     // Test remaining Object Handler
-    void(^remainingObjectHandler)(NSManagedObject *managedObject) = [op remainingObjectHandlerWithSession:session];
+    void(^remainingObjectHandler)(NSManagedObject *managedObject) = [op remainingObjectHandlerWithSession:session step:nil];
     XCTAssertNil(remainingObjectHandler);
 }
 

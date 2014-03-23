@@ -14,19 +14,19 @@
 
 #pragma mark Session Handler
 
-- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session
+- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session step:(RMMappingStep *)step
 {
     return nil;
 }
 
-- (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session
+- (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session step:(RMMappingStep *)step
 {
     return ^(NSManagedObject *managedObject, id resource) {
         [session deleteManagedObject:managedObject];
     };
 }
 
-- (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(RMMappingSession *)session
+- (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(RMMappingSession *)session step:(RMMappingStep *)step
 {
     return nil;
 }

@@ -70,16 +70,14 @@
     
     NSManagedObject *managedObject = [[NSManagedObject alloc] initWithEntity:resourceEntity ? resourceEntity: entity
                                               insertIntoManagedObjectContext:self.context];
-    
-    [self updatePropertiesOfManagedObject:managedObject
-                            usingResource:resource];
-    
     return managedObject;
 }
 
-- (void)updateManagedObject:(NSManagedObject *)managedObject withResource:(id)resource
+- (void)updateManagedObject:(NSManagedObject *)managedObject withResource:(id)resource omit:(NSSet *)omit
 {
-    
+    [self updatePropertiesOfManagedObject:managedObject
+                            usingResource:resource
+                                     omit:omit];
 }
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject
@@ -91,6 +89,7 @@
 
 - (void)updatePropertiesOfManagedObject:(NSManagedObject *)managedObject
                           usingResource:(id)resource
+                                   omit:(NSSet *)relationshipsToOmit
 {
     // Update Properties
     // -----------------
@@ -103,7 +102,7 @@
     
     [self updateRelationshipsOfManagedObject:managedObject
                                usingResource:resource
-                                        omit:nil];
+                                        omit:relationshipsToOmit];
 }
 
 - (void)updateAttributesOfManagedObject:(NSManagedObject *)managedObject
@@ -146,6 +145,7 @@
                     object = [self managedObjectForResource:relatedResource usingEntity:destinationEntity];
                 } else {
                     object = [self insertResource:relatedResource usingEntity:destinationEntity];
+                    [self updatePropertiesOfManagedObject:object usingResource:relatedResource omit:nil];
                 }
                 if (object) {
                     [objects addObject:object];
@@ -158,6 +158,7 @@
                 object = [self managedObjectForResource:_related usingEntity:destinationEntity];
             } else {
                 object = [self insertResource:_related usingEntity:destinationEntity];
+                [self updatePropertiesOfManagedObject:object usingResource:_related omit:nil];
             }
             [managedObject setValue:object forKey:relationship.name];
         }

@@ -65,9 +65,9 @@
                                   matchingPredicate:nil
                                usingSortDescriptors:[entity rm_primaryKeySortDescriptors]
                                        sortInMemory:NO
-                                   newObjectHandler:[self newObjectHandlerWithSession:session]
-                              matchingObjectHandler:[self matchingObjectHandlerWithSession:session]
-                             remainingObjectHandler:[self remainingObjectHandlerWithSession:session]
+                                   newObjectHandler:[self newObjectHandlerWithSession:session step:step]
+                              matchingObjectHandler:[self matchingObjectHandlerWithSession:session step:step]
+                             remainingObjectHandler:[self remainingObjectHandlerWithSession:session step:step]
                                               error:error];
         
         if (!success) {
@@ -82,17 +82,17 @@
 
 #pragma mark Session Handler
 
-- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session
+- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session step:(RMMappingStep *)step
 {
     return nil;
 }
 
-- (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session
+- (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session step:(RMMappingStep *)step
 {
     return nil;
 }
 
-- (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(RMMappingSession *)session
+- (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(RMMappingSession *)session step:(RMMappingStep *)step
 {
     return nil;
 }

@@ -77,7 +77,7 @@
     
     NSDictionary *resource = @{@"x": @(1), @"y":@(2), @"z":@(3)};
     
-    [session updatePropertiesOfManagedObject:managedObject usingResource:resource];
+    [session updatePropertiesOfManagedObject:managedObject usingResource:resource omit:nil];
     
     XCTAssertEqualObjects([managedObject valueForKey:@"x"], @(1));
     XCTAssertEqualObjects([managedObject valueForKey:@"y"], @(2));
@@ -85,7 +85,7 @@
     
     resource = @{@"x": @(5), @"y":[NSNull null]};
     
-    [session updatePropertiesOfManagedObject:managedObject usingResource:resource];
+    [session updatePropertiesOfManagedObject:managedObject usingResource:resource omit:nil];
     
     XCTAssertEqualObjects([managedObject valueForKey:@"x"], @(5));
     XCTAssertNil([managedObject valueForKey:@"y"]);

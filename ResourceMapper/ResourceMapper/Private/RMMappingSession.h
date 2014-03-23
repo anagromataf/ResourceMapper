@@ -23,13 +23,21 @@
 
 #pragma mark Manipulate Context
 - (NSManagedObject *)insertResource:(id)resource usingEntity:(NSEntityDescription *)entity;
-- (void)updateManagedObject:(NSManagedObject *)managedObject withResource:(id)resource;
+- (void)updateManagedObject:(NSManagedObject *)managedObject withResource:(id)resource omit:(NSSet *)omit;
 - (void)deleteManagedObject:(NSManagedObject *)managedObject;
 
 #pragma mark Internal Methods
-- (void)updatePropertiesOfManagedObject:(NSManagedObject *)managedObject usingResource:(id)resource;
-- (void)updateAttributesOfManagedObject:(NSManagedObject *)managedObject usingResource:(id)resource;
-- (void)updateRelationshipsOfManagedObject:(NSManagedObject *)managedObject usingResource:(id)resource omit:(NSSet *)relationshipsToOmit;
+- (void)updatePropertiesOfManagedObject:(NSManagedObject *)managedObject
+                          usingResource:(id)resource
+                                   omit:(NSSet *)relationshipsToOmit;
+
+- (void)updateAttributesOfManagedObject:(NSManagedObject *)managedObject
+                          usingResource:(id)resource;
+
+- (void)updateRelationshipsOfManagedObject:(NSManagedObject *)managedObject
+                             usingResource:(id)resource
+                                      omit:(NSSet *)relationshipsToOmit;
+
 - (void)updateRelationship:(NSRelationshipDescription *)relationship
            ofManagedObject:(NSManagedObject *)managedObject
              usingResource:(id)resource;
