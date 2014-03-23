@@ -11,23 +11,7 @@
 
 @class RMDependency;
 
-typedef enum {
-    RMMappingContextOperationTypeFetch = 0,
-    RMMappingContextOperationTypeUpdateOrInsert,
-    RMMappingContextOperationTypeDelete
-} RMMappingContextOperationType;
-
 @interface RMMappingContext : NSObject
-
-#pragma mark Life-cycle
-- (id)initWithOperationType:(RMMappingContextOperationType)operationType;
-
-#pragma mark Operation Type
-@property (nonatomic, readonly) RMMappingContextOperationType operationType;
-
-#pragma mark Access Resources
-@property (nonatomic, readonly) NSArray *entities;
-- (NSDictionary *)resourcesByPrimaryKeyOfEntity:(NSEntityDescription *)entity;
 
 #pragma mark Add Resources
 - (void)addResources:(NSArray *)resources usingEntity:(NSEntityDescription *)entity;
@@ -36,5 +20,9 @@ typedef enum {
 #pragma mark Dependencies
 @property (nonatomic, readonly) RMDependency *dependency;
 - (RMDependency *)dependencyOfEntity:(NSEntityDescription *)entity;
+
+#pragma mark Access Resources
+@property (nonatomic, readonly) NSArray *entities;
+- (NSDictionary *)resourcesByPrimaryKeyOfEntity:(NSEntityDescription *)entity;
 
 @end

@@ -13,7 +13,6 @@
 #import "RMMappingContext.h"
 
 @interface RMMappingContext ()
-
 @property (nonatomic, readonly) NSMapTable *resourcesByEntity;
 @end
 
@@ -21,28 +20,14 @@
 
 #pragma mark Life-cycle
 
-- (id)initWithOperationType:(RMMappingContextOperationType)operationType;
+- (id)init
 {
     self = [super init];
     if (self) {
-        _operationType = operationType;
         _dependency = [[RMDependency alloc] init];
         _resourcesByEntity = [NSMapTable strongToStrongObjectsMapTable];
     }
     return self;
-}
-
-#pragma mark Access Resources
-
-- (NSArray *)entities
-{
-    return [[self.resourcesByEntity keyEnumerator] allObjects];
-}
-
-- (NSDictionary *)resourcesByPrimaryKeyOfEntity:(NSEntityDescription *)entity
-{
-    NSMutableDictionary *resourcesByPrimaryKey = [self.resourcesByEntity objectForKey:entity];
-    return resourcesByPrimaryKey;
 }
 
 #pragma mark Add Resources
@@ -56,17 +41,14 @@
 
 - (void)addResource:(id)resource usingEntity:(NSEntityDescription *)entity
 {
-    BOOL recursive = self.operationType == RMMappingContextOperationTypeUpdateOrInsert;
     [entity rm_traverseResource:resource
-                      recursive:recursive
+                      recursive:YES
         usingDependencyCallback:^(RMDependency *dependency) {
             [self.dependency union:dependency];
         } mappingCallback:^(NSEntityDescription *entity, NSDictionary *pk, id resource) {
             [self setResource:resource ofEntity:entity forPrimaryKey:pk];
         }];
 }
-
-#pragma mark Set Resource
 
 - (void)setResource:(id)resource ofEntity:(NSEntityDescription *)entity forPrimaryKey:(NSDictionary *)primaryKey
 {
@@ -91,6 +73,19 @@
 - (RMDependency *)dependencyOfEntity:(NSEntityDescription *)entity
 {
     return [self.dependency dependencyOfEntity:entity];
+}
+
+#pragma mark Access Resources
+
+- (NSArray *)entities
+{
+    return [[self.resourcesByEntity keyEnumerator] allObjects];
+}
+
+- (NSDictionary *)resourcesByPrimaryKeyOfEntity:(NSEntityDescription *)entity
+{
+    NSMutableDictionary *resourcesByPrimaryKey = [self.resourcesByEntity objectForKey:entity];
+    return resourcesByPrimaryKey;
 }
 
 @end
