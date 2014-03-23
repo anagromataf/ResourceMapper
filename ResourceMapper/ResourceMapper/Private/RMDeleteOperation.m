@@ -14,7 +14,7 @@
 
 #pragma mark Session Handler
 
-- (void(^)(id resource))newObjectHandlerWithSession:(RMMappingSession *)session
+- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session
 {
     return nil;
 }

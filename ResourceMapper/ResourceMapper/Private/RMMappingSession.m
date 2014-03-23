@@ -15,12 +15,10 @@
 
 #pragma mark Life-cycle
 
-- (id)initWithEntity:(NSEntityDescription *)entity
-             context:(NSManagedObjectContext *)context
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)context
 {
     self = [super init];
     if (self) {
-        _entity = entity;
         _context = context;
     }
     return self;
@@ -35,13 +33,14 @@
 
 #pragma mark Manipulate Context
 
-- (NSManagedObject *)insertResource:(id)resource
+- (NSManagedObject *)insertResource:(id)resource usingEntity:(NSEntityDescription *)entity
 {
-    NSEntityDescription *entity = [resource valueForKey:@"entity"];
-    entity = entity ?: self.entity;
-    NSAssert([entity isKindOfEntity:self.entity], @"Entity (%@) specified by the object to insert is not a subentity of (%@)", entity.name, self.entity.name);
+    NSEntityDescription *resourceEntity = [resource valueForKey:@"entity"];
+    if (resourceEntity) {
+        NSAssert([resourceEntity isKindOfEntity:entity], @"Entity (%@) specified by the object to insert is not a subentity of (%@)", resourceEntity.name, entity.name);
+    }
     
-    NSManagedObject *managedObject = [[NSManagedObject alloc] initWithEntity:entity
+    NSManagedObject *managedObject = [[NSManagedObject alloc] initWithEntity:resourceEntity ? resourceEntity: entity
                                               insertIntoManagedObjectContext:self.context];
     return managedObject;
 }
@@ -77,7 +76,7 @@
 - (void)updateAttributesOfManagedObject:(NSManagedObject *)managedObject
                           usingResource:(id)resource
 {
-    NSDictionary *values = [resource rm_dictionaryWithValuesForKeys:[[self.entity attributesByName] allKeys]
+    NSDictionary *values = [resource rm_dictionaryWithValuesForKeys:[[managedObject.entity attributesByName] allKeys]
                                                   omittingNilValues:YES];
     [managedObject setValuesForKeysWithDictionary:values];
 }

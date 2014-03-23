@@ -17,7 +17,7 @@
           matchingPredicate:(NSPredicate *)predicate
        usingSortDescriptors:(NSArray *)sortDescriptors
                sortInMemory:(BOOL)sortInMemory
-           newObjectHandler:(void(^)(id resource))newObjectHandler
+           newObjectHandler:(void(^)(id resource, NSEntityDescription *entity))newObjectHandler
       matchingObjectHandler:(void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandler
      remainingObjectHandler:(void(^)(NSManagedObject *managedObject))remainingObjectHandler
                       error:(NSError **)error
@@ -105,7 +105,7 @@
                     
                 case NSOrderedDescending:
                     if (newObjectHandler) {
-                        newObjectHandler(resource);
+                        newObjectHandler(resource, entity);
                     }
                     nextResource();
                     break;
@@ -127,7 +127,7 @@
             }
         } else if (resource != nil) {
             if (newObjectHandler) {
-                newObjectHandler(resource);
+                newObjectHandler(resource, entity);
                 nextResource();
             } else {
                 break;

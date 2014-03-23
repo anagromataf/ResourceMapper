@@ -14,10 +14,10 @@
 
 #pragma mark Session Handler
 
-- (void(^)(id resource))newObjectHandlerWithSession:(RMMappingSession *)session
+- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session
 {
-    return ^(id resource) {
-        NSManagedObject *managedObject = [session insertResource:resource];
+    return ^(id resource, NSEntityDescription *entity) {
+        NSManagedObject *managedObject = [session insertResource:resource usingEntity:entity];
         [session setManagedObject:managedObject forResource:resource];
     };
 }

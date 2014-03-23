@@ -52,7 +52,7 @@
         // Create the Mapping Session
         
         NSEntityDescription *entity = step.entity;
-        RMMappingSession *session = [[RMMappingSession alloc] initWithEntity:entity context:context];
+        RMMappingSession *session = [[RMMappingSession alloc] initWithManagedObjectContext:context];
         [self.sessions setObject:session forKey:entity];
 
         
@@ -82,7 +82,7 @@
 
 #pragma mark Session Handler
 
-- (void(^)(id resource))newObjectHandlerWithSession:(RMMappingSession *)session
+- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session
 {
     return nil;
 }

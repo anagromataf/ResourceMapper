@@ -12,17 +12,16 @@
 @interface RMMappingSession : NSObject
 
 #pragma mark Life-cycle
-- (id)initWithEntity:(NSEntityDescription *)entity context:(NSManagedObjectContext *)context;
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)context;
 
 #pragma mark Accessors
-@property (nonatomic, readonly) NSEntityDescription *entity;
 @property (nonatomic, readonly) NSManagedObjectContext *context;
 
 #pragma mark Set Object for Resource
 - (void)setManagedObject:(NSManagedObject *)managedObject forResource:(id)resource;
 
 #pragma mark Manipulate Context
-- (NSManagedObject *)insertResource:(id)resource;
+- (NSManagedObject *)insertResource:(id)resource usingEntity:(NSEntityDescription *)entity;
 - (void)updateManagedObject:(NSManagedObject *)managedObject withResource:(id)resource;
 - (void)deleteManagedObject:(NSManagedObject *)managedObject;
 

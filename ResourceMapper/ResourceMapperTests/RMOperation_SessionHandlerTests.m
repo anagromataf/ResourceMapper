@@ -31,15 +31,16 @@
 
     id resource = @"r";
     id managedObject = @"mo";
+    id entity = @"e";
     
     // Test new Object Handler
-    void(^newObjectHandler)(id newObject) = [op newObjectHandlerWithSession:session];
+    void(^newObjectHandler)(id newObject, NSEntityDescription *entity) = [op newObjectHandlerWithSession:session];
     XCTAssertNotNil(newObjectHandler);
     
-    [given([session insertResource:resource]) willReturn:managedObject];
-    newObjectHandler(resource);
+    [given([session insertResource:resource usingEntity:entity]) willReturn:managedObject];
+    newObjectHandler(resource, entity);
     
-    [verifyCount(session, times(1)) insertResource:resource];
+    [verifyCount(session, times(1)) insertResource:resource usingEntity:entity];
     [verifyCount(session, times(1)) setManagedObject:managedObject forResource:resource];
 }
 
@@ -56,7 +57,6 @@
     void(^matchingObjectHandler)(NSManagedObject *managedObject, id resource) = [op matchingObjectHandlerWithSession:session];
     XCTAssertNotNil(matchingObjectHandler);
     
-    [given([session insertResource:resource]) willReturn:managedObject];
     matchingObjectHandler(managedObject, resource);
     
     [verifyCount(session, times(1)) updateManagedObject:managedObject withResource:resource];
@@ -83,7 +83,7 @@
     RMOperation *op = [[RMDeleteOperation alloc] initWithMappingContext:nil];
     
     // Test new Object Handler
-    void(^newObjectHandler)(id newObject) = [op newObjectHandlerWithSession:session];
+    void(^newObjectHandler)(id newObject, NSEntityDescription *entity) = [op newObjectHandlerWithSession:session];
     XCTAssertNil(newObjectHandler);
 }
 
@@ -125,7 +125,7 @@
     RMOperation *op = [[RMFetchOperation alloc] initWithMappingContext:nil];
     
     // Test new Object Handler
-    void(^newObjectHandler)(id newObject) = [op newObjectHandlerWithSession:session];
+    void(^newObjectHandler)(id newObject, NSEntityDescription *entity) = [op newObjectHandlerWithSession:session];
     XCTAssertNil(newObjectHandler);
 }
 

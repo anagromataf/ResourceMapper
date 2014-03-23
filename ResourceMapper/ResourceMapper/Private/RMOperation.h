@@ -25,7 +25,7 @@
                               error:(NSError **)error;
 
 #pragma mark Session Handler (Internal Use Only)
-- (void(^)(id resource))newObjectHandlerWithSession:(RMMappingSession *)session;
+- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session;
 - (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session;
 - (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(RMMappingSession *)session;
 
