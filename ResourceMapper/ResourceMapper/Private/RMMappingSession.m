@@ -121,9 +121,10 @@
     NSDictionary *relationships = managedObject.entity.relationshipsByName;
     [relationships enumerateKeysAndObjectsUsingBlock:
      ^(NSString *name, NSRelationshipDescription *relationship, BOOL *stop) {
-         id destinationObject = [resource valueForKey:name];
-         if (destinationObject) {
-             
+         if (![relationshipsToOmit containsObject:relationship]) {
+             [self updateRelationship:relationship
+                      ofManagedObject:managedObject
+                        usingResource:resource];
          }
      }];
 }

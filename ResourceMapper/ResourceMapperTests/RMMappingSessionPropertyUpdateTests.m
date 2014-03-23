@@ -19,6 +19,47 @@
     
 }
 
+- (void)testUpdateRelationships
+{
+    NSManagedObject *object = [[NSManagedObject alloc] initWithEntity:[self entityWithName:@"Entity"]
+                                       insertIntoManagedObjectContext:self.managedObjectContext];
+    
+    NSManagedObject *bar = [[NSManagedObject alloc] initWithEntity:[self entityWithName:@"Bar"]
+                                    insertIntoManagedObjectContext:self.managedObjectContext];
+    
+    RMMappingSession *session = [[RMMappingSession alloc] initWithManagedObjectContext:self.managedObjectContext];
+    [session setManagedObject:bar forResource:@{@"identifier":@"bar1"}];
+    
+    NSDictionary *resource = @{@"foo":@{@"name":@"1"}, @"bar":@{@"identifier":@"bar1"}};
+    
+    [session updateRelationshipsOfManagedObject:object
+                                  usingResource:resource
+                                           omit:nil];
+    
+    XCTAssertEqualObjects([object valueForKeyPath:@"foo.name"], @"1");
+    XCTAssertEqualObjects([object valueForKey:@"bar"], bar);
+}
+
+- (void)testUpdateRelationshipsOmittingRelationship
+{
+    NSManagedObject *object = [[NSManagedObject alloc] initWithEntity:[self entityWithName:@"Entity"]
+                                       insertIntoManagedObjectContext:self.managedObjectContext];
+    
+    NSManagedObject *bar = [[NSManagedObject alloc] initWithEntity:[self entityWithName:@"Bar"]
+                                     insertIntoManagedObjectContext:self.managedObjectContext];
+    
+    RMMappingSession *session = [[RMMappingSession alloc] initWithManagedObjectContext:self.managedObjectContext];
+    [session setManagedObject:bar forResource:@{@"identifier":@"bar1"}];
+
+    NSDictionary *resource = @{@"foo":@{@"name":@"1"}, @"bar":@{@"identifier":@"bar1"}};
+    
+    [session updateRelationshipsOfManagedObject:object
+                                  usingResource:resource
+                                           omit:[NSSet setWithObject:[self relationshipWithName:@"foo" ofEntity:@"Entity"]]];
+    
+    XCTAssertEqualObjects([object valueForKey:@"bar"], bar);
+}
+
 - (void)testUpdateToOneRelationship
 {
     NSManagedObject *object = [[NSManagedObject alloc] initWithEntity:[self entityWithName:@"Entity"]
