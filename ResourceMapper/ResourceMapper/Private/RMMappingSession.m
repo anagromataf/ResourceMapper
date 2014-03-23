@@ -13,6 +13,7 @@
 
 @interface RMMappingSession ()
 @property (nonatomic, readonly) NSMapTable *managedObjectsByEntity;
+@property (nonatomic, readonly) NSMutableArray *pendingUpdates;
 @end
 
 @implementation RMMappingSession
@@ -25,6 +26,7 @@
     if (self) {
         _context = context;
         _managedObjectsByEntity = [NSMapTable strongToStrongObjectsMapTable];
+        _pendingUpdates = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -85,6 +87,16 @@
     [self.context deleteObject:managedObject];
 }
 
+#pragma mark Pending Updates
+
+- (void)invokePendingUpdates
+{
+    for (void(^_pendingUpdate)() in self.pendingUpdates) {
+        _pendingUpdate();
+    }
+    [self.pendingUpdates removeAllObjects];
+}
+
 #pragma mark Internal Methods
 
 - (void)updatePropertiesOfManagedObject:(NSManagedObject *)managedObject
@@ -124,6 +136,14 @@
              [self updateRelationship:relationship
                       ofManagedObject:managedObject
                         usingResource:resource];
+         } else if ([resource valueForKey:relationship.name]) {
+             
+             void(^_pendingUpdate)() = ^() {
+                 [self updateRelationship:relationship
+                          ofManagedObject:managedObject
+                            usingResource:resource];
+             };
+             [self.pendingUpdates addObject:_pendingUpdate];
          }
      }];
 }

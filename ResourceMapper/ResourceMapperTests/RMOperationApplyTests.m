@@ -63,7 +63,7 @@
     
     XCTAssertEqual([[object1 valueForKeyPath:@"subjectOf"] count], (NSUInteger)2);
     XCTAssertEqual([[object2 valueForKeyPath:@"subjectOf"] count], (NSUInteger)0);
-    XCTAssertEqual([[object3 valueForKeyPath:@"subjectOf"] count], (NSUInteger)2);
+    XCTAssertEqual([[object3 valueForKeyPath:@"subjectOf"] count], (NSUInteger)1);
     
     XCTAssertEqual([[self.managedObjectContext insertedObjects] count], (NSUInteger)10);
 }

@@ -26,6 +26,9 @@
 - (void)updateManagedObject:(NSManagedObject *)managedObject withResource:(id)resource omit:(NSSet *)omit;
 - (void)deleteManagedObject:(NSManagedObject *)managedObject;
 
+#pragma mark Pending Updates
+- (void)invokePendingUpdates;
+
 #pragma mark Internal Methods
 - (void)updatePropertiesOfManagedObject:(NSManagedObject *)managedObject
                           usingResource:(id)resource

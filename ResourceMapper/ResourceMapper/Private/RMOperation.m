@@ -83,6 +83,10 @@
         
     }];
     
+    if (_success) {
+        [session invokePendingUpdates];
+    }
+    
     return _success ? session : nil;
 }
 
