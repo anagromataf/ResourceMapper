@@ -25,7 +25,7 @@
 
 - (void)testUpdateSessionHandler_newObjectHandler
 {
-    id<RMMappingSession> session = mockProtocol(@protocol(RMMappingSession));
+    RMMappingSession * session = mock([RMMappingSession class]);
     
     RMOperation *op = [[RMUpdateOrInsertOperation alloc] initWithMappingContext:nil];
 
@@ -45,7 +45,7 @@
 
 - (void)testUpdateSessionHandler_matchingObjectHandler
 {
-    id<RMMappingSession> session = mockProtocol(@protocol(RMMappingSession));
+    RMMappingSession * session = mock([RMMappingSession class]);
     
     RMOperation *op = [[RMUpdateOrInsertOperation alloc] initWithMappingContext:nil];
     
@@ -65,7 +65,7 @@
 
 - (void)testUpdateSessionHandler_remainingObjectHandler
 {
-    id<RMMappingSession> session = mockProtocol(@protocol(RMMappingSession));
+    RMMappingSession * session = mock([RMMappingSession class]);
     
     RMOperation *op = [[RMUpdateOrInsertOperation alloc] initWithMappingContext:nil];
     
@@ -78,7 +78,7 @@
 
 - (void)testDeleteSessionHandler_newObjectHandler
 {
-    id<RMMappingSession> session = mockProtocol(@protocol(RMMappingSession));
+    RMMappingSession * session = mock([RMMappingSession class]);
     
     RMOperation *op = [[RMDeleteOperation alloc] initWithMappingContext:nil];
     
@@ -89,7 +89,7 @@
 
 - (void)testDeleteSessionHandler_matchingObjectHandler
 {
-    id<RMMappingSession> session = mockProtocol(@protocol(RMMappingSession));
+    RMMappingSession * session = mock([RMMappingSession class]);
     
     RMOperation *op = [[RMDeleteOperation alloc] initWithMappingContext:nil];
     
@@ -107,7 +107,7 @@
 
 - (void)testDeleteSessionHandler_remainingObjectHandler
 {
-    id<RMMappingSession> session = mockProtocol(@protocol(RMMappingSession));
+    RMMappingSession * session = mock([RMMappingSession class]);
     
     RMOperation *op = [[RMDeleteOperation alloc] initWithMappingContext:nil];
     
@@ -120,7 +120,7 @@
 
 - (void)testFetchSessionHandler_newObjectHandler
 {
-    id<RMMappingSession> session = mockProtocol(@protocol(RMMappingSession));
+    RMMappingSession * session = mock([RMMappingSession class]);
     
     RMOperation *op = [[RMFetchOperation alloc] initWithMappingContext:nil];
     
@@ -131,7 +131,7 @@
 
 - (void)testFetchSessionHandler_matchingObjectHandler
 {
-    id<RMMappingSession> session = mockProtocol(@protocol(RMMappingSession));
+    RMMappingSession * session = mock([RMMappingSession class]);
     
     RMOperation *op = [[RMFetchOperation alloc] initWithMappingContext:nil];
     
@@ -148,7 +148,7 @@
 
 - (void)testFetchSessionHandler_remainingObjectHandler
 {
-    id<RMMappingSession> session = mockProtocol(@protocol(RMMappingSession));
+    RMMappingSession * session = mock([RMMappingSession class]);
     
     RMOperation *op = [[RMFetchOperation alloc] initWithMappingContext:nil];
     

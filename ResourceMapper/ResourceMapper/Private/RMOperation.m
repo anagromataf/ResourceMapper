@@ -82,17 +82,17 @@
 
 #pragma mark Session Handler
 
-- (void(^)(id resource))newObjectHandlerWithSession:(id<RMMappingSession>)session
+- (void(^)(id resource))newObjectHandlerWithSession:(RMMappingSession *)session
 {
     return nil;
 }
 
-- (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(id<RMMappingSession>)session
+- (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session
 {
     return nil;
 }
 
-- (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(id<RMMappingSession>)session
+- (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(RMMappingSession *)session
 {
     return nil;
 }

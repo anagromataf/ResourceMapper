@@ -9,19 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@protocol RMMappingSession <NSObject>
-
-#pragma mark Set Object for Resource
-- (void)setManagedObject:(NSManagedObject *)managedObject forResource:(id)resource;
-
-#pragma mark Manipulate Context
-- (NSManagedObject *)insertResource:(id)resource;
-- (void)updateManagedObject:(NSManagedObject *)managedObject withResource:(id)resource;
-- (void)deleteManagedObject:(NSManagedObject *)managedObject;
-
-@end
-
-@interface RMMappingSession : NSObject <RMMappingSession>
+@interface RMMappingSession : NSObject
 
 #pragma mark Life-cycle
 - (id)initWithEntity:(NSEntityDescription *)entity context:(NSManagedObjectContext *)context;
