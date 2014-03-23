@@ -11,6 +11,10 @@
 
 #import "RMMappingSession.h"
 
+@interface RMMappingSession ()
+@property (nonatomic, readonly) NSMapTable *managedObjectsByEntity;
+@end
+
 @implementation RMMappingSession
 
 #pragma mark Life-cycle
@@ -20,15 +24,39 @@
     self = [super init];
     if (self) {
         _context = context;
+        _managedObjectsByEntity = [NSMapTable strongToStrongObjectsMapTable];
     }
     return self;
 }
 
-#pragma mark Set Object for Resource
+#pragma mark Managed Objects for Resource
 
 - (void)setManagedObject:(NSManagedObject *)managedObject forResource:(id)resource
 {
+    NSParameterAssert([managedObject.entity rm_hasPrimaryKeyProperties]);
     
+    NSEntityDescription *rootEntity = [managedObject.entity rm_rootEntity];
+    
+    NSMutableDictionary *managedObjects = [self.managedObjectsByEntity objectForKey:rootEntity];
+    if (managedObjects == nil) {
+        managedObjects = [[NSMutableDictionary alloc] init];
+        [self.managedObjectsByEntity setObject:managedObjects forKey:rootEntity];
+    }
+    
+    NSDictionary *pk = [rootEntity rm_primaryKeyOfResource:resource];
+    [managedObjects setObject:managedObject forKey:pk];
+}
+
+- (NSManagedObject *)managedObjectForResource:(id)resource usingEntity:(NSEntityDescription *)entity
+{
+    NSParameterAssert([entity rm_hasPrimaryKeyProperties]);
+
+    NSEntityDescription *rootEntity = [entity rm_rootEntity];
+    
+    NSMutableDictionary *managedObjects = [self.managedObjectsByEntity objectForKey:rootEntity];
+    NSDictionary *pk = [rootEntity rm_primaryKeyOfResource:resource];
+    
+    return [managedObjects objectForKey:pk];
 }
 
 #pragma mark Manipulate Context
@@ -42,6 +70,10 @@
     
     NSManagedObject *managedObject = [[NSManagedObject alloc] initWithEntity:resourceEntity ? resourceEntity: entity
                                               insertIntoManagedObjectContext:self.context];
+    
+    [self updatePropertiesOfManagedObject:managedObject
+                            usingResource:resource];
+    
     return managedObject;
 }
 
@@ -70,7 +102,8 @@
     // -------------------
     
     [self updateRelationshipsOfManagedObject:managedObject
-                               usingResource:resource];
+                               usingResource:resource
+                                        omit:nil];
 }
 
 - (void)updateAttributesOfManagedObject:(NSManagedObject *)managedObject
@@ -83,6 +116,7 @@
 
 - (void)updateRelationshipsOfManagedObject:(NSManagedObject *)managedObject
                              usingResource:(id)resource
+                                      omit:(NSSet *)relationshipsToOmit
 {
     NSDictionary *relationships = managedObject.entity.relationshipsByName;
     [relationships enumerateKeysAndObjectsUsingBlock:
@@ -92,6 +126,41 @@
              
          }
      }];
+}
+
+- (void)updateRelationship:(NSRelationshipDescription *)relationship
+           ofManagedObject:(NSManagedObject *)managedObject
+             usingResource:(id)resource
+{
+    id _related = [resource valueForKey:relationship.name];
+    if (_related) {
+        
+        NSEntityDescription *destinationEntity = relationship.destinationEntity;
+        
+        if (relationship.isToMany) {
+            NSMutableSet *objects = [[NSMutableSet alloc] init];
+            for (id relatedResource in _related) {
+                NSManagedObject *object = nil;
+                if ([destinationEntity rm_hasPrimaryKeyProperties]) {
+                    object = [self managedObjectForResource:relatedResource usingEntity:destinationEntity];
+                } else {
+                    object = [self insertResource:relatedResource usingEntity:destinationEntity];
+                }
+                if (object) {
+                    [objects addObject:object];
+                }
+            }
+            [managedObject setValue:objects forKey:relationship.name];
+        } else {
+            NSManagedObject *object = nil;
+            if ([destinationEntity rm_hasPrimaryKeyProperties]) {
+                object = [self managedObjectForResource:_related usingEntity:destinationEntity];
+            } else {
+                object = [self insertResource:_related usingEntity:destinationEntity];
+            }
+            [managedObject setValue:object forKey:relationship.name];
+        }
+    }
 }
 
 @end
