@@ -12,6 +12,7 @@
 #import "RMMappingStep.h"
 #import "RMMappingContext.h"
 #import "RMMappingSession.h"
+#import "RMRelationshipPath.h"
 
 #import "RMUpdateOrInsertOperation.h"
 #import "RMDeleteOperation.h"
@@ -20,7 +21,7 @@
 #import "RMOperation.h"
 
 @interface RMOperation ()
-@property (nonatomic, readonly) NSMapTable *sessions;
+
 @end
 
 @implementation RMOperation
@@ -32,17 +33,18 @@
     self = [super init];
     if (self) {
         _mappingContext = mappingContext;
-        _sessions = [NSMapTable strongToStrongObjectsMapTable];
     }
     return self;
 }
 
 #pragma mark Apply Operation
 
-- (BOOL)applyToManagedObjectContext:(NSManagedObjectContext *)context
-                              error:(NSError **)error
+- (RMMappingSession *)applyToManagedObjectContext:(NSManagedObjectContext *)context
+                                            error:(NSError **)error
 {
     __block BOOL _success = YES;
+    
+    RMMappingSession *session = [[RMMappingSession alloc] initWithManagedObjectContext:context];
     
     NSArray *steps = [RMMappingStep mappingStepsWithEntities:[NSSet setWithArray:self.mappingContext.entities]
                                                   dependency:self.mappingContext.dependency];
@@ -52,9 +54,13 @@
         // Create the Mapping Session
         
         NSEntityDescription *entity = step.entity;
-        RMMappingSession *session = [[RMMappingSession alloc] initWithManagedObjectContext:context];
-        [self.sessions setObject:session forKey:entity];
-
+        
+        // Relationships to Omit
+        
+        NSMutableSet *relationshipsToOmit = [[NSMutableSet alloc] init];
+        [step.relationshipsToOmit enumerateObjectsUsingBlock:^(RMRelationshipPath *path, BOOL *stop) {
+            [relationshipsToOmit addObject:[path.allRelationships firstObject]];
+        }];
         
         // Combine Resources
         
@@ -65,9 +71,9 @@
                                   matchingPredicate:nil
                                usingSortDescriptors:[entity rm_primaryKeySortDescriptors]
                                        sortInMemory:NO
-                                   newObjectHandler:[self newObjectHandlerWithSession:session step:step]
-                              matchingObjectHandler:[self matchingObjectHandlerWithSession:session step:step]
-                             remainingObjectHandler:[self remainingObjectHandlerWithSession:session step:step]
+                                   newObjectHandler:[self newObjectHandlerWithSession:session omit:relationshipsToOmit]
+                              matchingObjectHandler:[self matchingObjectHandlerWithSession:session omit:relationshipsToOmit]
+                             remainingObjectHandler:[self remainingObjectHandlerWithSession:session omit:relationshipsToOmit]
                                               error:error];
         
         if (!success) {
@@ -77,22 +83,22 @@
         
     }];
     
-    return _success;
+    return _success ? session : nil;
 }
 
 #pragma mark Session Handler
 
-- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session step:(RMMappingStep *)step
+- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session omit:(NSSet *)omit
 {
     return nil;
 }
 
-- (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session step:(RMMappingStep *)step
+- (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session omit:(NSSet *)omit
 {
     return nil;
 }
 
-- (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(RMMappingSession *)session step:(RMMappingStep *)step
+- (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(RMMappingSession *)session omit:(NSSet *)omit
 {
     return nil;
 }

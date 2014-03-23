@@ -8,6 +8,7 @@
 
 #import "RMMappingStep.h"
 #import "RMMappingSession.h"
+#import "RMRelationshipPath.h"
 
 #import "RMUpdateOrInsertOperation.h"
 
@@ -15,24 +16,24 @@
 
 #pragma mark Session Handler
 
-- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session step:(RMMappingStep *)step
+- (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session omit:(NSSet *)omit
 {
     return ^(id resource, NSEntityDescription *entity) {
         NSManagedObject *managedObject = [session insertResource:resource usingEntity:entity];
-        [session updatePropertiesOfManagedObject:managedObject usingResource:resource omit:[step relationshipsToOmit]];
+        [session updatePropertiesOfManagedObject:managedObject usingResource:resource omit:omit];
         [session setManagedObject:managedObject forResource:resource];
     };
 }
 
-- (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session step:(RMMappingStep *)step
+- (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session omit:(NSSet *)omit
 {
     return ^(NSManagedObject *managedObject, id resource) {
-        [session updateManagedObject:managedObject withResource:resource omit:step.relationshipsToOmit];
+        [session updateManagedObject:managedObject withResource:resource omit:omit];
         [session setManagedObject:managedObject forResource:resource];
     };
 }
 
-- (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(RMMappingSession *)session step:(RMMappingStep *)step
+- (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(RMMappingSession *)session omit:(NSSet *)omit
 {
     return nil;
 }

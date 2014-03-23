@@ -22,15 +22,15 @@
 @property (nonatomic, readonly) RMMappingContext *mappingContext;
 
 #pragma mark Apply Operation
-- (BOOL)applyToManagedObjectContext:(NSManagedObjectContext *)context
-                              error:(NSError **)error;
+- (RMMappingSession *)applyToManagedObjectContext:(NSManagedObjectContext *)context
+                                            error:(NSError **)error;
 
 #pragma mark Session Handler (Internal Use Only)
 - (void(^)(id resource, NSEntityDescription *entity))newObjectHandlerWithSession:(RMMappingSession *)session
-                                                                            step:(RMMappingStep *)step;
+                                                                            omit:(NSSet *)omit;
 - (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session
-                                                                                    step:(RMMappingStep *)step;
+                                                                                    omit:(NSSet *)omit;
 - (void(^)(NSManagedObject *managedObject))remainingObjectHandlerWithSession:(RMMappingSession *)session
-                                                                        step:(RMMappingStep *)step;
+                                                                        omit:(NSSet *)omit;
 
 @end
