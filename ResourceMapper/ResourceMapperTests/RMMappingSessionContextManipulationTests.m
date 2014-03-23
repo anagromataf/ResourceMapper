@@ -16,10 +16,7 @@
 
 - (void)testCreateSession
 {
-    NSEntityDescription *entity = [self entityWithName:@"Entity"];
-    
     RMMappingSession *session = [[RMMappingSession alloc] initWithManagedObjectContext:self.managedObjectContext];
-    
     XCTAssertEqualObjects(session.context, self.managedObjectContext);
 }
 
