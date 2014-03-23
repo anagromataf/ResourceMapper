@@ -34,6 +34,7 @@ typedef enum {
 - (void)addResource:(id)resource usingEntity:(NSEntityDescription *)entity;
 
 #pragma mark Dependencies
+@property (nonatomic, readonly) RMDependency *dependency;
 - (RMDependency *)dependencyOfEntity:(NSEntityDescription *)entity;
 
 @end

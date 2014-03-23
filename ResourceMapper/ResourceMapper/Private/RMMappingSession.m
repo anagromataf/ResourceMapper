@@ -26,6 +26,13 @@
     return self;
 }
 
+#pragma mark Set Object for Resource
+
+- (void)setManagedObject:(NSManagedObject *)managedObject forResource:(id)resource
+{
+    
+}
+
 #pragma mark Manipulate Context
 
 - (NSManagedObject *)insertResource:(id)resource

@@ -13,7 +13,7 @@
 #import "RMMappingContext.h"
 
 @interface RMMappingContext ()
-@property (nonatomic, readonly) RMDependency *dependency;
+
 @property (nonatomic, readonly) NSMapTable *resourcesByEntity;
 @end
 
