@@ -20,5 +20,6 @@
 #pragma mark Helpers
 - (NSEntityDescription *)entityWithName:(NSString *)name;
 - (NSPropertyDescription *)propertyWithName:(NSString *)propertyName ofEntity:(id)entity;
+- (NSRelationshipDescription *)relationshipWithName:(NSString *)relationshipName ofEntity:(id)entity;
 
 @end

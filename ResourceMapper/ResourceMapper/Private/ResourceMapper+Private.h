@@ -11,8 +11,14 @@
 #import "RMCombiningProxy.h"
 #import "RMMappingContext.h"
 #import "RMMappingSession.h"
+#import "RMMappingStep.h"
 #import "RMRelationshipPath.h"
 #import "RMDependency.h"
+
+#import "RMOperation.h"
+#import "RMUpdateOrInsertOperation.h"
+#import "RMDeleteOperation.h"
+#import "RMFetchOperation.h"
 
 // Foundation Additions
 #import "NSObject+Private.h"

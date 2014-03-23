@@ -49,4 +49,12 @@
     return [[(NSEntityDescription *)entity propertiesByName] valueForKey:propertyName];
 }
 
+- (NSRelationshipDescription *)relationshipWithName:(NSString *)relationshipName ofEntity:(id)entity
+{
+    if ([entity isKindOfClass:[NSString class]]) {
+        entity = [self entityWithName:entity];
+    }
+    return [[(NSEntityDescription *)entity relationshipsByName] valueForKey:relationshipName];
+}
+
 @end

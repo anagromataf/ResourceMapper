@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Object" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="objectOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Predicate" inverseName="object" inverseEntity="Predicate" syncable="YES"/>
+        <relationship name="subjectOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Predicate" inverseName="subject" inverseEntity="Predicate" syncable="YES"/>
+        <userInfo>
+            <entry key="RM_PK" value="identifier"/>
+        </userInfo>
+    </entity>
+    <entity name="Predicate" syncable="YES">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="object" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Object" inverseName="objectOf" inverseEntity="Object" syncable="YES"/>
+        <relationship name="subject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Object" inverseName="subjectOf" inverseEntity="Object" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Object" positionX="-270" positionY="81" width="128" height="118"/>
+        <element name="Predicate" positionX="-65" positionY="98" width="128" height="88"/>
+    </elements>
+</model>

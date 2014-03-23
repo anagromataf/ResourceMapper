@@ -57,7 +57,7 @@
     __block NSMutableSet *matchingObjects = [[NSMutableSet alloc] init];
     __block NSMutableSet *remainingObjects = [[NSMutableSet alloc] init];
     
-    void(^_newObjectHandler)(id newObject) = ^(id newObject) {
+    void(^_newObjectHandler)(id newObject, NSEntityDescription *entity) = ^(id newObject, NSEntityDescription *entity) {
         [newObjects addObject:newObject];
     };
     
