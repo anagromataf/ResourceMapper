@@ -1,0 +1,14 @@
+PODS:
+  - ResourceMapper
+
+DEPENDENCIES:
+  - ResourceMapper (from `../ResourceMapper.podspec`)
+
+EXTERNAL SOURCES:
+  ResourceMapper:
+    :path: ../ResourceMapper.podspec
+
+SPEC CHECKSUMS:
+  ResourceMapper: 42c0f4af7b92143094508d85e14c2feebf357273
+
+COCOAPODS: 0.29.0

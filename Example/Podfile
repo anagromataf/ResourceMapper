@@ -1,7 +1,8 @@
-pod "ResourceMapper", :path => "../ResourceMapper.podspec"
+xcodeproj 'ResourceMapperDemo/ResourceMapperDemo.xcodeproj'
 
-target "Demo" do
-end
-
-target "DemoTests" do
+target "ResourceMapperDemo" do
+    platform :osx, '10.9'
+    link_with 'ResourceMapperDemo'
+	
+	pod "ResourceMapper", :path => "../ResourceMapper.podspec"
 end
