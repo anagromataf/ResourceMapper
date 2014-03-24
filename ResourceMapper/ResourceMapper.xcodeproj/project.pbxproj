@@ -28,27 +28,18 @@
 		F63A764218CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A763F18CB93E500A309F2 /* NSSortDescriptor+Private.m */; };
 		F63A764418CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764318CB944100A309F2 /* RMMangedObjectContextTestCase.m */; };
 		F63A764518CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764318CB944100A309F2 /* RMMangedObjectContextTestCase.m */; };
-		F63A764818CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m */; };
-		F63A764918CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m */; };
+		F63A764818CB94F100A309F2 /* NSManagedObjectContextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764718CB94F100A309F2 /* NSManagedObjectContextTests.m */; };
+		F63A764918CB94F100A309F2 /* NSManagedObjectContextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A764718CB94F100A309F2 /* NSManagedObjectContextTests.m */; };
 		F63A764C18CB957700A309F2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F63A764A18CB957700A309F2 /* Model.xcdatamodeld */; };
 		F63A764D18CB957700A309F2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F63A764A18CB957700A309F2 /* Model.xcdatamodeld */; };
 		F63A765318CB96D000A309F2 /* ResourceMapper+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A765118CB96D000A309F2 /* ResourceMapper+Private.h */; };
 		F63A765A18CBA22B00A309F2 /* NSEntityDescription+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A765818CBA22B00A309F2 /* NSEntityDescription+Private.h */; };
 		F63A765B18CBA22B00A309F2 /* NSEntityDescription+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A765918CBA22B00A309F2 /* NSEntityDescription+Private.m */; };
 		F63A765C18CBA22B00A309F2 /* NSEntityDescription+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A765918CBA22B00A309F2 /* NSEntityDescription+Private.m */; };
-		F63A765E18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A765D18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m */; };
-		F63A765F18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A765D18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m */; };
+		F63A765E18CBA2C100A309F2 /* NSEntityDescriptionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A765D18CBA2C100A309F2 /* NSEntityDescriptionTests.m */; };
+		F63A765F18CBA2C100A309F2 /* NSEntityDescriptionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A765D18CBA2C100A309F2 /* NSEntityDescriptionTests.m */; };
 		F63A766418CBA30900A309F2 /* RMManagedObjectModelTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A766318CBA30900A309F2 /* RMManagedObjectModelTestCase.m */; };
 		F63A766518CBA30900A309F2 /* RMManagedObjectModelTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A766318CBA30900A309F2 /* RMManagedObjectModelTestCase.m */; };
-		F63A766B18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A766A18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m */; };
-		F63A766C18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A766A18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m */; };
-		F63A766E18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A766D18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m */; };
-		F63A766F18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A766D18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m */; };
-		F63A767218CBBC4A00A309F2 /* RMObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A767018CBBC4A00A309F2 /* RMObjectProxy.h */; };
-		F63A767318CBBC4A00A309F2 /* RMObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767118CBBC4A00A309F2 /* RMObjectProxy.m */; };
-		F63A767418CBBC4A00A309F2 /* RMObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767118CBBC4A00A309F2 /* RMObjectProxy.m */; };
-		F63A767718CBBCEC00A309F2 /* RMObjectProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767618CBBCEC00A309F2 /* RMObjectProxyTests.m */; };
-		F63A767818CBBCEC00A309F2 /* RMObjectProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767618CBBCEC00A309F2 /* RMObjectProxyTests.m */; };
 		F63A767D18CBBF2A00A309F2 /* RMMappingSession.h in Headers */ = {isa = PBXBuildFile; fileRef = F63A767B18CBBF2A00A309F2 /* RMMappingSession.h */; };
 		F63A767E18CBBF2A00A309F2 /* RMMappingSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767C18CBBF2A00A309F2 /* RMMappingSession.m */; };
 		F63A767F18CBBF2A00A309F2 /* RMMappingSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F63A767C18CBBF2A00A309F2 /* RMMappingSession.m */; };
@@ -67,9 +58,6 @@
 		F674F99C18D8DE6D00521850 /* RMDependencyPathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F99A18D8DE6D00521850 /* RMDependencyPathTests.m */; };
 		F674F99F18D8DED200521850 /* RMDependencyPathTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674F99D18D8DED200521850 /* RMDependencyPathTests.xcdatamodeld */; };
 		F674F9A018D8DED200521850 /* RMDependencyPathTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674F99D18D8DED200521850 /* RMDependencyPathTests.xcdatamodeld */; };
-		F674F9A318D8E1B100521850 /* NSMutableArray+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F674F9A118D8E1B100521850 /* NSMutableArray+Private.h */; };
-		F674F9A418D8E1B100521850 /* NSMutableArray+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9A218D8E1B100521850 /* NSMutableArray+Private.m */; };
-		F674F9A518D8E1B100521850 /* NSMutableArray+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9A218D8E1B100521850 /* NSMutableArray+Private.m */; };
 		F674F9B218D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9B118D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m */; };
 		F674F9B318D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F9B118D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m */; };
 		F674F9B618D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674F9B418D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodeld */; };
@@ -181,19 +169,14 @@
 		F63A763F18CB93E500A309F2 /* NSSortDescriptor+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSortDescriptor+Private.m"; sourceTree = "<group>"; };
 		F63A764318CB944100A309F2 /* RMMangedObjectContextTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMangedObjectContextTestCase.m; sourceTree = "<group>"; };
 		F63A764618CB948C00A309F2 /* RMMangedObjectContextTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMMangedObjectContextTestCase.h; sourceTree = "<group>"; };
-		F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSManagedObjectContext_CombineResourcesTests.m; sourceTree = "<group>"; };
+		F63A764718CB94F100A309F2 /* NSManagedObjectContextTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSManagedObjectContextTests.m; sourceTree = "<group>"; };
 		F63A764B18CB957700A309F2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F63A765118CB96D000A309F2 /* ResourceMapper+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ResourceMapper+Private.h"; sourceTree = "<group>"; };
 		F63A765818CBA22B00A309F2 /* NSEntityDescription+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSEntityDescription+Private.h"; sourceTree = "<group>"; };
 		F63A765918CBA22B00A309F2 /* NSEntityDescription+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSEntityDescription+Private.m"; sourceTree = "<group>"; };
-		F63A765D18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSEntityDescription_RootEntityTests.m; sourceTree = "<group>"; };
+		F63A765D18CBA2C100A309F2 /* NSEntityDescriptionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSEntityDescriptionTests.m; sourceTree = "<group>"; };
 		F63A766218CBA30900A309F2 /* RMManagedObjectModelTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMManagedObjectModelTestCase.h; sourceTree = "<group>"; };
 		F63A766318CBA30900A309F2 /* RMManagedObjectModelTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMManagedObjectModelTestCase.m; sourceTree = "<group>"; };
-		F63A766A18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSEntityDescription_PrimaryKeyTests.m; sourceTree = "<group>"; };
-		F63A766D18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSEntityDescription_PrimaryKeySortDescriptorTests.m; sourceTree = "<group>"; };
-		F63A767018CBBC4A00A309F2 /* RMObjectProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMObjectProxy.h; sourceTree = "<group>"; };
-		F63A767118CBBC4A00A309F2 /* RMObjectProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMObjectProxy.m; sourceTree = "<group>"; };
-		F63A767618CBBCEC00A309F2 /* RMObjectProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMObjectProxyTests.m; sourceTree = "<group>"; };
 		F63A767B18CBBF2A00A309F2 /* RMMappingSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMappingSession.h; sourceTree = "<group>"; };
 		F63A767C18CBBF2A00A309F2 /* RMMappingSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMappingSession.m; sourceTree = "<group>"; };
 		F63A768A18CBD42E00A309F2 /* NSObject+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Private.h"; sourceTree = "<group>"; };
@@ -205,8 +188,6 @@
 		F63CF1A718CD2DDC00B29969 /* RMCombiningProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCombiningProxy.m; sourceTree = "<group>"; };
 		F674F99A18D8DE6D00521850 /* RMDependencyPathTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDependencyPathTests.m; sourceTree = "<group>"; };
 		F674F99E18D8DED200521850 /* RMDependencyPathTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMDependencyPathTests.xcdatamodel; sourceTree = "<group>"; };
-		F674F9A118D8E1B100521850 /* NSMutableArray+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Private.h"; sourceTree = "<group>"; };
-		F674F9A218D8E1B100521850 /* NSMutableArray+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Private.m"; sourceTree = "<group>"; };
 		F674F9B118D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMResourceTraversalMappingCallbackTests.m; sourceTree = "<group>"; };
 		F674F9B518D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMResourceTraversalMappingCallbackTests.xcdatamodel; sourceTree = "<group>"; };
 		F674F9BB18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMResourceTraversalDependencyTests.m; sourceTree = "<group>"; };
@@ -341,15 +322,8 @@
 		F63A75FE18CB89BC00A309F2 /* Resource Mapper Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F63A764E18CB966200A309F2 /* Model */,
-				F63A766618CBA47100A309F2 /* CoreData TestCases */,
-				F63A767518CBBCD300A309F2 /* Object Proxy */,
-				F674F9A918D8E68700521850 /* Dependency Paths */,
-				F674F99918D8DDCB00521850 /* Resource Traversal */,
-				F63A769918CD1B4200A309F2 /* Mapping Context */,
-				F674F9DD18DDF2D200521850 /* Mapping Step */,
-				F63A768018CBC02C00A309F2 /* Mapping Session */,
-				F674F9FA18DF422700521850 /* Operation */,
+				F674FA2718E0B22B00521850 /* Mapping Context & Dependency */,
+				F674F9FA18DF422700521850 /* Operation & Session */,
 				F63A764F18CB966800A309F2 /* Core Data Additions Tests */,
 				F63A75FF18CB89BC00A309F2 /* Supporting Files */,
 			);
@@ -360,6 +334,8 @@
 		F63A75FF18CB89BC00A309F2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F63A764E18CB966200A309F2 /* Model */,
+				F63A766618CBA47100A309F2 /* CoreData TestCases */,
 				F63A760018CB89BC00A309F2 /* ResourceMapperTests-Info.plist */,
 				F63A760118CB89BC00A309F2 /* InfoPlist.strings */,
 			);
@@ -388,11 +364,9 @@
 			isa = PBXGroup;
 			children = (
 				F63A765118CB96D000A309F2 /* ResourceMapper+Private.h */,
-				F674F9C218DA1D2A00521850 /* Dependency */,
-				F63A769818CD18D000A309F2 /* Context */,
-				F674F9EA18DE235C00521850 /* Operation */,
-				F63A767A18CBBF1600A309F2 /* Session */,
-				F63A767918CBBDFC00A309F2 /* Proxy Object */,
+				F63A769818CD18D000A309F2 /* Mapping Context & Dependency */,
+				F674F9EA18DE235C00521850 /* Operation & Session */,
+				F63A767918CBBDFC00A309F2 /* Proxy */,
 				F63A765718CB978E00A309F2 /* Foundation Additions */,
 				F63A765618CB978200A309F2 /* Core Data Additions */,
 			);
@@ -410,18 +384,10 @@
 		F63A764F18CB966800A309F2 /* Core Data Additions Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F63A766118CBA2D800A309F2 /* Entity Description */,
-				F63A766018CBA2CD00A309F2 /* Managed Object Context */,
+				F63A765D18CBA2C100A309F2 /* NSEntityDescriptionTests.m */,
+				F63A764718CB94F100A309F2 /* NSManagedObjectContextTests.m */,
 			);
 			name = "Core Data Additions Tests";
-			sourceTree = "<group>";
-		};
-		F63A765018CB967B00A309F2 /* Combine Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F63A764718CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m */,
-			);
-			name = "Combine Resources";
 			sourceTree = "<group>";
 		};
 		F63A765618CB978200A309F2 /* Core Data Additions */ = {
@@ -442,28 +408,8 @@
 				F63A768B18CBD42E00A309F2 /* NSObject+Private.m */,
 				F63A763E18CB93E500A309F2 /* NSSortDescriptor+Private.h */,
 				F63A763F18CB93E500A309F2 /* NSSortDescriptor+Private.m */,
-				F674F9A118D8E1B100521850 /* NSMutableArray+Private.h */,
-				F674F9A218D8E1B100521850 /* NSMutableArray+Private.m */,
 			);
 			name = "Foundation Additions";
-			sourceTree = "<group>";
-		};
-		F63A766018CBA2CD00A309F2 /* Managed Object Context */ = {
-			isa = PBXGroup;
-			children = (
-				F63A765018CB967B00A309F2 /* Combine Resources */,
-			);
-			name = "Managed Object Context";
-			sourceTree = "<group>";
-		};
-		F63A766118CBA2D800A309F2 /* Entity Description */ = {
-			isa = PBXGroup;
-			children = (
-				F63A765D18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m */,
-				F63A766A18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m */,
-				F63A766D18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m */,
-			);
-			name = "Entity Description";
 			sourceTree = "<group>";
 		};
 		F63A766618CBA47100A309F2 /* CoreData TestCases */ = {
@@ -477,108 +423,31 @@
 			name = "CoreData TestCases";
 			sourceTree = "<group>";
 		};
-		F63A767518CBBCD300A309F2 /* Object Proxy */ = {
+		F63A767918CBBDFC00A309F2 /* Proxy */ = {
 			isa = PBXGroup;
 			children = (
-				F63A767618CBBCEC00A309F2 /* RMObjectProxyTests.m */,
-			);
-			name = "Object Proxy";
-			sourceTree = "<group>";
-		};
-		F63A767918CBBDFC00A309F2 /* Proxy Object */ = {
-			isa = PBXGroup;
-			children = (
-				F63A767018CBBC4A00A309F2 /* RMObjectProxy.h */,
-				F63A767118CBBC4A00A309F2 /* RMObjectProxy.m */,
 				F63CF1A618CD2DDC00B29969 /* RMCombiningProxy.h */,
 				F63CF1A718CD2DDC00B29969 /* RMCombiningProxy.m */,
 			);
-			name = "Proxy Object";
+			name = Proxy;
 			sourceTree = "<group>";
 		};
-		F63A767A18CBBF1600A309F2 /* Session */ = {
-			isa = PBXGroup;
-			children = (
-				F63A767B18CBBF2A00A309F2 /* RMMappingSession.h */,
-				F63A767C18CBBF2A00A309F2 /* RMMappingSession.m */,
-			);
-			name = Session;
-			sourceTree = "<group>";
-		};
-		F63A768018CBC02C00A309F2 /* Mapping Session */ = {
-			isa = PBXGroup;
-			children = (
-				F674FA0218DF68D400521850 /* RMMappingSessionContextManipulationTests.m */,
-				F674FA0518DF68E100521850 /* RMMappingSessionContextManipulationTests.xcdatamodeld */,
-				F674FA0918DF846A00521850 /* RMMappingSessionPropertyUpdateTests.m */,
-				F674FA0C18DF848A00521850 /* RMMappingSessionPropertyUpdateTests.xcdatamodeld */,
-				F674FA1018DF8C0A00521850 /* RMMappingSessionManagedObjectForResourceTests.m */,
-				F674FA1318DF8C2100521850 /* RMMappingSessionManagedObjectForResourceTests.xcdatamodeld */,
-			);
-			name = "Mapping Session";
-			sourceTree = "<group>";
-		};
-		F63A769818CD18D000A309F2 /* Context */ = {
+		F63A769818CD18D000A309F2 /* Mapping Context & Dependency */ = {
 			isa = PBXGroup;
 			children = (
 				F63A769318CD18C400A309F2 /* RMMappingContext.h */,
 				F63A769418CD18C400A309F2 /* RMMappingContext.m */,
 				F674F9D818DD9D5700521850 /* RMMappingStep.h */,
 				F674F9D918DD9D5700521850 /* RMMappingStep.m */,
-			);
-			name = Context;
-			sourceTree = "<group>";
-		};
-		F63A769918CD1B4200A309F2 /* Mapping Context */ = {
-			isa = PBXGroup;
-			children = (
-				F63A769018CD16C000A309F2 /* RMMappingContext_AddResourcesTests.m */,
-				F674F9FE18DF678F00521850 /* RMMappingContext_AddResourcesTests.xcdatamodeld */,
-			);
-			name = "Mapping Context";
-			sourceTree = "<group>";
-		};
-		F674F99918D8DDCB00521850 /* Resource Traversal */ = {
-			isa = PBXGroup;
-			children = (
-				F674F9B118D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m */,
-				F674F9B418D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodeld */,
-				F674F9BB18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m */,
-				F674F9BE18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld */,
-			);
-			name = "Resource Traversal";
-			sourceTree = "<group>";
-		};
-		F674F9A918D8E68700521850 /* Dependency Paths */ = {
-			isa = PBXGroup;
-			children = (
-				F674F99A18D8DE6D00521850 /* RMDependencyPathTests.m */,
-				F674F99D18D8DED200521850 /* RMDependencyPathTests.xcdatamodeld */,
-			);
-			name = "Dependency Paths";
-			sourceTree = "<group>";
-		};
-		F674F9C218DA1D2A00521850 /* Dependency */ = {
-			isa = PBXGroup;
-			children = (
 				F674F9C318DA1D4900521850 /* RMRelationshipPath.h */,
 				F674F9C418DA1D4900521850 /* RMRelationshipPath.m */,
 				F674F9CD18DA472600521850 /* RMDependency.h */,
 				F674F9CE18DA472600521850 /* RMDependency.m */,
 			);
-			name = Dependency;
+			name = "Mapping Context & Dependency";
 			sourceTree = "<group>";
 		};
-		F674F9DD18DDF2D200521850 /* Mapping Step */ = {
-			isa = PBXGroup;
-			children = (
-				F674F9DE18DDF2F000521850 /* RMMappingStepTests.m */,
-				F674F9E118DDF30F00521850 /* RMMappingStepTests.xcdatamodeld */,
-			);
-			name = "Mapping Step";
-			sourceTree = "<group>";
-		};
-		F674F9EA18DE235C00521850 /* Operation */ = {
+		F674F9EA18DE235C00521850 /* Operation & Session */ = {
 			isa = PBXGroup;
 			children = (
 				F674F9E518DE235500521850 /* RMOperation.h */,
@@ -589,18 +458,43 @@
 				F674F9F118DF402800521850 /* RMDeleteOperation.m */,
 				F674F9F518DF403700521850 /* RMFetchOperation.h */,
 				F674F9F618DF403700521850 /* RMFetchOperation.m */,
+				F63A767B18CBBF2A00A309F2 /* RMMappingSession.h */,
+				F63A767C18CBBF2A00A309F2 /* RMMappingSession.m */,
 			);
-			name = Operation;
+			name = "Operation & Session";
 			sourceTree = "<group>";
 		};
-		F674F9FA18DF422700521850 /* Operation */ = {
+		F674F9FA18DF422700521850 /* Operation & Session */ = {
 			isa = PBXGroup;
 			children = (
 				F674F9FB18DF425700521850 /* RMOperation_SessionHandlerTests.m */,
 				F674FA1718DF9C5D00521850 /* RMOperationApplyTests.m */,
 				F674FA1E18DF9D5100521850 /* RMOperationApplyTests.xcdatamodeld */,
+				F674FA0218DF68D400521850 /* RMMappingSessionContextManipulationTests.m */,
+				F674FA0518DF68E100521850 /* RMMappingSessionContextManipulationTests.xcdatamodeld */,
+				F674FA0918DF846A00521850 /* RMMappingSessionPropertyUpdateTests.m */,
+				F674FA0C18DF848A00521850 /* RMMappingSessionPropertyUpdateTests.xcdatamodeld */,
+				F674FA1018DF8C0A00521850 /* RMMappingSessionManagedObjectForResourceTests.m */,
+				F674FA1318DF8C2100521850 /* RMMappingSessionManagedObjectForResourceTests.xcdatamodeld */,
 			);
-			name = Operation;
+			name = "Operation & Session";
+			sourceTree = "<group>";
+		};
+		F674FA2718E0B22B00521850 /* Mapping Context & Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				F674F99A18D8DE6D00521850 /* RMDependencyPathTests.m */,
+				F674F99D18D8DED200521850 /* RMDependencyPathTests.xcdatamodeld */,
+				F674F9B118D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m */,
+				F674F9B418D8F89A00521850 /* RMResourceTraversalMappingCallbackTests.xcdatamodeld */,
+				F674F9BB18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m */,
+				F674F9BE18D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld */,
+				F63A769018CD16C000A309F2 /* RMMappingContext_AddResourcesTests.m */,
+				F674F9FE18DF678F00521850 /* RMMappingContext_AddResourcesTests.xcdatamodeld */,
+				F674F9DE18DDF2F000521850 /* RMMappingStepTests.m */,
+				F674F9E118DDF30F00521850 /* RMMappingStepTests.xcdatamodeld */,
+			);
+			name = "Mapping Context & Dependency";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -616,10 +510,8 @@
 				F63A763B18CB939100A309F2 /* NSManagedObjectContext+Private.h in Headers */,
 				F63A765318CB96D000A309F2 /* ResourceMapper+Private.h in Headers */,
 				F63A768C18CBD42E00A309F2 /* NSObject+Private.h in Headers */,
-				F674F9A318D8E1B100521850 /* NSMutableArray+Private.h in Headers */,
 				F63A767D18CBBF2A00A309F2 /* RMMappingSession.h in Headers */,
 				F63CF1A818CD2DDC00B29969 /* RMCombiningProxy.h in Headers */,
-				F63A767218CBBC4A00A309F2 /* RMObjectProxy.h in Headers */,
 				F674F9F718DF403700521850 /* RMFetchOperation.h in Headers */,
 				F674F9E718DE235500521850 /* RMOperation.h in Headers */,
 				F674F9DA18DD9D5700521850 /* RMMappingStep.h in Headers */,
@@ -714,7 +606,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = RM;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Tobias Kräntzer";
 			};
 			buildConfigurationList = F63A75E018CB89BC00A309F2 /* Build configuration list for PBXProject "ResourceMapper" */;
@@ -824,11 +716,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F674F9F318DF402800521850 /* RMDeleteOperation.m in Sources */,
-				F674F9A418D8E1B100521850 /* NSMutableArray+Private.m in Sources */,
 				F63A765B18CBA22B00A309F2 /* NSEntityDescription+Private.m in Sources */,
 				F674F9C618DA1D4900521850 /* RMRelationshipPath.m in Sources */,
 				F63A763C18CB939100A309F2 /* NSManagedObjectContext+Private.m in Sources */,
-				F63A767318CBBC4A00A309F2 /* RMObjectProxy.m in Sources */,
 				F674F9DB18DD9D5700521850 /* RMMappingStep.m in Sources */,
 				F674F9F818DF403700521850 /* RMFetchOperation.m in Sources */,
 				F63A764118CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */,
@@ -849,9 +739,8 @@
 				F674F9DF18DDF2F000521850 /* RMMappingStepTests.m in Sources */,
 				F674FA0018DF678F00521850 /* RMMappingContext_AddResourcesTests.xcdatamodeld in Sources */,
 				F674F9C018D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */,
-				F63A764818CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */,
-				F63A765E18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m in Sources */,
-				F63A767718CBBCEC00A309F2 /* RMObjectProxyTests.m in Sources */,
+				F63A764818CB94F100A309F2 /* NSManagedObjectContextTests.m in Sources */,
+				F63A765E18CBA2C100A309F2 /* NSEntityDescriptionTests.m in Sources */,
 				F63A766418CBA30900A309F2 /* RMManagedObjectModelTestCase.m in Sources */,
 				F674FA0318DF68D400521850 /* RMMappingSessionContextManipulationTests.m in Sources */,
 				F674FA1518DF8C2100521850 /* RMMappingSessionManagedObjectForResourceTests.xcdatamodeld in Sources */,
@@ -859,10 +748,8 @@
 				F674FA2018DF9D5100521850 /* RMOperationApplyTests.xcdatamodeld in Sources */,
 				F674F9FC18DF425700521850 /* RMOperation_SessionHandlerTests.m in Sources */,
 				F63A764C18CB957700A309F2 /* Model.xcdatamodeld in Sources */,
-				F63A766E18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m in Sources */,
 				F674F9B218D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m in Sources */,
 				F63A769118CD16C000A309F2 /* RMMappingContext_AddResourcesTests.m in Sources */,
-				F63A766B18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
 				F674F9BC18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m in Sources */,
 				F674FA0A18DF846A00521850 /* RMMappingSessionPropertyUpdateTests.m in Sources */,
 				F674F99F18D8DED200521850 /* RMDependencyPathTests.xcdatamodeld in Sources */,
@@ -881,11 +768,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F674F9F418DF402800521850 /* RMDeleteOperation.m in Sources */,
-				F674F9A518D8E1B100521850 /* NSMutableArray+Private.m in Sources */,
 				F63A765C18CBA22B00A309F2 /* NSEntityDescription+Private.m in Sources */,
 				F674F9C718DA1D4900521850 /* RMRelationshipPath.m in Sources */,
 				F63A763D18CB939100A309F2 /* NSManagedObjectContext+Private.m in Sources */,
-				F63A767418CBBC4A00A309F2 /* RMObjectProxy.m in Sources */,
 				F674F9DC18DD9D5700521850 /* RMMappingStep.m in Sources */,
 				F674F9F918DF403700521850 /* RMFetchOperation.m in Sources */,
 				F63A764218CB93E500A309F2 /* NSSortDescriptor+Private.m in Sources */,
@@ -906,9 +791,8 @@
 				F674F9E018DDF2F000521850 /* RMMappingStepTests.m in Sources */,
 				F674FA0118DF678F00521850 /* RMMappingContext_AddResourcesTests.xcdatamodeld in Sources */,
 				F674F9C118D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */,
-				F63A764918CB94F100A309F2 /* NSManagedObjectContext_CombineResourcesTests.m in Sources */,
-				F63A765F18CBA2C100A309F2 /* NSEntityDescription_RootEntityTests.m in Sources */,
-				F63A767818CBBCEC00A309F2 /* RMObjectProxyTests.m in Sources */,
+				F63A764918CB94F100A309F2 /* NSManagedObjectContextTests.m in Sources */,
+				F63A765F18CBA2C100A309F2 /* NSEntityDescriptionTests.m in Sources */,
 				F63A766518CBA30900A309F2 /* RMManagedObjectModelTestCase.m in Sources */,
 				F674FA0418DF68D400521850 /* RMMappingSessionContextManipulationTests.m in Sources */,
 				F674FA1618DF8C2100521850 /* RMMappingSessionManagedObjectForResourceTests.xcdatamodeld in Sources */,
@@ -916,10 +800,8 @@
 				F674FA2118DF9D5100521850 /* RMOperationApplyTests.xcdatamodeld in Sources */,
 				F674F9FD18DF425700521850 /* RMOperation_SessionHandlerTests.m in Sources */,
 				F63A764D18CB957700A309F2 /* Model.xcdatamodeld in Sources */,
-				F63A766F18CBABA700A309F2 /* NSEntityDescription_PrimaryKeySortDescriptorTests.m in Sources */,
 				F674F9B318D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m in Sources */,
 				F63A769218CD16C000A309F2 /* RMMappingContext_AddResourcesTests.m in Sources */,
-				F63A766C18CBA91C00A309F2 /* NSEntityDescription_PrimaryKeyTests.m in Sources */,
 				F674F9BD18D8FCCD00521850 /* RMResourceTraversalDependencyTests.m in Sources */,
 				F674FA0B18DF846A00521850 /* RMMappingSessionPropertyUpdateTests.m in Sources */,
 				F674F9A018D8DED200521850 /* RMDependencyPathTests.xcdatamodeld in Sources */,
@@ -964,7 +846,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1002,7 +883,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1060,7 +940,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C530E0F5039B492BB36E211F /* Pods-ResourceMapperiOSTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1089,7 +968,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C530E0F5039B492BB36E211F /* Pods-ResourceMapperiOSTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

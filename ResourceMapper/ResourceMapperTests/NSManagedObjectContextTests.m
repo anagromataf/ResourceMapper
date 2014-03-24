@@ -1,5 +1,5 @@
 //
-//  NSManagedObjectContext_CombineResourcesTests.m
+//  NSManagedObjectContextTests.m
 //  ResourceMapper
 //
 //  Created by Tobias Kräntzer on 03.03.14.
@@ -11,11 +11,11 @@
 
 #import "RMMangedObjectContextTestCase.h"
 
-@interface NSManagedObjectContext_CombineResourcesTests : RMMangedObjectContextTestCase
+@interface NSManagedObjectContextTests : RMMangedObjectContextTestCase
 
 @end
 
-@implementation NSManagedObjectContext_CombineResourcesTests
+@implementation NSManagedObjectContextTests
 
 - (void)setUp
 {

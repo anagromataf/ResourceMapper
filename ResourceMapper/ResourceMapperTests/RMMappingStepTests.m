@@ -29,7 +29,7 @@
 
     XCTAssertEqual([steps count], (NSUInteger)1);
     XCTAssertEqualObjects([[steps firstObject] entity], [self entityWithName:@"A"]);
-    XCTAssertEqualObjects([[steps firstObject] relationshipsToOmit], [NSSet set]);
+    XCTAssertEqualObjects([[steps firstObject] relationshipPathsToOmit], [NSSet set]);
 }
 
 - (void)test2
@@ -50,7 +50,7 @@
     
     RMRelationshipPath *path = [[RMRelationshipPath alloc] init];
     [path push:(NSRelationshipDescription *)[self propertyWithName:@"children" ofEntity:@"A"]];
-    XCTAssertEqualObjects([[steps firstObject] relationshipsToOmit],
+    XCTAssertEqualObjects([[steps firstObject] relationshipPathsToOmit],
                           [NSSet setWithObject:path]);
 }
 
@@ -69,10 +69,10 @@
     
     XCTAssertEqual([steps count], (NSUInteger)2);
     XCTAssertEqualObjects([[steps objectAtIndex:0] entity], [self entityWithName:@"B"]);
-    XCTAssertEqualObjects([[steps objectAtIndex:0] relationshipsToOmit], [NSSet set]);
+    XCTAssertEqualObjects([[steps objectAtIndex:0] relationshipPathsToOmit], [NSSet set]);
     
     XCTAssertEqualObjects([[steps objectAtIndex:1] entity], [self entityWithName:@"A"]);
-    XCTAssertEqualObjects([[steps objectAtIndex:1] relationshipsToOmit], [NSSet set]);
+    XCTAssertEqualObjects([[steps objectAtIndex:1] relationshipPathsToOmit], [NSSet set]);
 }
 
 - (void)test4
@@ -91,12 +91,12 @@
     
     XCTAssertEqual([steps count], (NSUInteger)2);
     XCTAssertEqualObjects([[steps objectAtIndex:0] entity], [self entityWithName:@"B"]);
-    XCTAssertEqualObjects([[steps objectAtIndex:0] relationshipsToOmit], [NSSet set]);
+    XCTAssertEqualObjects([[steps objectAtIndex:0] relationshipPathsToOmit], [NSSet set]);
     
     RMRelationshipPath *path = [[RMRelationshipPath alloc] init];
     [path push:(NSRelationshipDescription *)[self propertyWithName:@"children" ofEntity:@"A"]];
     XCTAssertEqualObjects([[steps objectAtIndex:1] entity], [self entityWithName:@"A"]);
-    XCTAssertEqualObjects([[steps objectAtIndex:1] relationshipsToOmit], [NSSet setWithObject:path]);
+    XCTAssertEqualObjects([[steps objectAtIndex:1] relationshipPathsToOmit], [NSSet setWithObject:path]);
 }
 
 - (void)test5
@@ -119,9 +119,9 @@
     
     RMRelationshipPath *path = [[RMRelationshipPath alloc] init];
     [path push:(NSRelationshipDescription *)[self propertyWithName:@"toB" ofEntity:@"A"]];
-    XCTAssertEqualObjects([[steps objectAtIndex:0] relationshipsToOmit], [NSSet setWithObject:path]);
+    XCTAssertEqualObjects([[steps objectAtIndex:0] relationshipPathsToOmit], [NSSet setWithObject:path]);
     
-    XCTAssertEqualObjects([[steps objectAtIndex:1] relationshipsToOmit], [NSSet set]);
+    XCTAssertEqualObjects([[steps objectAtIndex:1] relationshipPathsToOmit], [NSSet set]);
 }
 
 - (void)test6
@@ -145,9 +145,9 @@
     XCTAssertEqualObjects([[steps objectAtIndex:1] entity], [self entityWithName:@"B"]);
     XCTAssertEqualObjects([[steps objectAtIndex:2] entity], [self entityWithName:@"A"]);
     
-    XCTAssertEqualObjects([[steps objectAtIndex:0] relationshipsToOmit], [NSSet set]);
-    XCTAssertEqualObjects([[steps objectAtIndex:1] relationshipsToOmit], [NSSet set]);
-    XCTAssertEqualObjects([[steps objectAtIndex:2] relationshipsToOmit], [NSSet set]);
+    XCTAssertEqualObjects([[steps objectAtIndex:0] relationshipPathsToOmit], [NSSet set]);
+    XCTAssertEqualObjects([[steps objectAtIndex:1] relationshipPathsToOmit], [NSSet set]);
+    XCTAssertEqualObjects([[steps objectAtIndex:2] relationshipPathsToOmit], [NSSet set]);
 }
 
 - (void)test7
@@ -173,10 +173,10 @@
     
     RMRelationshipPath *path = [[RMRelationshipPath alloc] init];
     [path push:(NSRelationshipDescription *)[self propertyWithName:@"toB" ofEntity:@"A"]];
-    XCTAssertEqualObjects([[steps objectAtIndex:0] relationshipsToOmit], [NSSet setWithObject:path]);
+    XCTAssertEqualObjects([[steps objectAtIndex:0] relationshipPathsToOmit], [NSSet setWithObject:path]);
     
-    XCTAssertEqualObjects([[steps objectAtIndex:1] relationshipsToOmit], [NSSet set]);
-    XCTAssertEqualObjects([[steps objectAtIndex:2] relationshipsToOmit], [NSSet set]);
+    XCTAssertEqualObjects([[steps objectAtIndex:1] relationshipPathsToOmit], [NSSet set]);
+    XCTAssertEqualObjects([[steps objectAtIndex:2] relationshipPathsToOmit], [NSSet set]);
 }
 
 - (void)test8
@@ -200,11 +200,11 @@
     
     RMRelationshipPath *path1 = [[RMRelationshipPath alloc] init];
     [path1 push:(NSRelationshipDescription *)[self propertyWithName:@"children" ofEntity:@"B"]];
-    XCTAssertEqualObjects([[steps objectAtIndex:0] relationshipsToOmit], [NSSet setWithObject:path1]);
+    XCTAssertEqualObjects([[steps objectAtIndex:0] relationshipPathsToOmit], [NSSet setWithObject:path1]);
     
     RMRelationshipPath *path2 = [[RMRelationshipPath alloc] init];
     [path2 push:(NSRelationshipDescription *)[self propertyWithName:@"children" ofEntity:@"A"]];
-    XCTAssertEqualObjects([[steps objectAtIndex:1] relationshipsToOmit], [NSSet setWithObject:path2]);
+    XCTAssertEqualObjects([[steps objectAtIndex:1] relationshipPathsToOmit], [NSSet setWithObject:path2]);
 }
 
 @end

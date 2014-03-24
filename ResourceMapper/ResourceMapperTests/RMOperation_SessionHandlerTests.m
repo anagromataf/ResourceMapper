@@ -59,7 +59,7 @@
     
     matchingObjectHandler(managedObject, resource);
     
-    [verifyCount(session, times(1)) updateManagedObject:managedObject withResource:resource omit:nil];
+    [verifyCount(session, times(1)) updatePropertiesOfManagedObject:managedObject withResource:resource omitRelationships:nil];
     [verifyCount(session, times(1)) setManagedObject:managedObject forResource:resource];
 }
 

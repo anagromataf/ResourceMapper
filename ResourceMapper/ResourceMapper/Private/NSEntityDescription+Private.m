@@ -8,7 +8,6 @@
 
 #import "NSObject+Private.h"
 #import "NSSortDescriptor+Private.h"
-#import "NSMutableArray+Private.h"
 
 #import "RMDependency.h"
 

@@ -1,5 +1,5 @@
 //
-//  NSEntityDescription_PrimaryKeyTests.m
+//  NSEntityDescriptionTests.m
 //  ResourceMapper
 //
 //  Created by Tobias Kräntzer on 08.03.14.
@@ -8,11 +8,23 @@
 
 #import "RMManagedObjectModelTestCase.h"
 
-@interface NSEntityDescription_PrimaryKeyTests : RMManagedObjectModelTestCase
+@interface NSEntityDescriptionTests : RMManagedObjectModelTestCase
 
 @end
 
-@implementation NSEntityDescription_PrimaryKeyTests
+@implementation NSEntityDescriptionTests
+
+#pragma mark Tests | Root Entity
+
+- (void)testGetRootEntity
+{
+    NSEntityDescription *entity = [self entityWithName:@"Entity"];
+    NSEntityDescription *specialEntity = [self entityWithName:@"SpecialEntity"];
+
+    XCTAssertEqualObjects([specialEntity rm_rootEntity], entity);
+}
+
+#pragma mark Tests | Primary Key
 
 - (void)testPrimaryKeyPropertyNames
 {
@@ -34,6 +46,20 @@
                                            [self propertyWithName:@"parent" ofEntity:@"Entity"]];
     
     XCTAssertEqualObjects(primaryKeyProperties, expectedPrimaryProperties);
+}
+
+#pragma mark Tests | Sort Descriptor
+
+- (void)testPrimaryKeySortDescriptor
+{
+    NSEntityDescription *entity = [self entityWithName:@"Entity"];
+    
+    NSArray *sortDescriptors = [entity rm_primaryKeySortDescriptors];
+    
+    NSArray *expectedSortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"identifier" ascending:YES],
+                                         [NSSortDescriptor sortDescriptorWithKey:@"parent" ascending:YES]];
+    
+    XCTAssertEqualObjects(sortDescriptors, expectedSortDescriptors);
 }
 
 @end

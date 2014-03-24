@@ -33,8 +33,8 @@
     NSDictionary *resource = @{@"foo":@{@"name":@"1"}, @"bar":@{@"identifier":@"bar1"}};
     
     [session updateRelationshipsOfManagedObject:object
-                                  usingResource:resource
-                                           omit:nil];
+                                  withResource:resource
+                                           omitRelationships:nil];
     
     XCTAssertEqualObjects([object valueForKeyPath:@"foo.name"], @"1");
     XCTAssertEqualObjects([object valueForKey:@"bar"], bar);
@@ -54,8 +54,8 @@
     NSDictionary *resource = @{@"foo":@{@"name":@"1"}, @"bar":@{@"identifier":@"bar1"}};
     
     [session updateRelationshipsOfManagedObject:object
-                                  usingResource:resource
-                                           omit:[NSSet setWithObject:[self relationshipWithName:@"foo" ofEntity:@"Entity"]]];
+                                  withResource:resource
+                                           omitRelationships:[NSSet setWithObject:[self relationshipWithName:@"foo" ofEntity:@"Entity"]]];
     
     XCTAssertEqualObjects([object valueForKey:@"bar"], bar);
 }
@@ -71,7 +71,7 @@
     
     [session updateRelationship:[self relationshipWithName:@"foo" ofEntity:@"Entity"]
                 ofManagedObject:object
-                  usingResource:resource];
+                  withResource:resource];
     
     XCTAssertEqualObjects([object valueForKeyPath:@"foo.name"], @"1");
 }
@@ -87,7 +87,7 @@
     
     [session updateRelationship:[self relationshipWithName:@"foos" ofEntity:@"Entity"]
                 ofManagedObject:object
-                  usingResource:resource];
+                  withResource:resource];
     
     NSSet *expectedValues = [NSSet setWithObjects:@"1", @"2", nil];
     XCTAssertEqualObjects([object valueForKeyPath:@"foos.name"], expectedValues);
@@ -108,7 +108,7 @@
     
     [session updateRelationship:[self relationshipWithName:@"bar" ofEntity:@"Entity"]
                 ofManagedObject:object
-                  usingResource:resource];
+                  withResource:resource];
     
     XCTAssertEqualObjects([object valueForKey:@"bar"], bar);
 }
@@ -132,7 +132,7 @@
     
     [session updateRelationship:[self relationshipWithName:@"bars" ofEntity:@"Entity"]
                 ofManagedObject:object
-                  usingResource:resource];
+                  withResource:resource];
     
     NSSet *expectedValues = [NSSet setWithObjects:bar1, bar2, nil];
     XCTAssertEqualObjects([object valueForKeyPath:@"bars"], expectedValues);

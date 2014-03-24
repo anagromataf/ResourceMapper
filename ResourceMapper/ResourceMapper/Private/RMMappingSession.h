@@ -21,28 +21,27 @@
 - (void)setManagedObject:(NSManagedObject *)managedObject forResource:(id)resource;
 - (NSManagedObject *)managedObjectForResource:(id)resource usingEntity:(NSEntityDescription *)entity;
 
-#pragma mark Manipulate Context
+#pragma mark Insert or Delete a Managed Object
 - (NSManagedObject *)insertResource:(id)resource usingEntity:(NSEntityDescription *)entity;
-- (void)updateManagedObject:(NSManagedObject *)managedObject withResource:(id)resource omit:(NSSet *)omit;
 - (void)deleteManagedObject:(NSManagedObject *)managedObject;
 
-#pragma mark Pending Updates
-- (void)invokePendingUpdates;
-
-#pragma mark Internal Methods
+#pragma mark Update a Managed Object
 - (void)updatePropertiesOfManagedObject:(NSManagedObject *)managedObject
-                          usingResource:(id)resource
-                                   omit:(NSSet *)relationshipsToOmit;
-
-- (void)updateAttributesOfManagedObject:(NSManagedObject *)managedObject
-                          usingResource:(id)resource;
+                           withResource:(id)resource
+                      omitRelationships:(NSSet *)relationshipsToOmit;
 
 - (void)updateRelationshipsOfManagedObject:(NSManagedObject *)managedObject
-                             usingResource:(id)resource
-                                      omit:(NSSet *)relationshipsToOmit;
+                              withResource:(id)resource
+                         omitRelationships:(NSSet *)relationshipsToOmit;
+
+- (void)updateAttributesOfManagedObject:(NSManagedObject *)managedObject
+                           withResource:(id)resource;
 
 - (void)updateRelationship:(NSRelationshipDescription *)relationship
            ofManagedObject:(NSManagedObject *)managedObject
-             usingResource:(id)resource;
+              withResource:(id)resource;
+
+#pragma mark Pending Updates
+- (void)invokePendingUpdates;
 
 @end

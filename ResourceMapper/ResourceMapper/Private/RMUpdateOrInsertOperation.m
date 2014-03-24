@@ -20,7 +20,7 @@
 {
     return ^(id resource, NSEntityDescription *entity) {
         NSManagedObject *managedObject = [session insertResource:resource usingEntity:entity];
-        [session updatePropertiesOfManagedObject:managedObject usingResource:resource omit:omit];
+        [session updatePropertiesOfManagedObject:managedObject withResource:resource omitRelationships:omit];
         [session setManagedObject:managedObject forResource:resource];
     };
 }
@@ -28,7 +28,7 @@
 - (void(^)(NSManagedObject *managedObject, id resource))matchingObjectHandlerWithSession:(RMMappingSession *)session omit:(NSSet *)omit
 {
     return ^(NSManagedObject *managedObject, id resource) {
-        [session updateManagedObject:managedObject withResource:resource omit:omit];
+        [session updatePropertiesOfManagedObject:managedObject withResource:resource omitRelationships:omit];
         [session setManagedObject:managedObject forResource:resource];
     };
 }

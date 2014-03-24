@@ -101,7 +101,7 @@
     self = [super init];
     if (self) {
         _entity = entity;
-        _relationshipsToOmit = relationshipsToOmit;
+        _relationshipPathsToOmit = relationshipsToOmit;
     }
     return self;
 }

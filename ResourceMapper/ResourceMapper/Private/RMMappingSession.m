@@ -78,8 +78,8 @@
 - (void)updateManagedObject:(NSManagedObject *)managedObject withResource:(id)resource omit:(NSSet *)omit
 {
     [self updatePropertiesOfManagedObject:managedObject
-                            usingResource:resource
-                                     omit:omit];
+                            withResource:resource
+                                     omitRelationships:omit];
 }
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject
@@ -100,25 +100,25 @@
 #pragma mark Internal Methods
 
 - (void)updatePropertiesOfManagedObject:(NSManagedObject *)managedObject
-                          usingResource:(id)resource
-                                   omit:(NSSet *)relationshipsToOmit
+                          withResource:(id)resource
+                      omitRelationships:(NSSet *)relationshipsToOmit
 {
     // Update Properties
     // -----------------
     
     [self updateAttributesOfManagedObject:managedObject
-                            usingResource:resource];
+                            withResource:resource];
     
     // Update Relatonships
     // -------------------
     
     [self updateRelationshipsOfManagedObject:managedObject
-                               usingResource:resource
-                                        omit:relationshipsToOmit];
+                               withResource:resource
+                                        omitRelationships:relationshipsToOmit];
 }
 
 - (void)updateAttributesOfManagedObject:(NSManagedObject *)managedObject
-                          usingResource:(id)resource
+                          withResource:(id)resource
 {
     NSDictionary *values = [resource rm_dictionaryWithValuesForKeys:[[managedObject.entity attributesByName] allKeys]
                                                   omittingNilValues:YES];
@@ -126,8 +126,8 @@
 }
 
 - (void)updateRelationshipsOfManagedObject:(NSManagedObject *)managedObject
-                             usingResource:(id)resource
-                                      omit:(NSSet *)relationshipsToOmit
+                             withResource:(id)resource
+                         omitRelationships:(NSSet *)relationshipsToOmit
 {
     NSDictionary *relationships = managedObject.entity.relationshipsByName;
     [relationships enumerateKeysAndObjectsUsingBlock:
@@ -135,13 +135,13 @@
          if (![relationshipsToOmit containsObject:relationship]) {
              [self updateRelationship:relationship
                       ofManagedObject:managedObject
-                        usingResource:resource];
+                        withResource:resource];
          } else if ([resource valueForKey:relationship.name]) {
              
              void(^_pendingUpdate)() = ^() {
                  [self updateRelationship:relationship
                           ofManagedObject:managedObject
-                            usingResource:resource];
+                            withResource:resource];
              };
              [self.pendingUpdates addObject:_pendingUpdate];
          }
@@ -150,7 +150,7 @@
 
 - (void)updateRelationship:(NSRelationshipDescription *)relationship
            ofManagedObject:(NSManagedObject *)managedObject
-             usingResource:(id)resource
+             withResource:(id)resource
 {
     id _related = [resource valueForKey:relationship.name];
     if (_related) {
@@ -165,7 +165,7 @@
                     object = [self managedObjectForResource:relatedResource usingEntity:destinationEntity];
                 } else {
                     object = [self insertResource:relatedResource usingEntity:destinationEntity];
-                    [self updatePropertiesOfManagedObject:object usingResource:relatedResource omit:nil];
+                    [self updatePropertiesOfManagedObject:object withResource:relatedResource omitRelationships:nil];
                 }
                 if (object) {
                     [objects addObject:object];
@@ -178,7 +178,7 @@
                 object = [self managedObjectForResource:_related usingEntity:destinationEntity];
             } else {
                 object = [self insertResource:_related usingEntity:destinationEntity];
-                [self updatePropertiesOfManagedObject:object usingResource:_related omit:nil];
+                [self updatePropertiesOfManagedObject:object withResource:_related omitRelationships:nil];
             }
             [managedObject setValue:object forKey:relationship.name];
         }

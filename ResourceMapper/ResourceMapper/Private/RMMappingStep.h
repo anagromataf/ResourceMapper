@@ -18,6 +18,6 @@
 
 #pragma mark Entity & Omitted Relationships
 @property (nonatomic, readonly) NSEntityDescription *entity;
-@property (nonatomic, readonly) NSSet *relationshipsToOmit;
+@property (nonatomic, readonly) NSSet *relationshipPathsToOmit;
 
 @end

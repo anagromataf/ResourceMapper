@@ -51,14 +51,12 @@
     
     [steps enumerateObjectsUsingBlock:^(RMMappingStep *step, NSUInteger idx, BOOL *stop) {
         
-        // Create the Mapping Session
-        
         NSEntityDescription *entity = step.entity;
         
         // Relationships to Omit
         
         NSMutableSet *relationshipsToOmit = [[NSMutableSet alloc] init];
-        [step.relationshipsToOmit enumerateObjectsUsingBlock:^(RMRelationshipPath *path, BOOL *stop) {
+        [step.relationshipPathsToOmit enumerateObjectsUsingBlock:^(RMRelationshipPath *path, BOOL *stop) {
             [relationshipsToOmit addObject:[path.allRelationships firstObject]];
         }];
         
