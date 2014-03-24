@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface RMMappingSession : NSObject
+#import "RMMapper.h"
+
+@interface RMMappingSession : NSObject <RMResult>
 
 #pragma mark Life-cycle
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)context;
