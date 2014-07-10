@@ -158,7 +158,7 @@
         NSEntityDescription *destinationEntity = relationship.destinationEntity;
         
         if (relationship.isToMany) {
-            NSMutableSet *objects = [[NSMutableSet alloc] init];
+            id objects = relationship.isOrdered ? [[NSMutableOrderedSet alloc] init] : [[NSMutableSet alloc] init];
             for (id relatedResource in _related) {
                 NSManagedObject *object = nil;
                 if ([destinationEntity rm_hasPrimaryKeyProperties]) {
