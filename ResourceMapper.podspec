@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name                = "ResourceMapper"
   s.version             = "0.1"
   s.summary			    = "Maps resources with its primary key to managed objects in CoreData."
-  s.authors			    = { "Tobias Kräntzer" => "info@tobias-kranetzer.de" }
+  s.authors			    = { "Tobias Kräntzer" => "info@tobias-kraentzer.de" }
   s.social_media_url 	= 'https://twitter.com/anagrom_ataf'
   s.license             = { :type => 'BSD', :file => 'LICENSE.md' }
   s.homepage			= "https://github.com/anagromataf/ResourceMapper"
