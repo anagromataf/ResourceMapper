@@ -26,6 +26,12 @@
 
 - (id)initWithPersistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
+    return [self initWithPersistentStoreCoordinator:persistentStoreCoordinator
+                                        mergePolicy:nil];
+}
+
+- (id)initWithPersistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator mergePolicy:(NSMergePolicy *)mergePolicy
+{
     self = [super init];
     if (self) {
         
@@ -35,6 +41,7 @@
         
         _operationContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         _operationContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
+        if (mergePolicy) _operationContext.mergePolicy = mergePolicy;
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(operationManagedObjectContextDidSave:)
