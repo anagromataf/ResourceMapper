@@ -20,6 +20,7 @@ typedef void(^RMMapperComplitionHandler)(id<RMResult> result, NSError *error);
 
 #pragma mark Life-cycle
 - (id)initWithPersistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator;
+- (id)initWithPersistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator mergePolicy:(NSMergePolicy *)mergePolicy;
 
 #pragma mark Persistent Store Coordinator
 @property (nonatomic, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;

@@ -60,13 +60,30 @@
             [relationshipsToOmit addObject:[path.allRelationships firstObject]];
         }];
         
-        // Combine Resources
-        
         NSDictionary *resources = [self.mappingContext resourcesByPrimaryKeyOfEntity:entity];
+        
+        // Create filter predicate
+        
+        // Create predicate matching at least the objects with the primary keys of the resources.
+        // If the primary key consists of more than one property, the result may contain more objects.
+        NSMutableArray *predicates = [[NSMutableArray alloc] init];
+        [[entity rm_primaryKeyPropertyNames] enumerateObjectsUsingBlock:^(NSString *propertyName, NSUInteger idx, BOOL *stop) {
+            NSArray *values = [[resources allKeys] valueForKeyPath:propertyName];
+            NSPredicate *keyPredicate = [NSComparisonPredicate predicateWithLeftExpression:[NSExpression expressionForKeyPath:propertyName]
+                                                                           rightExpression:[NSExpression expressionForConstantValue:values]
+                                                                                  modifier:NSDirectPredicateModifier
+                                                                                      type:NSInPredicateOperatorType
+                                                                                   options:0];
+            
+            [predicates addObject:keyPredicate];
+        }];
+        NSPredicate *predicate = [NSCompoundPredicate orPredicateWithSubpredicates:predicates];
+        
+        // Combine Resources
         
         BOOL success = [context rm_combineResources:[resources allValues]
                                 withObjectsOfEntity:entity
-                                  matchingPredicate:nil
+                                  matchingPredicate:predicate
                                usingSortDescriptors:[entity rm_primaryKeySortDescriptors]
                                        sortInMemory:NO
                                    newObjectHandler:[self newObjectHandlerWithSession:session omit:relationshipsToOmit]
