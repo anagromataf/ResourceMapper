@@ -228,7 +228,7 @@
 - (void)dependentManagedObjectContextDidSave:(NSNotification *)aNotification
 {
     // Merge Changes from Dependent Contexts into the Operation Context
-    [self.operationContext performBlockAndWait:^{
+    [self.operationContext performBlock:^{
         if ([self.dependentContexts containsObject:aNotification.object]) {
             [self.operationContext mergeChangesFromContextDidSaveNotification:aNotification];
         }
