@@ -14,6 +14,7 @@
 #import "NSEntityDescription+Private.h"
 
 NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey = @"RM_PK";
+NSString * const NSEntityDescriptionGarbagePredicateUserInfoKey = @"RM_GARBAGE";
 
 @implementation NSEntityDescription (Private)
 
@@ -182,6 +183,18 @@ NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey = @"RM_PK";
     } else {
         return dependency;
     }
+}
+
+#pragma mark Garbage Predicate
+
+- (NSPredicate *)rm_garbagePredicate
+{
+    NSString *predicateString = [self.userInfo valueForKey:NSEntityDescriptionGarbagePredicateUserInfoKey];
+    if (predicateString) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateString];
+        return predicate;
+    }
+    return nil;
 }
 
 @end

@@ -43,4 +43,8 @@ typedef void(^RMMapperComplitionHandler)(id<RMResult> result, NSError *error);
                usingEntityDescription:(NSEntityDescription *)entityDescription
                            completion:(RMMapperComplitionHandler)completion;
 
+#pragma mark Garbage Collection
+
+- (void)collectGarbage:(RMMapperComplitionHandler)completion;
+
 @end

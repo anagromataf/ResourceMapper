@@ -62,4 +62,23 @@
     XCTAssertEqualObjects(sortDescriptors, expectedSortDescriptors);
 }
 
+#pragma mark Tests | Garbage Predicate
+
+- (void)testGarbagePredicate
+{
+    NSEntityDescription *entity = [self entityWithName:@"Entity"];
+    NSPredicate *predicate = [entity rm_garbagePredicate];
+    
+    XCTAssertNotNil(predicate);
+    XCTAssertEqualObjects(predicate, [NSPredicate predicateWithFormat:@"identifier == nil"]);
+}
+
+- (void)testNilGarbagePredicate
+{
+    NSEntityDescription *entity = [self entityWithName:@"SubEntity"];
+    NSPredicate *predicate = [entity rm_garbagePredicate];
+    
+    XCTAssertNil(predicate);
+}
+
 @end
