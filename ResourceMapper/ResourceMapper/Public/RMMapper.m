@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Tobias Kräntzer. All rights reserved.
 //
 
+#import "NSEntityDescription+Private.h"
+
 #import "RMMappingContext.h"
 #import "RMUpdateOrInsertOperation.h"
 #import "RMDeleteOperation.h"
@@ -154,6 +156,53 @@
         
         if (completion) {
             completion(success ? session : nil, error);
+        }
+    }];
+}
+
+#pragma mark Garbage Collection
+
+- (void)collectGarbage:(RMMapperComplitionHandler)completion
+{
+    [self.operationContext performBlock:^{
+        
+        BOOL success = NO;
+        NSError *error = nil;
+        
+        for (NSEntityDescription *entity in [self.persistentStoreCoordinator.managedObjectModel entities]) {
+            NSPredicate *predicate = [entity rm_garbagePredicate];
+            if (predicate) {
+                
+                NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+                request.predicate = predicate;
+                request.resultType = NSManagedObjectResultType;
+                
+                @autoreleasepool {
+                    
+                    NSArray *objects = [self.operationContext executeFetchRequest:request error:&error];
+                    if (objects == nil) {
+                        [self.operationContext rollback];
+                        if (completion) {
+                            completion(nil, error);
+                        }
+                        return;
+                    }
+                    
+                    for (NSManagedObject *object in objects) {
+                        [self.operationContext deleteObject:object];
+                    }
+                }
+            }
+        }
+        
+        // Save Changes
+        
+        success = [self.operationContext save:&error];
+        
+        // Call Completion Handler
+        
+        if (completion) {
+            completion(nil, error);
         }
     }];
 }

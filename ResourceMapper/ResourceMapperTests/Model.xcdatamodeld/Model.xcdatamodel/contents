@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Entity" syncable="YES">
         <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,6 +7,7 @@
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entity" inverseName="subentities" inverseEntity="Entity" syncable="YES"/>
         <relationship name="subentities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entity" inverseName="parent" inverseEntity="Entity" syncable="YES"/>
         <userInfo>
+            <entry key="RM_GARBAGE" value="identifier == nil"/>
             <entry key="RM_PK" value="identifier ,parent "/>
         </userInfo>
     </entity>
@@ -35,11 +36,11 @@
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entity" positionX="2529" positionY="-1645" width="128" height="118"/>
+        <element name="Entity" positionX="2529" positionY="-1645" width="128" height="120"/>
         <element name="Item" positionX="2356" positionY="-1647" width="128" height="88"/>
         <element name="Object" positionX="2754" positionY="-1656" width="128" height="118"/>
         <element name="Predicate" positionX="2943" positionY="-1638" width="128" height="88"/>
-        <element name="SpecialEntity" positionX="2554" positionY="-1368" width="128" height="43"/>
+        <element name="SpecialEntity" positionX="2554" positionY="-1368" width="128" height="45"/>
         <element name="SubEntity" positionX="2545" positionY="-1467" width="128" height="58"/>
     </elements>
 </model>

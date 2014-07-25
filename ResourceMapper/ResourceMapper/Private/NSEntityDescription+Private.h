@@ -11,6 +11,7 @@
 @class RMDependency;
 
 extern NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey;
+extern NSString * const NSEntityDescriptionGarbagePredicateUserInfoKey;
 
 @interface NSEntityDescription (Private)
 
@@ -34,5 +35,8 @@ extern NSString * const NSEntityDescriptionPrimaryKeyUserInfoKey;
                             recursive:(BOOL)recursive
               usingDependencyCallback:(void(^)(RMDependency *dependency))dependencyCallback
                       mappingCallback:(void(^)(NSEntityDescription *entity, NSDictionary *pk, id resource))mappingCallback;
+
+#pragma mark Garbage Predicate
+- (NSPredicate *)rm_garbagePredicate;
 
 @end
