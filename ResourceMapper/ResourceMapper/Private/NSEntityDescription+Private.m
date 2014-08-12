@@ -153,12 +153,13 @@ NSString * const NSEntityDescriptionGarbagePredicateUserInfoKey = @"RM_GARBAGE";
                  RMDependency *subDependency = [[RMDependency alloc] init];
                  
                  for (id resource in relatedResource) {
-                     RMDependency *dep = [relationship.destinationEntity rm_traverseResource:resource
-                                                                                   recursive:recursive
-                                                                     usingDependencyCallback:dependencyCallback
-                                                                             mappingCallback:mappingCallback];
-                     
-                     [subDependency union:dep];
+                     if (![resource isKindOfClass:[NSNull class]]) {
+                         RMDependency *dep = [relationship.destinationEntity rm_traverseResource:resource
+                                                                                       recursive:recursive
+                                                                         usingDependencyCallback:dependencyCallback
+                                                                                 mappingCallback:mappingCallback];
+                         [subDependency union:dep];
+                     }
                  }
                  
                  [subDependency pushRelationship:relationship];
