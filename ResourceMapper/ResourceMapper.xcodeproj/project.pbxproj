@@ -114,6 +114,9 @@
 		F674FA1918DF9C5D00521850 /* RMOperationApplyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F674FA1718DF9C5D00521850 /* RMOperationApplyTests.m */; };
 		F674FA2018DF9D5100521850 /* RMOperationApplyTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674FA1E18DF9D5100521850 /* RMOperationApplyTests.xcdatamodeld */; };
 		F674FA2118DF9D5100521850 /* RMOperationApplyTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674FA1E18DF9D5100521850 /* RMOperationApplyTests.xcdatamodeld */; };
+		F677AA04199CC35300171E65 /* NSManagedObject+ResourceMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = F677AA02199CC35300171E65 /* NSManagedObject+ResourceMapper.h */; };
+		F677AA05199CC35300171E65 /* NSManagedObject+ResourceMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F677AA03199CC35300171E65 /* NSManagedObject+ResourceMapper.m */; };
+		F677AA06199CC35300171E65 /* NSManagedObject+ResourceMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F677AA03199CC35300171E65 /* NSManagedObject+ResourceMapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,6 +226,8 @@
 		F674FA1418DF8C2100521850 /* RMMappingSessionManagedObjectForResourceTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMMappingSessionManagedObjectForResourceTests.xcdatamodel; sourceTree = "<group>"; };
 		F674FA1718DF9C5D00521850 /* RMOperationApplyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMOperationApplyTests.m; sourceTree = "<group>"; };
 		F674FA1F18DF9D5100521850 /* RMMappingContext_AddResourcesTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMMappingContext_AddResourcesTests.xcdatamodel; sourceTree = "<group>"; };
+		F677AA02199CC35300171E65 /* NSManagedObject+ResourceMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+ResourceMapper.h"; sourceTree = "<group>"; };
+		F677AA03199CC35300171E65 /* NSManagedObject+ResourceMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+ResourceMapper.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -363,6 +368,8 @@
 				F63A75ED18CB89BC00A309F2 /* ResourceMapper.h */,
 				F62E067918E0BF9800CA40CB /* RMMapper.h */,
 				F62E067A18E0BF9800CA40CB /* RMMapper.m */,
+				F677AA02199CC35300171E65 /* NSManagedObject+ResourceMapper.h */,
+				F677AA03199CC35300171E65 /* NSManagedObject+ResourceMapper.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -511,6 +518,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F677AA04199CC35300171E65 /* NSManagedObject+ResourceMapper.h in Headers */,
 				F674F9ED18DF3E8600521850 /* RMUpdateOrInsertOperation.h in Headers */,
 				F674F9C518DA1D4900521850 /* RMRelationshipPath.h in Headers */,
 				F63A764018CB93E500A309F2 /* NSSortDescriptor+Private.h in Headers */,
@@ -723,6 +731,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F677AA05199CC35300171E65 /* NSManagedObject+ResourceMapper.m in Sources */,
 				F674F9F318DF402800521850 /* RMDeleteOperation.m in Sources */,
 				F63A765B18CBA22B00A309F2 /* NSEntityDescription+Private.m in Sources */,
 				F674F9C618DA1D4900521850 /* RMRelationshipPath.m in Sources */,
@@ -776,6 +785,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F677AA06199CC35300171E65 /* NSManagedObject+ResourceMapper.m in Sources */,
 				F674F9F418DF402800521850 /* RMDeleteOperation.m in Sources */,
 				F63A765C18CBA22B00A309F2 /* NSEntityDescription+Private.m in Sources */,
 				F674F9C718DA1D4900521850 /* RMRelationshipPath.m in Sources */,

@@ -8,3 +8,6 @@
 
 // Mapper
 #import "RMMapper.h"
+
+// Additions
+#import "NSManagedObject+ResourceMapper.h"
