@@ -63,6 +63,37 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark Model Properties
+
+- (NSDictionary *)primaryKeyNamesByEntityName
+{
+    NSMutableDictionary *primaryKeyNamesByEntityName = [[NSMutableDictionary alloc] init];
+    
+    [[self.persistentStoreCoordinator.managedObjectModel entities] enumerateObjectsUsingBlock:^(NSEntityDescription *entity, NSUInteger idx, BOOL *stop) {
+        NSEntityDescription *rootEntity = [entity rm_rootEntity];
+        if ([rootEntity rm_hasPrimaryKeyProperties]) {
+            [primaryKeyNamesByEntityName setObject:[rootEntity rm_primaryKeyPropertyNames] forKey:rootEntity.name];
+        }
+    }];
+    
+    return primaryKeyNamesByEntityName;
+}
+
+- (NSDictionary *)garbageColelctionPredicatesByEntityName
+{
+    NSMutableDictionary *garbageColelctionPredicateByEntity = [[NSMutableDictionary alloc] init];
+    
+    [[self.persistentStoreCoordinator.managedObjectModel entities] enumerateObjectsUsingBlock:^(NSEntityDescription *entity, NSUInteger idx, BOOL *stop) {
+        NSEntityDescription *rootEntity = [entity rm_rootEntity];
+        NSPredicate *predicate = [rootEntity rm_garbagePredicate];
+        if (predicate) {
+            [garbageColelctionPredicateByEntity setObject:predicate forKey:rootEntity.name];
+        }
+    }];
+    
+    return garbageColelctionPredicateByEntity;
+}
+
 #pragma mark Dependent Contexts
 
 - (void)addDependentContext:(NSManagedObjectContext *)context

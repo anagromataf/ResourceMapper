@@ -25,6 +25,10 @@ typedef void(^RMMapperComplitionHandler)(id<RMResult> result, NSError *error);
 #pragma mark Persistent Store Coordinator
 @property (nonatomic, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+#pragma mark Model Properties
+@property (nonatomic, readonly) NSDictionary *primaryKeyNamesByEntityName;
+@property (nonatomic, readonly) NSDictionary *garbageColelctionPredicatesByEntityName;
+
 #pragma mark Dependent Contexts
 - (void)addDependentContext:(NSManagedObjectContext *)context;
 - (void)removeDependentContext:(NSManagedObjectContext *)context;
@@ -46,5 +50,6 @@ typedef void(^RMMapperComplitionHandler)(id<RMResult> result, NSError *error);
 #pragma mark Garbage Collection
 
 - (void)collectGarbage:(RMMapperComplitionHandler)completion;
+
 
 @end
