@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		59DB1581AE8043C881E86AD8 /* libPods-ResourceMapperiOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F0912840D94642B559EE4C /* libPods-ResourceMapperiOSTests.a */; };
 		8E9EB740BB834AA385F0D139 /* libPods-ResourceMapperOSXTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52E19ECAAA094D95807660BE /* libPods-ResourceMapperOSXTests.a */; };
+		F61B133D19B9A3EF004BCB86 /* RMOperationApplyNullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F61B133C19B9A3EF004BCB86 /* RMOperationApplyNullTests.m */; };
+		F61B133E19B9A3EF004BCB86 /* RMOperationApplyNullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F61B133C19B9A3EF004BCB86 /* RMOperationApplyNullTests.m */; };
+		F61B134119B9A424004BCB86 /* RMOperationApplyNullTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F61B133F19B9A424004BCB86 /* RMOperationApplyNullTests.xcdatamodeld */; };
+		F61B134219B9A424004BCB86 /* RMOperationApplyNullTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F61B133F19B9A424004BCB86 /* RMOperationApplyNullTests.xcdatamodeld */; };
 		F62E067B18E0BF9800CA40CB /* RMMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = F62E067918E0BF9800CA40CB /* RMMapper.h */; };
 		F62E067C18E0BF9800CA40CB /* RMMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F62E067A18E0BF9800CA40CB /* RMMapper.m */; };
 		F62E067D18E0BF9800CA40CB /* RMMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F62E067A18E0BF9800CA40CB /* RMMapper.m */; };
@@ -156,6 +160,8 @@
 		574BF999A8EA4BF88D0ABA06 /* Pods-ResourceMapperOSXTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceMapperOSXTests.xcconfig"; path = "../Pods/Pods-ResourceMapperOSXTests.xcconfig"; sourceTree = "<group>"; };
 		C530E0F5039B492BB36E211F /* Pods-ResourceMapperiOSTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceMapperiOSTests.xcconfig"; path = "../Pods/Pods-ResourceMapperiOSTests.xcconfig"; sourceTree = "<group>"; };
 		D5F0912840D94642B559EE4C /* libPods-ResourceMapperiOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ResourceMapperiOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F61B133C19B9A3EF004BCB86 /* RMOperationApplyNullTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMOperationApplyNullTests.m; sourceTree = "<group>"; };
+		F61B134019B9A424004BCB86 /* RMOperationApplyNullTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMOperationApplyNullTests.xcdatamodel; sourceTree = "<group>"; };
 		F62E067918E0BF9800CA40CB /* RMMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapper.h; sourceTree = "<group>"; };
 		F62E067A18E0BF9800CA40CB /* RMMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMapper.m; sourceTree = "<group>"; };
 		F63A75E518CB89BC00A309F2 /* libResourceMapperiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libResourceMapperiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -488,6 +494,8 @@
 				F674F9FB18DF425700521850 /* RMOperation_SessionHandlerTests.m */,
 				F674FA1718DF9C5D00521850 /* RMOperationApplyTests.m */,
 				F674FA1E18DF9D5100521850 /* RMOperationApplyTests.xcdatamodeld */,
+				F61B133C19B9A3EF004BCB86 /* RMOperationApplyNullTests.m */,
+				F61B133F19B9A424004BCB86 /* RMOperationApplyNullTests.xcdatamodeld */,
 				F674FA0218DF68D400521850 /* RMMappingSessionContextManipulationTests.m */,
 				F674FA0518DF68E100521850 /* RMMappingSessionContextManipulationTests.xcdatamodeld */,
 				F674FA0918DF846A00521850 /* RMMappingSessionPropertyUpdateTests.m */,
@@ -762,9 +770,11 @@
 				F674FA0018DF678F00521850 /* RMMappingContext_AddResourcesTests.xcdatamodeld in Sources */,
 				F674F9C018D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */,
 				F63A764818CB94F100A309F2 /* NSManagedObjectContextTests.m in Sources */,
+				F61B133D19B9A3EF004BCB86 /* RMOperationApplyNullTests.m in Sources */,
 				F63A765E18CBA2C100A309F2 /* NSEntityDescriptionTests.m in Sources */,
 				F63A766418CBA30900A309F2 /* RMManagedObjectModelTestCase.m in Sources */,
 				F674FA0318DF68D400521850 /* RMMappingSessionContextManipulationTests.m in Sources */,
+				F61B134119B9A424004BCB86 /* RMOperationApplyNullTests.xcdatamodeld in Sources */,
 				F674FA1518DF8C2100521850 /* RMMappingSessionManagedObjectForResourceTests.xcdatamodeld in Sources */,
 				F63A764418CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */,
 				F674FA2018DF9D5100521850 /* RMOperationApplyTests.xcdatamodeld in Sources */,
@@ -817,9 +827,11 @@
 				F674FA0118DF678F00521850 /* RMMappingContext_AddResourcesTests.xcdatamodeld in Sources */,
 				F674F9C118D8FCE500521850 /* RMResourceTraversalDependencyTests.xcdatamodeld in Sources */,
 				F63A764918CB94F100A309F2 /* NSManagedObjectContextTests.m in Sources */,
+				F61B133E19B9A3EF004BCB86 /* RMOperationApplyNullTests.m in Sources */,
 				F63A765F18CBA2C100A309F2 /* NSEntityDescriptionTests.m in Sources */,
 				F63A766518CBA30900A309F2 /* RMManagedObjectModelTestCase.m in Sources */,
 				F674FA0418DF68D400521850 /* RMMappingSessionContextManipulationTests.m in Sources */,
+				F61B134219B9A424004BCB86 /* RMOperationApplyNullTests.xcdatamodeld in Sources */,
 				F674FA1618DF8C2100521850 /* RMMappingSessionManagedObjectForResourceTests.xcdatamodeld in Sources */,
 				F63A764518CB944100A309F2 /* RMMangedObjectContextTestCase.m in Sources */,
 				F674FA2118DF9D5100521850 /* RMOperationApplyTests.xcdatamodeld in Sources */,
@@ -1159,6 +1171,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		F61B133F19B9A424004BCB86 /* RMOperationApplyNullTests.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F61B134019B9A424004BCB86 /* RMOperationApplyNullTests.xcdatamodel */,
+			);
+			currentVersion = F61B134019B9A424004BCB86 /* RMOperationApplyNullTests.xcdatamodel */;
+			path = RMOperationApplyNullTests.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		F63A764A18CB957700A309F2 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

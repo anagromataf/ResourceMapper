@@ -76,6 +76,20 @@
     XCTAssertEqualObjects([object valueForKeyPath:@"foo.name"], @"1");
 }
 
+- (void)testUpdateToOneRelationshipWithNull
+{
+    NSManagedObject *object = [[NSManagedObject alloc] initWithEntity:[self entityWithName:@"Entity"]
+                                       insertIntoManagedObjectContext:self.managedObjectContext];
+    
+    RMMappingSession *session = [[RMMappingSession alloc] initWithManagedObjectContext:self.managedObjectContext];
+    
+    [session updateRelationship:[self relationshipWithName:@"foo" ofEntity:@"Entity"]
+                ofManagedObject:object
+                   withResource:[NSNull null]];
+    
+    XCTAssertNil([object valueForKeyPath:@"foo"]);
+}
+
 - (void)testUpdateToManyRelationship
 {
     NSManagedObject *object = [[NSManagedObject alloc] initWithEntity:[self entityWithName:@"Entity"]
