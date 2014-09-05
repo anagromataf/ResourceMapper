@@ -66,8 +66,10 @@
 - (NSManagedObject *)insertResource:(id)resource usingEntity:(NSEntityDescription *)entity
 {
     NSEntityDescription *resourceEntity = [resource valueForKey:@"entity"];
-    if (resourceEntity) {
+    if ([resourceEntity isKindOfClass:[NSEntityDescription class]]) {
         NSAssert([resourceEntity isKindOfEntity:entity], @"Entity (%@) specified by the object to insert is not a subentity of (%@)", resourceEntity.name, entity.name);
+    } else {
+        resourceEntity = nil;
     }
     
     NSManagedObject *managedObject = [[NSManagedObject alloc] initWithEntity:resourceEntity ? resourceEntity: entity
@@ -153,7 +155,9 @@
              withResource:(id)resource
 {
     id _related = [resource valueForKey:relationship.name];
-    if (_related) {
+    if ([_related isKindOfClass:[NSNull class]]) {
+        [managedObject setNilValueForKey:relationship.name];
+    } else if (_related) {
         
         NSEntityDescription *destinationEntity = relationship.destinationEntity;
         

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Object" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="value" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Value" inverseName="object" inverseEntity="Value" syncable="YES"/>
+        <userInfo>
+            <entry key="RM_PK" value="id"/>
+        </userInfo>
+    </entity>
+    <entity name="Value" syncable="YES">
+        <relationship name="object" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Object" inverseName="value" inverseEntity="Object" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Object" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="Value" positionX="-54" positionY="0" width="128" height="58"/>
+    </elements>
+</model>
