@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                = "ResourceMapper"
-  s.version             = "0.5.3"
+  s.version             = "0.5.4"
   s.summary			    = "Maps resources with it's primary key to managed objects in CoreData."
   s.authors			    = { "Tobias Kräntzer" => "info@tobias-kraentzer.de" }
   s.social_media_url 	= 'https://twitter.com/anagrom_ataf'
