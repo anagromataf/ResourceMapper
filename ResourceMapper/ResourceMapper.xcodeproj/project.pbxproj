@@ -61,6 +61,9 @@
 		F63CF1A818CD2DDC00B29969 /* RMCombiningProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = F63CF1A618CD2DDC00B29969 /* RMCombiningProxy.h */; };
 		F63CF1A918CD2DDC00B29969 /* RMCombiningProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = F63CF1A718CD2DDC00B29969 /* RMCombiningProxy.m */; };
 		F63CF1AA18CD2DDC00B29969 /* RMCombiningProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = F63CF1A718CD2DDC00B29969 /* RMCombiningProxy.m */; };
+		F64F655C19D412DE00DE602A /* NSRelationshipDescription+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F64F655A19D412DE00DE602A /* NSRelationshipDescription+Private.h */; };
+		F64F655D19D412DE00DE602A /* NSRelationshipDescription+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F64F655B19D412DE00DE602A /* NSRelationshipDescription+Private.m */; };
+		F64F655E19D412DE00DE602A /* NSRelationshipDescription+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = F64F655B19D412DE00DE602A /* NSRelationshipDescription+Private.m */; };
 		F674F99B18D8DE6D00521850 /* RMDependencyPathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F99A18D8DE6D00521850 /* RMDependencyPathTests.m */; };
 		F674F99C18D8DE6D00521850 /* RMDependencyPathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F674F99A18D8DE6D00521850 /* RMDependencyPathTests.m */; };
 		F674F99F18D8DED200521850 /* RMDependencyPathTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F674F99D18D8DED200521850 /* RMDependencyPathTests.xcdatamodeld */; };
@@ -202,6 +205,8 @@
 		F63A769418CD18C400A309F2 /* RMMappingContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMappingContext.m; sourceTree = "<group>"; };
 		F63CF1A618CD2DDC00B29969 /* RMCombiningProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCombiningProxy.h; sourceTree = "<group>"; };
 		F63CF1A718CD2DDC00B29969 /* RMCombiningProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCombiningProxy.m; sourceTree = "<group>"; };
+		F64F655A19D412DE00DE602A /* NSRelationshipDescription+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRelationshipDescription+Private.h"; sourceTree = "<group>"; };
+		F64F655B19D412DE00DE602A /* NSRelationshipDescription+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRelationshipDescription+Private.m"; sourceTree = "<group>"; };
 		F674F99A18D8DE6D00521850 /* RMDependencyPathTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDependencyPathTests.m; sourceTree = "<group>"; };
 		F674F99E18D8DED200521850 /* RMDependencyPathTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMDependencyPathTests.xcdatamodel; sourceTree = "<group>"; };
 		F674F9B118D8F87900521850 /* RMResourceTraversalMappingCallbackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMResourceTraversalMappingCallbackTests.m; sourceTree = "<group>"; };
@@ -421,6 +426,8 @@
 				F63A765918CBA22B00A309F2 /* NSEntityDescription+Private.m */,
 				F63A763918CB939100A309F2 /* NSManagedObjectContext+Private.h */,
 				F63A763A18CB939100A309F2 /* NSManagedObjectContext+Private.m */,
+				F64F655A19D412DE00DE602A /* NSRelationshipDescription+Private.h */,
+				F64F655B19D412DE00DE602A /* NSRelationshipDescription+Private.m */,
 			);
 			name = "Core Data Additions";
 			sourceTree = "<group>";
@@ -538,6 +545,7 @@
 				F62E067B18E0BF9800CA40CB /* RMMapper.h in Headers */,
 				F63A765318CB96D000A309F2 /* ResourceMapper+Private.h in Headers */,
 				F63A768C18CBD42E00A309F2 /* NSObject+Private.h in Headers */,
+				F64F655C19D412DE00DE602A /* NSRelationshipDescription+Private.h in Headers */,
 				F63A767D18CBBF2A00A309F2 /* RMMappingSession.h in Headers */,
 				F63CF1A818CD2DDC00B29969 /* RMCombiningProxy.h in Headers */,
 				F674F9F718DF403700521850 /* RMFetchOperation.h in Headers */,
@@ -743,6 +751,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64F655D19D412DE00DE602A /* NSRelationshipDescription+Private.m in Sources */,
 				F677AA05199CC35300171E65 /* NSManagedObject+ResourceMapper.m in Sources */,
 				F674F9F318DF402800521850 /* RMDeleteOperation.m in Sources */,
 				F63A765B18CBA22B00A309F2 /* NSEntityDescription+Private.m in Sources */,
@@ -800,6 +809,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64F655E19D412DE00DE602A /* NSRelationshipDescription+Private.m in Sources */,
 				F677AA06199CC35300171E65 /* NSManagedObject+ResourceMapper.m in Sources */,
 				F674F9F418DF402800521850 /* RMDeleteOperation.m in Sources */,
 				F63A765C18CBA22B00A309F2 /* NSEntityDescription+Private.m in Sources */,
