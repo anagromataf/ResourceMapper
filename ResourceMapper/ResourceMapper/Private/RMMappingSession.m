@@ -8,6 +8,7 @@
 
 #import "NSObject+Private.h"
 #import "NSEntityDescription+Private.h"
+#import "NSRelationshipDescription+Private.h"
 
 #import "RMMappingSession.h"
 
@@ -162,7 +163,18 @@
         NSEntityDescription *destinationEntity = relationship.destinationEntity;
         
         if (relationship.isToMany) {
-            id objects = relationship.isOrdered ? [[NSMutableOrderedSet alloc] init] : [[NSMutableSet alloc] init];
+            
+            id objects = nil;
+            if (relationship.isOrdered) {
+                objects = [managedObject mutableOrderedSetValueForKey:relationship.name];
+            } else {
+                objects = [managedObject mutableSetValueForKey:relationship.name];
+            }
+            
+            if (![[relationship rm_updateStrategy] isEqualToString:NSRelationshipDescriptionRMUpdateStrategyAppend]) {
+                [objects removeAllObjects];
+            }
+            
             for (id relatedResource in _related) {
                 NSManagedObject *object = nil;
                 if ([destinationEntity rm_hasPrimaryKeyProperties]) {
@@ -175,7 +187,7 @@
                     [objects addObject:object];
                 }
             }
-            [managedObject setValue:objects forKey:relationship.name];
+            
         } else {
             NSManagedObject *object = nil;
             if ([destinationEntity rm_hasPrimaryKeyProperties]) {

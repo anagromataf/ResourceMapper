@@ -7,6 +7,7 @@
 //
 
 #import "RMMangedObjectContextTestCase.h"
+#import "NSRelationshipDescription+Private.h"
 
 @interface RMMappingSessionPropertyUpdateTests : RMMangedObjectContextTestCase
 
@@ -150,6 +151,35 @@
     
     NSSet *expectedValues = [NSSet setWithObjects:bar1, bar2, nil];
     XCTAssertEqualObjects([object valueForKeyPath:@"bars"], expectedValues);
+}
+
+- (void)testUpdateToManyRelationshipWithAppendStrategy
+{
+    NSRelationshipDescription *relationship = [self relationshipWithName:@"append" ofEntity:@"Entity"];
+    XCTAssertEqualObjects([relationship rm_updateStrategy], NSRelationshipDescriptionRMUpdateStrategyAppend);
+    
+    // Prepare the object to have two items
+    NSManagedObject *object = [[NSManagedObject alloc] initWithEntity:[self entityWithName:@"Entity"] insertIntoManagedObjectContext:self.managedObjectContext];
+    NSManagedObject *item1 = [[NSManagedObject alloc] initWithEntity:[self entityWithName:@"Item"] insertIntoManagedObjectContext:self.managedObjectContext];
+    NSManagedObject *item2 = [[NSManagedObject alloc] initWithEntity:[self entityWithName:@"Item"] insertIntoManagedObjectContext:self.managedObjectContext];
+    [item1 setValue:@"1" forKey:@"name"];
+    [item2 setValue:@"2" forKey:@"name"];
+    [item1 setValue:object forKey:@"newRelationship"];
+    [item2 setValue:object forKey:@"newRelationship"];
+    
+    NSSet *preparedItems = [NSSet setWithObjects:item1, item2, nil];
+    XCTAssertEqualObjects([object valueForKey:@"append"], preparedItems);
+    
+    NSDictionary *resource = @{@"append":@[@{@"name":@"A"},@{@"name":@"B"}]};
+    
+    RMMappingSession *session = [[RMMappingSession alloc] initWithManagedObjectContext:self.managedObjectContext];
+    
+    [session updateRelationship:[self relationshipWithName:@"append" ofEntity:@"Entity"]
+                ofManagedObject:object
+                   withResource:resource];
+    
+    NSSet *expectedItemNames = [NSSet setWithObjects:@"1", @"2", @"A", @"B", nil];
+    XCTAssertEqualObjects([object valueForKeyPath:@"append.name"], expectedItemNames);
 }
 
 @end

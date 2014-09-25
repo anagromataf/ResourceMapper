@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Bar" syncable="YES">
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -13,6 +13,11 @@
         <attribute name="x" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="y" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="z" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="append" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="newRelationship" inverseEntity="Item" syncable="YES">
+            <userInfo>
+                <entry key="RM_UPDATE_STRATEGY" value="append"/>
+            </userInfo>
+        </relationship>
         <relationship name="bar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bar" inverseName="inverseBar" inverseEntity="Bar" syncable="YES"/>
         <relationship name="bars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bar" inverseName="inverseBars" inverseEntity="Bar" syncable="YES"/>
         <relationship name="foo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Foo" inverseName="inverseFoo" inverseEntity="Foo" syncable="YES"/>
@@ -23,9 +28,14 @@
         <relationship name="inverseFoo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entity" inverseName="foo" inverseEntity="Entity" syncable="YES"/>
         <relationship name="inverseFoos" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entity" inverseName="foos" inverseEntity="Entity" syncable="YES"/>
     </entity>
+    <entity name="Item" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entity" inverseName="append" inverseEntity="Entity" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Entity" positionX="-236" positionY="-0" width="128" height="148"/>
-        <element name="Foo" positionX="-459" positionY="54" width="128" height="88"/>
-        <element name="Bar" positionX="-47" positionY="14" width="128" height="103"/>
+        <element name="Bar" positionX="18" positionY="-0" width="128" height="103"/>
+        <element name="Entity" positionX="-236" positionY="63" width="128" height="163"/>
+        <element name="Foo" positionX="-477" positionY="74" width="128" height="88"/>
+        <element name="Item" positionX="43" positionY="252" width="128" height="73"/>
     </elements>
 </model>
