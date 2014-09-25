@@ -29,3 +29,4 @@
 // Core Data Additions
 #import "NSEntityDescription+Private.h"
 #import "NSManagedObjectContext+Private.h"
+#import "NSRelationshipDescription+Private.h"
