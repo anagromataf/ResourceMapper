@@ -35,7 +35,7 @@
         NSLog(@"%@ -> %@", entityName, [primaryKeyNames componentsJoinedByString:@", "]);
     }];
 
-    [self.mapper.garbageColelctionPredicatesByEntityName enumerateKeysAndObjectsUsingBlock:^(NSString *entityName, NSPredicate *predicate, BOOL *stop) {
+    [self.mapper.garbageCollectionPredicatesByEntityName enumerateKeysAndObjectsUsingBlock:^(NSString *entityName, NSPredicate *predicate, BOOL *stop) {
         NSLog(@"%@ -> %@", entityName, predicate);
     }];
 }

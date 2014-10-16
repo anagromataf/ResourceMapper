@@ -79,19 +79,24 @@
     return primaryKeyNamesByEntityName;
 }
 
-- (NSDictionary *)garbageColelctionPredicatesByEntityName
+- (NSDictionary *)garbageCollectionPredicatesByEntityName
 {
-    NSMutableDictionary *garbageColelctionPredicateByEntity = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *garbageCollectionPredicatesByEntityName = [[NSMutableDictionary alloc] init];
     
     [[self.persistentStoreCoordinator.managedObjectModel entities] enumerateObjectsUsingBlock:^(NSEntityDescription *entity, NSUInteger idx, BOOL *stop) {
         NSEntityDescription *rootEntity = [entity rm_rootEntity];
         NSPredicate *predicate = [rootEntity rm_garbagePredicate];
         if (predicate) {
-            [garbageColelctionPredicateByEntity setObject:predicate forKey:rootEntity.name];
+            [garbageCollectionPredicatesByEntityName setObject:predicate forKey:rootEntity.name];
         }
     }];
     
-    return garbageColelctionPredicateByEntity;
+    return garbageCollectionPredicatesByEntityName;
+}
+
+- (NSDictionary *)garbageColelctionPredicatesByEntityName
+{
+    return [self garbageCollectionPredicatesByEntityName];
 }
 
 #pragma mark Dependent Contexts
@@ -114,7 +119,7 @@
 
 - (void)insertOrUpdateResource:(NSArray *)resources
         usingEntityDescription:(NSEntityDescription *)entityDescription
-                    completion:(RMMapperComplitionHandler)completion
+                    completion:(RMMapperCompletionHandler)completion
 {
     // Prepate Mapping Context
     
@@ -133,7 +138,7 @@
 
 - (void)deleteResourcesWithPrimaryKeys:(NSArray *)primaryKeys
                 usingEntityDescription:(NSEntityDescription *)entityDescription
-                            completion:(RMMapperComplitionHandler)completion
+                            completion:(RMMapperCompletionHandler)completion
 {
     // Prepate Mapping Context
     
@@ -152,7 +157,7 @@
 
 - (void)fetchResourcesWithPrimaryKeys:(NSArray *)primaryKeys
                usingEntityDescription:(NSEntityDescription *)entityDescription
-                           completion:(RMMapperComplitionHandler)completion
+                           completion:(RMMapperCompletionHandler)completion
 {
     // Prepate Mapping Context
     
@@ -170,7 +175,7 @@
 }
 
 - (void)applyOperation:(RMOperation *)operation
-            completion:(RMMapperComplitionHandler)completion
+            completion:(RMMapperCompletionHandler)completion
 {
     [self.operationContext performBlock:^{
         
@@ -198,7 +203,7 @@
 
 #pragma mark Garbage Collection
 
-- (void)collectGarbage:(RMMapperComplitionHandler)completion
+- (void)collectGarbage:(RMMapperCompletionHandler)completion
 {
     [self.operationContext performBlock:^{
         
