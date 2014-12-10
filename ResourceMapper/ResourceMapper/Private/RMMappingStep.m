@@ -15,6 +15,8 @@
 
 + (NSArray *)mappingStepsWithEntities:(NSSet *)entities dependency:(RMDependency *)dependency
 {
+    NSParameterAssert([entities count] > 0);
+    
     NSMapTable *table = [NSMapTable strongToStrongObjectsMapTable];
     for (NSEntityDescription *entity in entities) {
         [table setObject:[NSMutableSet set] forKey:entity];
