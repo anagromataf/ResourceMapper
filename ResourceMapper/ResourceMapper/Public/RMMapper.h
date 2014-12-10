@@ -39,7 +39,11 @@ typedef RMMapperCompletionHandler RMMapperComplitionHandler DEPRECATED_ATTRIBUTE
 
 - (void)insertOrUpdateResource:(NSArray *)resources
         usingEntityDescription:(NSEntityDescription *)entityDescription
-                    completion:(RMMapperCompletionHandler)completion;
+                    completion:(RMMapperCompletionHandler)completion DEPRECATED_ATTRIBUTE;
+
+- (void)insertOrUpdateResources:(NSArray *)resources
+         usingEntityDescription:(NSEntityDescription *)entityDescription
+                     completion:(RMMapperCompletionHandler)completion;
 
 - (void)deleteResourcesWithPrimaryKeys:(NSArray *)primaryKeys
                 usingEntityDescription:(NSEntityDescription *)entityDescription

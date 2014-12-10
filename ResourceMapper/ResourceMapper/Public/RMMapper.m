@@ -117,9 +117,16 @@
 
 #pragma mark Operations
 
-- (void)insertOrUpdateResource:(NSArray *)resources
-        usingEntityDescription:(NSEntityDescription *)entityDescription
-                    completion:(RMMapperCompletionHandler)completion
+- (void)insertOrUpdateResource:(NSArray *)resources usingEntityDescription:(NSEntityDescription *)entityDescription completion:(RMMapperCompletionHandler)completion
+{
+    [self insertOrUpdateResources:resources
+           usingEntityDescription:entityDescription
+                       completion:completion];
+}
+
+- (void)insertOrUpdateResources:(NSArray *)resources
+         usingEntityDescription:(NSEntityDescription *)entityDescription
+                     completion:(RMMapperCompletionHandler)completion
 {
     // Prepate Mapping Context
     
