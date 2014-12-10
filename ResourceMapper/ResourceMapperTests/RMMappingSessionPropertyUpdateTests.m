@@ -6,6 +6,12 @@
 //  Copyright (c) 2014 Tobias Kräntzer. All rights reserved.
 //
 
+#define HC_SHORTHAND
+#import <OCHamcrest/OCHamcrest.h>
+
+#define MOCKITO_SHORTHAND
+#import <OCMockito/OCMockito.h>
+
 #import "RMMangedObjectContextTestCase.h"
 #import "NSRelationshipDescription+Private.h"
 
@@ -180,6 +186,60 @@
     
     NSSet *expectedItemNames = [NSSet setWithObjects:@"1", @"2", @"A", @"B", nil];
     XCTAssertEqualObjects([object valueForKeyPath:@"append.name"], expectedItemNames);
+}
+
+- (void)testUpdatSubEntityWithSubEntity
+{
+    NSManagedObject *object = [[NSManagedObject alloc] initWithEntity:[self entityWithName:@"SubEntity"] insertIntoManagedObjectContext:self.managedObjectContext];
+    
+    id resource = mock([NSObject class]);
+    [given([resource valueForKey:equalTo(@"entity")]) willReturn:[self entityWithName:@"SubEntity"]];
+    
+    RMCombiningProxy *proxy = [[RMCombiningProxy alloc] init];
+    [proxy addObject:resource];
+    
+    RMMappingSession *session = [[RMMappingSession alloc] initWithManagedObjectContext:self.managedObjectContext];
+    [session updatePropertiesOfManagedObject:object withResource:proxy omitRelationships:[NSSet set]];
+    
+    [verifyCount(resource, atLeastOnce()) valueForKey:equalTo(@"entity")];
+    [verify(resource) valueForKey:equalTo(@"attributeOfSubEntity")];
+    [verify(resource) valueForKey:equalTo(@"relationshipOfSubEntity")];
+}
+
+- (void)testUpdatEntityWithSubEntity
+{
+    NSManagedObject *object = [[NSManagedObject alloc] initWithEntity:[self entityWithName:@"Entity"] insertIntoManagedObjectContext:self.managedObjectContext];
+    
+    id resource = mock([NSObject class]);
+    [given([resource valueForKey:equalTo(@"entity")]) willReturn:[self entityWithName:@"SubEntity"]];
+    
+    RMCombiningProxy *proxy = [[RMCombiningProxy alloc] init];
+    [proxy addObject:resource];
+    
+    RMMappingSession *session = [[RMMappingSession alloc] initWithManagedObjectContext:self.managedObjectContext];
+    [session updatePropertiesOfManagedObject:object withResource:proxy omitRelationships:[NSSet set]];
+    
+    [verifyCount(resource, atLeastOnce()) valueForKey:equalTo(@"entity")];
+    [verifyCount(resource, never()) valueForKey:equalTo(@"attributeOfSubEntity")];
+    [verifyCount(resource, never()) valueForKey:equalTo(@"relationshipOfSubEntity")];
+}
+
+- (void)testUpdateSubEntityWithEntity
+{
+    NSManagedObject *object = [[NSManagedObject alloc] initWithEntity:[self entityWithName:@"SubEntity"] insertIntoManagedObjectContext:self.managedObjectContext];
+    
+    id resource = mock([NSObject class]);
+    [given([resource valueForKey:equalTo(@"entity")]) willReturn:[self entityWithName:@"Entity"]];
+    
+    RMCombiningProxy *proxy = [[RMCombiningProxy alloc] init];
+    [proxy addObject:resource];
+    
+    RMMappingSession *session = [[RMMappingSession alloc] initWithManagedObjectContext:self.managedObjectContext];
+    [session updatePropertiesOfManagedObject:object withResource:proxy omitRelationships:[NSSet set]];
+    
+    [verifyCount(resource, atLeastOnce()) valueForKey:equalTo(@"entity")];
+    [verifyCount(resource, never()) valueForKey:equalTo(@"attributeOfSubEntity")];
+    [verifyCount(resource, never()) valueForKey:equalTo(@"relationshipOfSubEntity")];
 }
 
 @end
