@@ -46,60 +46,62 @@
     
     RMMappingSession *session = [[RMMappingSession alloc] initWithManagedObjectContext:context];
     
-    NSArray *steps = [RMMappingStep mappingStepsWithEntities:[NSSet setWithArray:self.mappingContext.entities]
-                                                  dependency:self.mappingContext.dependency];
-    
-    [steps enumerateObjectsUsingBlock:^(RMMappingStep *step, NSUInteger idx, BOOL *stop) {
+    if ([self.mappingContext.entities count] > 0) {
+        NSArray *steps = [RMMappingStep mappingStepsWithEntities:[NSSet setWithArray:self.mappingContext.entities]
+                                                      dependency:self.mappingContext.dependency];
         
-        NSEntityDescription *entity = step.entity;
-        
-        // Relationships to Omit
-        
-        NSMutableSet *relationshipsToOmit = [[NSMutableSet alloc] init];
-        [step.relationshipPathsToOmit enumerateObjectsUsingBlock:^(RMRelationshipPath *path, BOOL *stop) {
-            [relationshipsToOmit addObject:[path.allRelationships firstObject]];
-        }];
-        
-        NSDictionary *resources = [self.mappingContext resourcesByPrimaryKeyOfEntity:entity];
-        
-        // Create filter predicate
-        
-        // Create predicate matching at least the objects with the primary keys of the resources.
-        // If the primary key consists of more than one property, the result may contain more objects.
-        NSMutableArray *predicates = [[NSMutableArray alloc] init];
-        [[entity rm_primaryKeyPropertyNames] enumerateObjectsUsingBlock:^(NSString *propertyName, NSUInteger idx, BOOL *stop) {
-            NSArray *values = [[resources allKeys] valueForKeyPath:propertyName];
-            NSPredicate *keyPredicate = [NSComparisonPredicate predicateWithLeftExpression:[NSExpression expressionForKeyPath:propertyName]
-                                                                           rightExpression:[NSExpression expressionForConstantValue:values]
-                                                                                  modifier:NSDirectPredicateModifier
-                                                                                      type:NSInPredicateOperatorType
-                                                                                   options:0];
+        [steps enumerateObjectsUsingBlock:^(RMMappingStep *step, NSUInteger idx, BOOL *stop) {
             
-            [predicates addObject:keyPredicate];
+            NSEntityDescription *entity = step.entity;
+            
+            // Relationships to Omit
+            
+            NSMutableSet *relationshipsToOmit = [[NSMutableSet alloc] init];
+            [step.relationshipPathsToOmit enumerateObjectsUsingBlock:^(RMRelationshipPath *path, BOOL *stop) {
+                [relationshipsToOmit addObject:[path.allRelationships firstObject]];
+            }];
+            
+            NSDictionary *resources = [self.mappingContext resourcesByPrimaryKeyOfEntity:entity];
+            
+            // Create filter predicate
+            
+            // Create predicate matching at least the objects with the primary keys of the resources.
+            // If the primary key consists of more than one property, the result may contain more objects.
+            NSMutableArray *predicates = [[NSMutableArray alloc] init];
+            [[entity rm_primaryKeyPropertyNames] enumerateObjectsUsingBlock:^(NSString *propertyName, NSUInteger idx, BOOL *stop) {
+                NSArray *values = [[resources allKeys] valueForKeyPath:propertyName];
+                NSPredicate *keyPredicate = [NSComparisonPredicate predicateWithLeftExpression:[NSExpression expressionForKeyPath:propertyName]
+                                                                               rightExpression:[NSExpression expressionForConstantValue:values]
+                                                                                      modifier:NSDirectPredicateModifier
+                                                                                          type:NSInPredicateOperatorType
+                                                                                       options:0];
+                
+                [predicates addObject:keyPredicate];
+            }];
+            NSPredicate *predicate = [NSCompoundPredicate orPredicateWithSubpredicates:predicates];
+            
+            // Combine Resources
+            
+            BOOL success = [context rm_combineResources:[resources allValues]
+                                    withObjectsOfEntity:entity
+                                      matchingPredicate:predicate
+                                   usingSortDescriptors:[entity rm_primaryKeySortDescriptors]
+                                           sortInMemory:NO
+                                       newObjectHandler:[self newObjectHandlerWithSession:session omit:relationshipsToOmit]
+                                  matchingObjectHandler:[self matchingObjectHandlerWithSession:session omit:relationshipsToOmit]
+                                 remainingObjectHandler:[self remainingObjectHandlerWithSession:session omit:relationshipsToOmit]
+                                                  error:error];
+            
+            if (!success) {
+                _success = NO;
+                *stop = YES;
+            }
+            
         }];
-        NSPredicate *predicate = [NSCompoundPredicate orPredicateWithSubpredicates:predicates];
         
-        // Combine Resources
-        
-        BOOL success = [context rm_combineResources:[resources allValues]
-                                withObjectsOfEntity:entity
-                                  matchingPredicate:predicate
-                               usingSortDescriptors:[entity rm_primaryKeySortDescriptors]
-                                       sortInMemory:NO
-                                   newObjectHandler:[self newObjectHandlerWithSession:session omit:relationshipsToOmit]
-                              matchingObjectHandler:[self matchingObjectHandlerWithSession:session omit:relationshipsToOmit]
-                             remainingObjectHandler:[self remainingObjectHandlerWithSession:session omit:relationshipsToOmit]
-                                              error:error];
-        
-        if (!success) {
-            _success = NO;
-            *stop = YES;
+        if (_success) {
+            [session invokePendingUpdates];
         }
-        
-    }];
-    
-    if (_success) {
-        [session invokePendingUpdates];
     }
     
     return _success ? session : nil;

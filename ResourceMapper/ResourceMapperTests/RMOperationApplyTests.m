@@ -14,6 +14,21 @@
 
 @implementation RMOperationApplyTests
 
+- (void)testApplyEmptyOperation
+{
+    NSMutableArray *resources = [[NSMutableArray alloc] init];
+    
+    RMMappingContext *mappingContext = [[RMMappingContext alloc] init];
+    [mappingContext addResources:resources usingEntity:[self entityWithName:@"Object"]];
+    
+    RMUpdateOrInsertOperation *operation = [[RMUpdateOrInsertOperation alloc] initWithMappingContext:mappingContext];
+    
+    NSError *error = nil;
+    RMMappingSession *session = [operation applyToManagedObjectContext:self.managedObjectContext
+                                                                 error:&error];
+    XCTAssertNotNil(session);
+}
+
 - (void)testApplyOperation
 {
     NSMutableArray *resources = [[NSMutableArray alloc] init];

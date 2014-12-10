@@ -14,7 +14,8 @@
 
 @end
 
-typedef void(^RMMapperComplitionHandler)(id<RMResult> result, NSError *error);
+typedef void(^RMMapperCompletionHandler)(id<RMResult> result, NSError *error);
+typedef RMMapperCompletionHandler RMMapperComplitionHandler DEPRECATED_ATTRIBUTE;
 
 @interface RMMapper : NSObject
 
@@ -27,7 +28,8 @@ typedef void(^RMMapperComplitionHandler)(id<RMResult> result, NSError *error);
 
 #pragma mark Model Properties
 @property (nonatomic, readonly) NSDictionary *primaryKeyNamesByEntityName;
-@property (nonatomic, readonly) NSDictionary *garbageColelctionPredicatesByEntityName;
+@property (nonatomic, readonly) NSDictionary *garbageColelctionPredicatesByEntityName DEPRECATED_ATTRIBUTE;
+@property (nonatomic, readonly) NSDictionary *garbageCollectionPredicatesByEntityName;
 
 #pragma mark Dependent Contexts
 - (void)addDependentContext:(NSManagedObjectContext *)context;
@@ -37,19 +39,23 @@ typedef void(^RMMapperComplitionHandler)(id<RMResult> result, NSError *error);
 
 - (void)insertOrUpdateResource:(NSArray *)resources
         usingEntityDescription:(NSEntityDescription *)entityDescription
-                    completion:(RMMapperComplitionHandler)completion;
+                    completion:(RMMapperCompletionHandler)completion DEPRECATED_ATTRIBUTE;
+
+- (void)insertOrUpdateResources:(NSArray *)resources
+         usingEntityDescription:(NSEntityDescription *)entityDescription
+                     completion:(RMMapperCompletionHandler)completion;
 
 - (void)deleteResourcesWithPrimaryKeys:(NSArray *)primaryKeys
                 usingEntityDescription:(NSEntityDescription *)entityDescription
-                            completion:(RMMapperComplitionHandler)completion;
+                            completion:(RMMapperCompletionHandler)completion;
 
 - (void)fetchResourcesWithPrimaryKeys:(NSArray *)primaryKeys
                usingEntityDescription:(NSEntityDescription *)entityDescription
-                           completion:(RMMapperComplitionHandler)completion;
+                           completion:(RMMapperCompletionHandler)completion;
 
 #pragma mark Garbage Collection
 
-- (void)collectGarbage:(RMMapperComplitionHandler)completion;
+- (void)collectGarbage:(RMMapperCompletionHandler)completion;
 
 
 @end

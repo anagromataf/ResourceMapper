@@ -123,7 +123,15 @@
 - (void)updateAttributesOfManagedObject:(NSManagedObject *)managedObject
                           withResource:(id)resource
 {
-    NSDictionary *values = [resource rm_dictionaryWithValuesForKeys:[[managedObject.entity attributesByName] allKeys]
+    NSMutableSet *keys = [NSMutableSet setWithArray:[[managedObject.entity attributesByName] allKeys]];
+    
+    NSEntityDescription *resourceEntity = [resource valueForKey:@"entity"];
+    if ([resourceEntity isKindOfClass:[NSEntityDescription class]]) {
+        NSSet *resourceKeys = [NSSet setWithArray:[[resourceEntity attributesByName] allKeys]];
+        [keys intersectSet:resourceKeys];
+    }
+    
+    NSDictionary *values = [resource rm_dictionaryWithValuesForKeys:[keys allObjects]
                                                   omittingNilValues:YES];
     [managedObject setValuesForKeysWithDictionary:values];
 }
@@ -133,20 +141,29 @@
                          omitRelationships:(NSSet *)relationshipsToOmit
 {
     NSDictionary *relationships = managedObject.entity.relationshipsByName;
+    NSEntityDescription *resourceEntity = [resource valueForKey:@"entity"];
+    NSArray *resourceEntityRelationshipNames = nil;
+    if ([resourceEntity isKindOfClass:[NSEntityDescription class]]) {
+        resourceEntityRelationshipNames = [[resourceEntity relationshipsByName] allKeys];
+    }
+    
     [relationships enumerateKeysAndObjectsUsingBlock:
      ^(NSString *name, NSRelationshipDescription *relationship, BOOL *stop) {
-         if (![relationshipsToOmit containsObject:relationship]) {
-             [self updateRelationship:relationship
-                      ofManagedObject:managedObject
-                        withResource:resource];
-         } else if ([resource valueForKey:relationship.name]) {
-             
-             void(^_pendingUpdate)() = ^() {
+         if (resourceEntityRelationshipNames == nil ||
+             [resourceEntityRelationshipNames containsObject:name]) {
+             if (![relationshipsToOmit containsObject:relationship]) {
                  [self updateRelationship:relationship
                           ofManagedObject:managedObject
-                            withResource:resource];
-             };
-             [self.pendingUpdates addObject:_pendingUpdate];
+                             withResource:resource];
+             } else if ([resource valueForKey:relationship.name]) {
+                 
+                 void(^_pendingUpdate)() = ^() {
+                     [self updateRelationship:relationship
+                              ofManagedObject:managedObject
+                                 withResource:resource];
+                 };
+                 [self.pendingUpdates addObject:_pendingUpdate];
+             }
          }
      }];
 }

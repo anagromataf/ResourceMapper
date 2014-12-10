@@ -159,9 +159,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		004D67B358307A2A27668AC0 /* Pods-ResourceMapperiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceMapperiOSTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ResourceMapperiOSTests/Pods-ResourceMapperiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		52E19ECAAA094D95807660BE /* libPods-ResourceMapperOSXTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ResourceMapperOSXTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		574BF999A8EA4BF88D0ABA06 /* Pods-ResourceMapperOSXTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceMapperOSXTests.xcconfig"; path = "../Pods/Pods-ResourceMapperOSXTests.xcconfig"; sourceTree = "<group>"; };
-		C530E0F5039B492BB36E211F /* Pods-ResourceMapperiOSTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceMapperiOSTests.xcconfig"; path = "../Pods/Pods-ResourceMapperiOSTests.xcconfig"; sourceTree = "<group>"; };
+		64EB71DFB2915400B75860A1 /* Pods-ResourceMapperiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceMapperiOSTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ResourceMapperiOSTests/Pods-ResourceMapperiOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		BDECA772E2C86BECA17DC97F /* Pods-ResourceMapperOSXTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceMapperOSXTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ResourceMapperOSXTests/Pods-ResourceMapperOSXTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CEE28FA996DD69C1EE81EAF0 /* Pods-ResourceMapperOSXTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceMapperOSXTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ResourceMapperOSXTests/Pods-ResourceMapperOSXTests.release.xcconfig"; sourceTree = "<group>"; };
 		D5F0912840D94642B559EE4C /* libPods-ResourceMapperiOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ResourceMapperiOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F61B133C19B9A3EF004BCB86 /* RMOperationApplyNullTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMOperationApplyNullTests.m; sourceTree = "<group>"; };
 		F61B134019B9A424004BCB86 /* RMOperationApplyNullTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMOperationApplyNullTests.xcdatamodel; sourceTree = "<group>"; };
@@ -287,6 +289,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DDFB94B9A7410016076D94E2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BDECA772E2C86BECA17DC97F /* Pods-ResourceMapperOSXTests.debug.xcconfig */,
+				CEE28FA996DD69C1EE81EAF0 /* Pods-ResourceMapperOSXTests.release.xcconfig */,
+				004D67B358307A2A27668AC0 /* Pods-ResourceMapperiOSTests.debug.xcconfig */,
+				64EB71DFB2915400B75860A1 /* Pods-ResourceMapperiOSTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F63A75DC18CB89BC00A309F2 = {
 			isa = PBXGroup;
 			children = (
@@ -294,8 +307,7 @@
 				F63A75FE18CB89BC00A309F2 /* Resource Mapper Tests */,
 				F63A75E718CB89BC00A309F2 /* Frameworks */,
 				F63A75E618CB89BC00A309F2 /* Products */,
-				574BF999A8EA4BF88D0ABA06 /* Pods-ResourceMapperOSXTests.xcconfig */,
-				C530E0F5039B492BB36E211F /* Pods-ResourceMapperiOSTests.xcconfig */,
+				DDFB94B9A7410016076D94E2 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -642,7 +654,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = RM;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Tobias Kräntzer";
 			};
 			buildConfigurationList = F63A75E018CB89BC00A309F2 /* Build configuration list for PBXProject "ResourceMapper" */;
@@ -711,7 +723,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Pods-ResourceMapperOSXTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ResourceMapperOSXTests/Pods-ResourceMapperOSXTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		50256374D89F4A91830DD6B4 /* Check Pods Manifest.lock */ = {
@@ -741,7 +753,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Pods-ResourceMapperiOSTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ResourceMapperiOSTests/Pods-ResourceMapperiOSTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -986,7 +998,7 @@
 		};
 		F63A760C18CB89BC00A309F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C530E0F5039B492BB36E211F /* Pods-ResourceMapperiOSTests.xcconfig */;
+			baseConfigurationReference = 004D67B358307A2A27668AC0 /* Pods-ResourceMapperiOSTests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1014,7 +1026,7 @@
 		};
 		F63A760D18CB89BC00A309F2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C530E0F5039B492BB36E211F /* Pods-ResourceMapperiOSTests.xcconfig */;
+			baseConfigurationReference = 64EB71DFB2915400B75860A1 /* Pods-ResourceMapperiOSTests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1039,6 +1051,7 @@
 		F63A763218CB8A4E00A309F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -1059,6 +1072,7 @@
 		F63A763318CB8A4E00A309F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1075,7 +1089,7 @@
 		};
 		F63A763518CB8A4E00A309F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 574BF999A8EA4BF88D0ABA06 /* Pods-ResourceMapperOSXTests.xcconfig */;
+			baseConfigurationReference = BDECA772E2C86BECA17DC97F /* Pods-ResourceMapperOSXTests.debug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1105,7 +1119,7 @@
 		};
 		F63A763618CB8A4E00A309F2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 574BF999A8EA4BF88D0ABA06 /* Pods-ResourceMapperOSXTests.xcconfig */;
+			baseConfigurationReference = CEE28FA996DD69C1EE81EAF0 /* Pods-ResourceMapperOSXTests.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
